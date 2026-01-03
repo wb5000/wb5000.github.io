@@ -336,7 +336,7 @@
       line-height: 1.3;
       flex: 1;
     }
-    
+
     /* Стили для анимированной стрелки */
     .curved-arrow-svg {
       position: fixed;
@@ -379,65 +379,6 @@
       75%, 100% {
         opacity: 1;
       }
-    }
-    
-    /* Стили для памятки о VPN */
-    .vpn-help-card {
-      background: linear-gradient(135deg, #F0F7FF, #E3F2FD);
-      border-radius: 14px;
-      padding: 18px;
-      margin: 20px 0 25px 0;
-      border: 2px solid #90CAF9;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .vpn-help-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 12px;
-    }
-    
-    .vpn-help-icon {
-      background: linear-gradient(135deg, #2196F3, #0D47A1);
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    
-    .vpn-help-title {
-      font-size: 16px;
-      color: #0D47A1;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    
-    .vpn-help-subtitle {
-      font-size: 13px;
-      color: #1565C0;
-      line-height: 1.3;
-    }
-    
-    .vpn-help-tip {
-      margin-top: 15px;
-      padding: 12px;
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 8px;
-      border-left: 4px solid #2196F3;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .vpn-help-tip-text {
-      font-size: 13px;
-      color: #0D47A1;
-      line-height: 1.3;
     }
 
     @media (max-width: 480px) {
@@ -484,15 +425,6 @@
         top: 15px;
         right: 15px;
       }
-      
-      .vpn-help-card {
-        padding: 15px;
-      }
-      
-      .vpn-help-icon {
-        width: 40px;
-        height: 40px;
-      }
     }
 
     @media (max-width: 360px) {
@@ -526,7 +458,7 @@
     if (!sessionStorage.getItem('wb_browser_advice_shown')) {
         
         setTimeout(function() {
-            // Создаем SVG стрелку (как в примере "Open in Instagram")
+            // Создаем SVG стрелку
             const arrowSvg = document.createElement('div');
             arrowSvg.innerHTML = `
                 <svg class="curved-arrow-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -552,7 +484,6 @@
                 }
             }, 100);
             
-            // Создаем модальное окно
             const notice = document.createElement('div');
             notice.id = 'wb_browser_notice';
             
@@ -584,9 +515,16 @@
                 @keyframes wbModalDisappear {
                     to { opacity: 0; transform: translate(-50%, -46%) scale(0.92); }
                 }
+                @keyframes wbArrowPulse {
+                    0%, 100% { transform: translateX(0); }
+                    50% { transform: translateX(4px); }
+                }
                 @keyframes wbPulseGlow {
-                    0%, 100% { box-shadow: 0 0 0 0 rgba(123, 31, 162, 0.2); }
-                    50% { box-shadow: 0 0 0 6px rgba(123, 31, 162, 0); }
+                    0%, 100% { box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.2); }
+                    50% { box-shadow: 0 0 0 6px rgba(233, 30, 99, 0); }
+                }
+                .wb-arrow-pulse {
+                    animation: wbArrowPulse 1.5s infinite ease-in-out;
                 }
                 .wb-pulse-glow {
                     animation: wbPulseGlow 2s infinite;
@@ -891,57 +829,54 @@
     </div>
         <a class="btn-primary pulse" href="https://gotoprofit.ru/stream/taplink_wb" rel="noreferrer">💰 Получить 5000₽</a>
 
-    <!-- ПАМЯТКА ПРИ ВОЗНИКНОВЕНИИ ТРУДНОСТЕЙ -->
-    <div class="vpn-help-card">
-        <div class="vpn-help-header">
-            <div class="vpn-help-icon">
-                <span style="color: white; font-size: 22px;">🛠️</span>
+    <!-- VPN ПРЕДУПРЕЖДЕНИЕ - НАЧАЛО -->
+    <div class="vpn-warning-card" style="background: linear-gradient(135deg, #FFF3E0, #FFE0B2); border-radius: 14px; padding: 18px; margin: 20px 0 25px 0; border: 2px solid #FFB74D; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; right: 0; width: 60px; height: 60px; background: linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(123, 31, 162, 0.1)); border-radius: 0 0 0 60px;"></div>
+        
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
+            <div style="background: linear-gradient(135deg, #E91E63, #7B1FA2); width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <span style="color: white; font-size: 22px;">🔒</span>
             </div>
-            <div>
-                <div class="vpn-help-title">
-                    Возникли трудности с открытием сайта?
+            <div style="flex: 1;">
+                <div style="font-size: 16px; color: #5D4037; font-weight: 700; margin-bottom: 4px;">
+                    🚫 Отключите VPN для получения бонуса
                 </div>
-                <div class="vpn-help-subtitle">
-                    Следуйте этим рекомендациям для успешного получения 5000₽
+                <div style="font-size: 13px; color: #795548; line-height: 1.3;">
+                    Система проверки Wildberries требует отключения VPN для выдачи 5000₽
                 </div>
             </div>
         </div>
         
-        <div style="display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 15px;">
-            <div style="background: rgba(255, 255, 255, 0.8); padding: 12px; border-radius: 8px; text-align: left; border: 1px solid #90CAF9;">
-                <div style="font-size: 13px; color: #1565C0; font-weight: 600; margin-bottom: 5px;">
-                    1️⃣ Проверьте подключение к интернету
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+            <div style="background: rgba(255, 255, 255, 0.8); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid #FFCC80;">
+                <div style="font-size: 13px; color: #E65100; font-weight: 600; margin-bottom: 5px;">
+                    ❌ С VPN
                 </div>
-                <div style="font-size: 12px; color: #0D47A1;">
-                    Убедитесь, что у вас стабильное соединение
-                </div>
-            </div>
-            <div style="background: rgba(255, 255, 255, 0.8); padding: 12px; border-radius: 8px; text-align: left; border: 1px solid #90CAF9;">
-                <div style="font-size: 13px; color: #1565C0; font-weight: 600; margin-bottom: 5px;">
-                    2️⃣ Откройте в основном браузере
-                </div>
-                <div style="font-size: 12px; color: #0D47A1;">
-                    Safari, Chrome, Яндекс.Браузер — любой основной браузер
+                <div style="font-size: 12px; color: #BF360C;">
+                    Заявка отклоняется
                 </div>
             </div>
-            <div style="background: rgba(255, 255, 255, 0.8); padding: 12px; border-radius: 8px; text-align: left; border: 1px solid #90CAF9;">
-                <div style="font-size: 13px; color: #1565C0; font-weight: 600; margin-bottom: 5px;">
-                    3️⃣ Отключите VPN (если используется)
+            <div style="background: rgba(232, 245, 233, 0.9); padding: 12px; border-radius: 8px; text-align: center; border: 1px solid #81C784;">
+                <div style="font-size: 13px; color: #1B5E20; font-weight: 600; margin-bottom: 5px;">
+                    ✅ Без VPN
                 </div>
-                <div style="font-size: 12px; color: #0D47A1;">
-                    Некоторые системы безопасности могут блокировать доступ через VPN
+                <div style="font-size: 12px; color: #2E7D32;">
+                    97% успешных выплат
                 </div>
             </div>
         </div>
         
-        <div class="vpn-help-tip">
-            <div style="color: #2196F3; font-size: 18px;">💡</div>
-            <div class="vpn-help-tip-text">
-                <strong>Совет:</strong> Если сайт не открывается, попробуйте отключить VPN в настройках устройства и обновите страницу. После этого нажмите "Получить 5000₽" ещё раз.
+        <div style="margin-top: 15px; padding: 12px; background: rgba(255, 255, 255, 0.7); border-radius: 8px; border-left: 4px solid #7B1FA2;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="color: #7B1FA2; font-size: 18px;">💡</div>
+                <div style="font-size: 13px; color: #5D4037; line-height: 1.3;">
+                    <strong>Как отключить:</strong> Настройки → VPN → Выключить для браузера Safari/Chrome
+                </div>
             </div>
         </div>
     </div>
-    <!-- ПАМЯТКА - КОНЕЦ -->
+    <!-- VPN ПРЕДУПРЕЖДЕНИЕ - КОНЕЦ -->
+    
     
 </div>
 </div>
