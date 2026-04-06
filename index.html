@@ -2,449 +2,390 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Официальный опрос от ВБ | Получите 5000₽ на покупки</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover"/>
+  <title>Официальный опрос ВБ | Получите 5000₽ на покупки</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-    :root {
-      --wb-purple: #7B1FA2;
-      --wb-pink: #E91E63;
-      --wb-gradient: linear-gradient(97.26deg,#ed3cca .49%,#df34d2 14.88%,#d02bd9 29.27%,#bf22e1 43.14%,#ae1ae8 57.02%,#9a10f0 70.89%,#8306f7 84.76%,#7c1af8 99.15%),linear-gradient(#0000000d,#0000000d);
-      --wb-light: #F8F5FF;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
 
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
-      background: var(--wb-gradient);
-      color: #333;
-      padding: 0;
-      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #F3E5F5 0%, #E8EAF6 100%);
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-attachment: fixed;
-    }
-
-    .notification {
-      position: fixed;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      padding: 10px 12px;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      z-index: 1000;
-      animation: slideInTop 0.5s ease-out;
-      border-left: 4px solid #4CAF50;
-      max-width: 90%;
-      width: auto;
-      min-width: 280px;
-      text-align: left;
-    }
-
-    @keyframes slideInTop {
-      from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
-      to { transform: translateX(-50%) translateY(0); opacity: 1; }
-    }
-
-    @keyframes slideOutTop {
-      from { transform: translateX(-50%) translateY(0); opacity: 1; }
-      to { transform: translateX(-50%) translateY(-100%); opacity: 0; }
-    }
-
-    .container {
-      background: white;
-      max-width: 500px;
-      width: 100%;
-      margin: 20px;
       padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .survey-container {
+      max-width: 560px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
       overflow: hidden;
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
     }
 
-    .container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--wb-gradient);
-    }
-
-    .header {
-      background: var(--wb-gradient);
-      padding: 15px;
-      border-radius: 12px;
+    /* Шапка */
+    .hero-header {
+      background: linear-gradient(135deg, #7B1FA2 0%, #E91E63 50%, #9C27B0 100%);
+      padding: 32px 24px 24px;
+      text-align: center;
       color: white;
-      margin-bottom: 20px;
       position: relative;
+      transition: all 0.3s ease;
     }
 
-    .header h1 {
-      font-size: 20px;
-      margin: 0 0 8px;
-      font-weight: 700;
-    }
-
-    .header p {
-      font-size: 14px;
-      margin: 0;
-      line-height: 1.4;
-      opacity: 0.95;
+    /* Скрытие шапки на финальной странице */
+    .final-active .hero-header {
+      display: none;
     }
 
     .official-badge {
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #FFD700;
-      color: #333;
-      padding: 5px 12px;
-      border-radius: 15px;
-      font-size: 12px;
-      font-weight: 700;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      white-space: nowrap;
-    }
-
-    .timer {
-      font-size: 13px;
-      margin-top: 10px;
-      font-weight: 600;
-      color: #fff;
-      background: rgba(0,0,0,0.2);
-      padding: 5px 10px;
-      border-radius: 20px;
       display: inline-block;
+      background: linear-gradient(135deg, #FFD700, #FFA000);
+      color: #1A1A1A;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 18px;
     }
 
-    .participants-count {
+    .hero-header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .hero-header p {
+      font-size: 14px;
+      opacity: 0.95;
+      margin-bottom: 20px;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .timer-badge, .participants-badge {
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(4px);
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Ограниченное предложение */
+    .limited-offer {
+      background: #FFF8E1;
+      border-left: 4px solid #FF9800;
+      padding: 12px 16px;
+      margin: 8px 20px 20px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #E65100;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .final-active .limited-offer {
+      display: none;
+    }
+
+    /* Прогресс-бар */
+    .progress-section {
+      padding: 20px 24px 0;
+      transition: all 0.3s ease;
+    }
+
+    .final-active .progress-section {
+      display: none;
+    }
+
+    .progress-label {
       font-size: 12px;
-      color: white;
-      margin-top: 8px;
-      opacity: 0.9;
+      color: #7B1FA2;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
-    .progress {
-      height: 8px;
-      width: 100%;
-      background: #eee;
-      border-radius: 5px;
-      margin: 15px 0 20px;
+    .progress-bar-bg {
+      height: 6px;
+      background: #F0E6F6;
+      border-radius: 10px;
       overflow: hidden;
-      position: relative;
     }
 
-    .progress-bar {
-      height: 100%;
+    .progress-fill {
       width: 0%;
-      background: var(--wb-gradient);
-      transition: width 0.5s ease-in-out;
-      border-radius: 5px;
+      height: 100%;
+      background: linear-gradient(90deg, #7B1FA2, #E91E63);
+      border-radius: 10px;
+      transition: width 0.4s ease;
+    }
+
+    .questions-area {
+      padding: 8px 24px;
+      transition: all 0.3s ease;
+    }
+
+    .final-active .questions-area {
+      display: none;
     }
 
     .question {
       display: none;
-      animation: fadeIn 0.6s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(25px); }
-      to { opacity: 1; transform: translateY(0); }
+      animation: fadeSlideUp 0.5s ease;
     }
 
     .question.active {
       display: block;
     }
 
-    .btn-option {
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .question h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1A1A2E;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .option-btn {
       display: block;
       width: 100%;
-      padding: 14px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      text-align: left;
+      background: #F8F5FF;
+      border: 1px solid #E9E0F5;
+      border-radius: 16px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
       font-size: 15px;
       font-weight: 500;
-      transition: all 0.3s ease;
-      background: var(--wb-light);
-      color: #333;
-      border: 2px solid transparent;
+      color: #2D2D3F;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
     }
 
-    .btn-option:hover {
-      background: #EDE7F6;
-      border-color: var(--wb-purple);
-      transform: translateY(-2px);
+    .option-btn:hover {
+      background: #EDE4F8;
+      border-color: #7B1FA2;
+      transform: translateX(4px);
     }
 
-    .final-page,
-    .loading-page {
+    .loader-area {
+      padding: 40px 24px;
+      text-align: center;
       display: none;
     }
 
-    .final-page.active,
-    .loading-page.active {
+    .loader-area.active {
       display: block;
-      animation: fadeIn 0.6s ease-in-out;
-    }
-
-    .btn-primary {
-      background: var(--wb-gradient);
-      color: white;
-      font-weight: 600;
-      padding: 16px 24px;
-      border-radius: 8px;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-      width: 100%;
-      margin-top: 15px;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(123, 31, 162, 0.4);
-    }
-
-    .instructions {
-      text-align: left;
-      font-size: 15px;
-      color: #444;
-      background: var(--wb-light);
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    .instructions ol {
-      padding-left: 20px;
-    }
-
-    .instructions li {
-      margin-bottom: 10px;
-    }
-
-    .secure-info {
-      font-size: 13px;
-      margin-top: 20px;
-      color: #777;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .loading-page p {
-      font-size: 18px;
-      margin-top: 20px;
-      color: var(--wb-purple);
-      font-weight: 600;
     }
 
     .spinner {
-      margin: 25px auto;
-      width: 45px;
-      height: 45px;
-      border: 4px solid #E0E0E0;
-      border-top: 4px solid var(--wb-purple);
+      width: 56px;
+      height: 56px;
+      border: 3px solid #F0E6F6;
+      border-top: 3px solid #7B1FA2;
       border-radius: 50%;
-      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+      animation: spin 0.8s linear infinite;
     }
 
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
 
-    .loading-steps {
-      margin-top: 15px;
-      text-align: left;
-    }
-
     .loading-step {
-      margin: 8px 0;
-      padding: 8px;
-      border-radius: 5px;
-      background: #f8f8f8;
+      background: #F8F5FF;
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin: 10px auto;
+      max-width: 280px;
       font-size: 14px;
+      color: #999;
+      transition: all 0.3s;
     }
 
     .loading-step.active {
-      background: var(--wb-light);
-      border-left: 3px solid var(--wb-purple);
+      background: #EDE4F8;
+      color: #7B1FA2;
+      font-weight: 600;
+      border-left: 3px solid #7B1FA2;
     }
 
-    .pulse {
-      animation: pulse 2s infinite;
+    /* Финальная страница */
+    .final-area {
+      padding: 32px 24px;
+      text-align: center;
+      display: none;
+      background: white;
+    }
+
+    .final-area.active {
+      display: block;
+      animation: fadeSlideUp 0.5s ease;
+    }
+
+    .gift-amount {
+      font-size: 56px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #7B1FA2, #E91E63);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin: 10px 0;
+    }
+
+    .instructions-box {
+      background: #F8F5FF;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: left;
+      margin: 20px 0;
+    }
+
+    .instructions-box ol {
+      padding-left: 20px;
+      margin-top: 12px;
+    }
+
+    .instructions-box li {
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .urgent-timer {
+      background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      margin: 16px 0;
+      border-left: 4px solid #FF9800;
+    }
+
+    .btn-claim {
+      display: block;
+      background: linear-gradient(135deg, #7B1FA2, #E91E63);
+      color: white;
+      text-align: center;
+      padding: 18px 24px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 18px;
+      text-decoration: none;
+      margin: 20px 0;
+      transition: all 0.2s;
+      box-shadow: 0 8px 20px rgba(123, 31, 162, 0.3);
+      animation: pulse 1.5s infinite;
+    }
+
+    .btn-claim:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(123, 31, 162, 0.4);
     }
 
     @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
     }
 
-    .limited-offer {
-      background: #FFF3CD;
-      border: 1px solid #FFEaa7;
-      border-radius: 8px;
-      padding: 10px;
-      margin: 12px 0;
-      font-size: 13px;
-    }
-
-    .wb-logo {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background: var(--wb-gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 10px;
-      flex-shrink: 0;
-      font-weight: bold;
-      color: white;
-      font-size: 12px;
-    }
-
-    .notification-content {
-      display: flex;
-      align-items: center;
-      min-height: auto;
-    }
-
-    .notification-text {
-      font-size: 13px;
-      line-height: 1.3;
-      flex: 1;
-    }
-
-    /* Стили для анимированной стрелки */
-    .curved-arrow-svg {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 70px;
-      height: auto;
-      filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.3));
-      z-index: 10001;
-      overflow: visible;
-      pointer-events: none;
-    }
-    
-    #wb-arrow-path {
-      stroke-dasharray: var(--path-length, 1000);
-      stroke-dashoffset: var(--path-length, 1000);
-      animation: drawArrow 1.2s ease-in-out infinite;
-      animation-delay: 0.5s;
-    }
-    
-    @keyframes drawArrow {
-      0% {
-        stroke-dashoffset: var(--path-length, 1000);
-      }
-      70%, 100% {
-        stroke-dashoffset: 0;
-      }
-    }
-    
-    #wb-arrowhead-shape {
-      opacity: 0;
-      animation: fadeInArrowhead ease-in-out 1.2s infinite;
-      animation-delay: 0.5s;
-    }
-    
-    @keyframes fadeInArrowhead {
-      0%, 65% {
-        opacity: 0;
-      }
-      75%, 100% {
-        opacity: 1;
-      }
-    }
-
-    /* Стили для чата из второго файла */
-    .chat-container {
-      background: #F9F9F9;
-      border-radius: 12px;
-      padding: 0;
-      margin: 20px 0 15px;
-      border: 1px solid #E0E0E0;
+    .chat-widget {
+      margin: 20px 20px 24px;
+      background: #FAFAFE;
+      border-radius: 24px;
       overflow: hidden;
+      border: 1px solid #EEE5F7;
+      transition: all 0.3s ease;
+    }
+
+    .final-active .chat-widget {
+      display: none;
     }
 
     .chat-header {
-      background: var(--wb-gradient);
+      background: linear-gradient(135deg, #7B1FA2, #9C27B0);
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
       color: white;
-      padding: 12px 15px;
       font-weight: 600;
       font-size: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
     }
 
     .chat-online {
-      font-size: 12px;
       background: rgba(255,255,255,0.2);
-      padding: 3px 10px;
-      border-radius: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
     }
 
     .chat-messages {
-      height: 350px;
+      height: 320px;
       overflow-y: auto;
-      padding: 15px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       gap: 12px;
+      background: white;
     }
 
-    .chat-message {
+    .message {
       display: flex;
       gap: 10px;
-      animation: messageAppear 0.4s ease;
+      animation: messageIn 0.3s ease;
     }
 
-    @keyframes messageAppear {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes messageIn {
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .chat-message.other {
-      align-self: flex-start;
-    }
-
-    .chat-message.user {
-      align-self: flex-end;
+    .message.user {
       flex-direction: row-reverse;
     }
 
-    .chat-avatar {
+    .avatar {
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: var(--wb-gradient);
+      background: linear-gradient(135deg, #7B1FA2, #E91E63);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -454,35 +395,34 @@
       flex-shrink: 0;
     }
 
-    .chat-bubble {
+    .message.user .avatar {
+      background: linear-gradient(135deg, #9C27B0, #EC407A);
+    }
+
+    .bubble {
       max-width: 75%;
+      background: #F3F0FC;
       padding: 10px 14px;
       border-radius: 18px;
-      font-size: 13.5px;
-      line-height: 1.4;
-      word-wrap: break-word;
-    }
-
-    .chat-message.other .chat-bubble {
-      background: white;
-      border: 1px solid #E0E0E0;
       border-bottom-left-radius: 5px;
+      font-size: 13px;
+      line-height: 1.4;
     }
 
-    .chat-message.user .chat-bubble {
-      background: var(--wb-light);
-      border: 1px solid #D1C4E9;
+    .message.user .bubble {
+      background: #EDE4F8;
       border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 18px;
     }
 
-    .chat-name {
-      font-weight: 600;
+    .message-name {
+      font-weight: 700;
       font-size: 12px;
-      margin-bottom: 3px;
-      color: #555;
+      color: #7B1FA2;
+      margin-bottom: 4px;
     }
 
-    .chat-time {
+    .message-time {
       font-size: 10px;
       color: #999;
       margin-top: 4px;
@@ -491,562 +431,272 @@
 
     .chat-input-area {
       display: flex;
-      padding: 12px 15px;
-      background: #F0F0F0;
-      border-top: 1px solid #E0E0E0;
+      padding: 12px;
+      background: #F8F5FF;
       gap: 10px;
+      border-top: 1px solid #EEE5F7;
     }
 
     .chat-input {
       flex: 1;
-      padding: 10px 15px;
-      border: 1px solid #CCC;
-      border-radius: 20px;
+      padding: 12px 16px;
+      border: 1px solid #E0D4F0;
+      border-radius: 30px;
       font-size: 14px;
       outline: none;
+      font-family: inherit;
     }
 
     .chat-input:focus {
-      border-color: var(--wb-purple);
+      border-color: #7B1FA2;
     }
 
     .chat-send {
-      background: var(--wb-gradient);
+      background: linear-gradient(135deg, #7B1FA2, #E91E63);
       border: none;
-      border-radius: 20px;
-      padding: 10px 20px;
+      border-radius: 30px;
+      padding: 0 20px;
       color: white;
       font-weight: 600;
       cursor: pointer;
+    }
+
+    /* Уведомления по центру вверху */
+    .floating-notification {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 340px;
+      width: 90%;
+      background: white;
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      border-left: 4px solid #7B1FA2;
+      z-index: 1000;
+      animation: slideDown 0.4s ease;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateX(-50%) translateY(-100px); opacity: 0; }
+      to { transform: translateX(-50%) translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateX(-50%) translateY(0); opacity: 1; }
+      to { transform: translateX(-50%) translateY(-100px); opacity: 0; }
+    }
+
+    .notification-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .wb-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #7B1FA2, #E91E63);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: white;
+      font-weight: 800;
     }
 
     @media (max-width: 480px) {
-      .container {
-        margin: 10px;
-        padding: 15px;
-      }
-      
-      .header {
-        padding: 12px;
-      }
-      
-      .header h1 {
-        font-size: 18px;
-      }
-      
-      .header p {
-        font-size: 13px;
-      }
-      
-      .btn-option {
-        padding: 12px;
-        font-size: 14px;
-      }
-      
-      .notification {
-        padding: 8px 10px;
-        min-width: 260px;
-      }
-      
-      .wb-logo {
-        width: 24px;
-        height: 24px;
-        font-size: 10px;
-        margin-right: 8px;
-      }
-      
-      .notification-text {
-        font-size: 12px;
-      }
-      
-      .curved-arrow-svg {
-        width: 60px;
-        top: 15px;
-        right: 15px;
-      }
-      
-      .chat-messages {
-        height: 300px;
-      }
-    }
-
-    @media (max-width: 360px) {
-      .notification {
-        min-width: 240px;
-        padding: 6px 8px;
-      }
-      
-      .wb-logo {
-        width: 22px;
-        height: 22px;
-        font-size: 9px;
-        margin-right: 6px;
-      }
-      
-      .notification-text {
-        font-size: 11px;
-      }
-      
-      .curved-arrow-svg {
-        width: 50px;
-        top: 10px;
-        right: 10px;
-      }
+      body { padding: 12px; }
+      .hero-header h1 { font-size: 20px; }
+      .question h3 { font-size: 18px; }
+      .gift-amount { font-size: 44px; }
+      .btn-claim { padding: 15px 20px; font-size: 16px; }
+      .floating-notification { width: 92%; max-width: 320px; }
+      .stats-row { gap: 10px; }
+      .timer-badge, .participants-badge { padding: 6px 14px; font-size: 12px; }
+      .limited-offer { margin-top: 8px; }
     }
   </style>
 </head>
 <body>
-<script>
-(function() {
-    if (!sessionStorage.getItem('wb_browser_advice_shown')) {
-        
-        setTimeout(function() {
-            // Создаем SVG стрелку
-            const arrowSvg = document.createElement('div');
-            arrowSvg.innerHTML = `
-                <svg class="curved-arrow-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <marker id="wb-arrowhead" markerWidth="7" markerHeight="5" refX="3" refY="1.75" orient="-75deg" markerUnits="strokeWidth">
-                            <polygon id="wb-arrowhead-shape" points="0 0, 5 1.75, 0 3.5" fill="white"></polygon>
-                        </marker>
-                    </defs>
-                    <path id="wb-arrow-path" d="M 30 90 Q 70 90 80 50 T 90 10" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" marker-end="url(#wb-arrowhead)"></path>
-                </svg>
-            `;
-            document.body.appendChild(arrowSvg);
-            
-            // Анимируем стрелку
-            setTimeout(() => {
-                const arrowPath = document.getElementById('wb-arrow-path');
-                if (arrowPath) {
-                    const pathLength = arrowPath.getTotalLength();
-                    const effectiveLength = pathLength > 0 ? pathLength : 150;
-                    arrowPath.style.setProperty('--path-length', effectiveLength);
-                    arrowPath.style.strokeDasharray = effectiveLength;
-                    arrowPath.style.strokeDashoffset = effectiveLength;
-                }
-            }, 100);
-            
-            const notice = document.createElement('div');
-            notice.id = 'wb_browser_notice';
-            
-            notice.style.cssText = `
-                position: fixed !important;
-                top: 50% !important;
-                left: 50% !important;
-                transform: translate(-50%, -50%) !important;
-                background: white !important;
-                border-radius: 16px !important;
-                padding: 0 !important;
-                width: 85% !important;
-                max-width: 340px !important;
-                z-index: 10000 !important;
-                font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-                box-shadow: 0 20px 50px rgba(123, 31, 162, 0.15) !important;
-                animation: wbModalAppear 0.4s ease-out !important;
-                overflow: hidden !important;
-                max-height: 85vh !important;
-                overflow-y: auto !important;
-            `;
-            
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes wbModalAppear {
-                    from { opacity: 0; transform: translate(-50%, -48%) scale(0.95); }
-                    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-                }
-                @keyframes wbModalDisappear {
-                    to { opacity: 0; transform: translate(-50%, -46%) scale(0.92); }
-                }
-                @keyframes wbArrowPulse {
-                    0%, 100% { transform: translateX(0); }
-                    50% { transform: translateX(4px); }
-                }
-                @keyframes wbPulseGlow {
-                    0%, 100% { box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.2); }
-                    50% { box-shadow: 0 0 0 6px rgba(233, 30, 99, 0); }
-                }
-                .wb-arrow-pulse {
-                    animation: wbArrowPulse 1.5s infinite ease-in-out;
-                }
-                .wb-pulse-glow {
-                    animation: wbPulseGlow 2s infinite;
-                }
-                
-                /* Mobile optimizations */
-                @media (max-width: 480px) {
-                    #wb_browser_notice {
-                        width: 92% !important;
-                        max-width: 320px !important;
-                        border-radius: 14px !important;
-                    }
-                }
-                
-                @media (max-height: 700px) {
-                    #wb_browser_notice {
-                        max-height: 80vh !important;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-            
-            notice.innerHTML = `
-                <!-- Header -->
-                <div style="background: linear-gradient(97.26deg,#ed3cca .49%,#df34d2 14.88%,#d02bd9 29.27%,#bf22e1 43.14%,#ae1ae8 57.02%,#9a10f0 70.89%,#8306f7 84.76%,#7c1af8 99.15%),linear-gradient(#0000000d,#0000000d); padding: 20px 20px 16px 20px; position: relative;">
-                    <button id="wbCloseBtn" style="position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.2); border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 20px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; backdrop-filter: blur(5px); z-index: 2;">
-                        ×
-                    </button>
-                    
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div style="background: white; width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;">
-                            🔄
-                        </div>
-                        <div style="flex: 1;">
-                            <div style="font-size: 11px; color: rgba(255,255,255,0.9); font-weight: 500; letter-spacing: 0.3px; margin-bottom: 2px;">
-                                РЕКОМЕНДАЦИЯ
-                            </div>
-                            <div style="font-size: 18px; color: white; font-weight: 700; line-height: 1.2;">
-                                Открыть в браузере
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Content -->
-                <div style="padding: 20px;">
-                    <!-- Tip -->
-                    <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; padding: 14px; background: #F8F5FF; border-radius: 12px; border-left: 3px solid #7B1FA2;">
-                        <div style="color: #7B1FA2; font-size: 18px; flex-shrink: 0;">💡</div>
-                        <div style="flex: 1;">
-                            <div style="font-size: 14px; color: #333; line-height: 1.4;">
-                                <strong>Посмотрите на стрелку вверху →</strong><br>
-                                Она указывает на кнопку меню в правом верхнем углу
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Steps -->
-                    <div style="display: grid; gap: 12px; margin-bottom: 20px;">
-                        <!-- Step 1 -->
-                        <div style="display: flex; align-items: center; gap: 12px; padding: 14px; background: #F9F9F9; border-radius: 10px; border: 1px solid #EEE;">
-                            <div style="background: linear-gradient(97.26deg,#ed3cca .49%,#df34d2 14.88%,#d02bd9 29.27%,#bf22e1 43.14%,#ae1ae8 57.02%,#9a10f0 70.89%,#8306f7 84.76%,#7c1af8 99.15%),linear-gradient(#0000000d,#0000000d); color: white; width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; font-size: 13px;">
-                                1
-                            </div>
-                            <div style="flex: 1;">
-                                <div style="font-size: 14px; color: #333; font-weight: 600; margin-bottom: 3px;">
-                                    Нажмите <span style="color: #E91E63; font-weight: 700;">"⋯"</span> в правом верхнем углу
-                                </div>
-                                <div style="font-size: 12px; color: #666; line-height: 1.3;">
-                                    (стрелка показывает куда нажимать)
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Step 2 -->
-                        <div style="display: flex; align-items: center; gap: 12px; padding: 14px; background: #F9F9F9; border-radius: 10px; border: 1px solid #EEE;">
-                            <div style="background: linear-gradient(97.26deg,#ed3cca .49%,#df34d2 14.88%,#d02bd9 29.27%,#bf22e1 43.14%,#ae1ae8 57.02%,#9a10f0 70.89%,#8306f7 84.76%,#7c1af8 99.15%),linear-gradient(#0000000d,#0000000d); color: white; width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; font-size: 13px;">
-                                2
-                            </div>
-                            <div style="flex: 1;">
-                                <div style="font-size: 14px; color: #333; font-weight: 600; margin-bottom: 3px;">
-                                    Выберите <strong>"Открыть в браузере"</strong>
-                                </div>
-                                <div style="font-size: 12px; color: #666; line-height: 1.3;">
-                                    Safari, Chrome или другой браузер
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Bonus -->
-                    <div style="background: linear-gradient(135deg, #FFF8E1, #FFECB3); padding: 14px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #FFD54F;">
-                        <div style="display: flex; gap: 10px; align-items: flex-start;">
-                            <div style="color: #FF8F00; font-size: 16px; flex-shrink: 0;">⚡</div>
-                            <div>
-                                <div style="font-size: 12px; color: #5D4037; font-weight: 600; margin-bottom: 4px;">
-                                    ПОВЫШЕННЫЙ ШАНС ПОЛУЧЕНИЯ 5000₽
-                                </div>
-                                <div style="font-size: 12px; color: #795548; line-height: 1.3;">
-                                    В основном браузере опрос работает стабильно и без ошибок
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Button -->
-                    <button id="wbConfirmBtn" class="wb-pulse-glow" style="background: linear-gradient(97.26deg,#ed3cca .49%,#df34d2 14.88%,#d02bd9 29.27%,#bf22e1 43.14%,#ae1ae8 57.02%,#9a10f0 70.89%,#8306f7 84.76%,#7c1af8 99.15%),linear-gradient(#0000000d,#0000000d); color: white; border: none; width: 100%; padding: 16px; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s; position: relative;">
-                        <div style="display: flex; align-items: center; justify-content: center; gap: 8px;">
-                            <span>Открыл в браузере, продолжаем!</span>
-                            <span style="font-size: 16px;">🎯</span>
-                        </div>
-                    </button>
-                </div>
-            `;
-            
-            document.body.appendChild(notice);
-            
-            // Light overlay
-            const overlay = document.createElement('div');
-            overlay.style.cssText = `
-                position: fixed !important;
-                top: 0 !important;
-                left: 0 !important;
-                width: 100% !important;
-                height: 100% !important;
-                background: rgba(0,0,0,0.4) !important;
-                backdrop-filter: blur(2px) !important;
-                z-index: 9999 !important;
-                animation: wbModalAppear 0.3s ease-out !important;
-            `;
-            document.body.appendChild(overlay);
-            
-            function closeModal() {
-                notice.style.animation = 'wbModalDisappear 0.3s forwards';
-                overlay.style.opacity = '0';
-                setTimeout(() => {
-                    if (notice.parentNode) notice.parentNode.removeChild(notice);
-                    if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-                    // Удаляем стрелку
-                    const arrow = document.querySelector('.curved-arrow-svg');
-                    if (arrow && arrow.parentNode) arrow.parentNode.removeChild(arrow);
-                }, 300);
-                sessionStorage.setItem('wb_browser_advice_shown', 'true');
-            }
-            
-            setTimeout(() => {
-                const closeBtn = document.getElementById('wbCloseBtn');
-                const confirmBtn = document.getElementById('wbConfirmBtn');
-                
-                if (closeBtn) {
-                    closeBtn.onclick = closeModal;
-                    closeBtn.onmouseover = () => {
-                        closeBtn.style.background = 'rgba(255,255,255,0.3)';
-                        closeBtn.style.transform = 'rotate(90deg)';
-                    };
-                    closeBtn.onmouseout = () => {
-                        closeBtn.style.background = 'rgba(255,255,255,0.2)';
-                        closeBtn.style.transform = 'rotate(0deg)';
-                    };
-                }
-                
-                if (confirmBtn) {
-                    confirmBtn.onclick = closeModal;
-                    confirmBtn.onmouseover = () => {
-                        confirmBtn.style.transform = 'translateY(-2px)';
-                        confirmBtn.style.boxShadow = '0 8px 20px rgba(123, 31, 162, 0.2)';
-                    };
-                    confirmBtn.onmouseout = () => {
-                        confirmBtn.style.transform = 'translateY(0)';
-                        confirmBtn.style.boxShadow = 'none';
-                    };
-                }
-                
-                overlay.onclick = closeModal;
-                
-                // Auto-close on navigation
-                let currentPage = window.location.href;
-                setInterval(() => {
-                    if (window.location.href !== currentPage) {
-                        closeModal();
-                    }
-                }, 500);
-                
-            }, 100);
-            
-        }, 800); // Reduced delay
-        
-    }
-})();
-</script>
-<div class="container">
-  <div class="header">
-    <div class="official-badge">ОФИЦИАЛЬНЫЙ ОПРОС</div>
-    <h1>🎁 КАК ПОЛУЧИТЬ КУПОН НОМИНАЛОМ 5000₽ НА ВБ!</h1>
-    <p>Пройдите опрос и получите инструкцию!</p>
-    <p>Участвуй в розыгрыше подарков!</p>
-    <div class="timer" id="countdown">До конца акции: 23:24:59</div>
-    <div class="participants-count">👥 Уже участвовало: <span id="participantsCount">1,847</span> человек</div>
-  </div>
 
-  <div class="limited-offer">
-    ⚡ <strong>Ограниченное предложение!</strong> Ссылка действует 24 часа.
-  </div>
-
-  <div class="progress">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
-
-  <!-- Вопрос 1 -->
-  <div class="question active" id="question1">
-    <h3>Как часто вы совершаете покупки на ВБ?</h3>
-    <button class="btn-option" onclick="selectOption(1)">📦 Несколько раз в неделю</button>
-    <button class="btn-option" onclick="selectOption(1)">🛒 1-2 раза в месяц</button>
-    <button class="btn-option" onclick="selectOption(1)">📝 Редко, но планирую чаще</button>
-    <button class="btn-option" onclick="selectOption(1)">❌ Никогда не покупал(а)</button>
-  </div>
-
-  <!-- Вопрос 2 -->
-  <div class="question" id="question2">
-    <h3>Какую сумму вы обычно тратите за один заказ?</h3>
-    <button class="btn-option" onclick="selectOption(2)">💎 До 1 000 рублей</button>
-    <button class="btn-option" onclick="selectOption(2)">👗 1 000 - 3 000 рублей</button>
-    <button class="btn-option" onclick="selectOption(2)">🛍️ 3 000 - 7 000 рублей</button>
-    <button class="btn-option" onclick="selectOption(2)">💼 Более 7 000 рублей</button>
-  </div>
-
-  <!-- Вопрос 3 -->
-  <div class="question" id="question3">
-    <h3>Что вы чаще всего покупаете на ВБ?</h3>
-    <button class="btn-option" onclick="selectOption(3)">👚 Одежда и обувь</button>
-    <button class="btn-option" onclick="selectOption(3)">💄 Косметика и парфюмерия</button>
-    <button class="btn-option" onclick="selectOption(3)">🏠 Товары для дома</button>
-    <button class="btn-option" onclick="selectOption(3)">📱 Электроника и гаджеты</button>
-  </div>
-
-  <!-- Вопрос 4 -->
-  <div class="question" id="question4">
-    <h3>Что для вас важно при выборе товара?</h3>
-    <button class="btn-option" onclick="selectOption(4)">⭐ Отзывы и рейтинг продавца</button>
-    <button class="btn-option" onclick="selectOption(4)">💰 Цена и акции</button>
-    <button class="btn-option" onclick="selectOption(4)">🚚 Быстрая доставка</button>
-    <button class="btn-option" onclick="selectOption(4)">📷 Качественные фото товара</button>
-  </div>
-
-  <!-- Вопрос 5 -->
-  <div class="question" id="question5">
-    <h3>Какой подарок вы бы хотели получить от ВБ?</h3>
-    <button class="btn-option" onclick="selectOption(5)">🎁 Скидка на следующий заказ</button>
-    <button class="btn-option" onclick="selectOption(5)">🚀 Бесплатная доставка на год</button>
-    <button class="btn-option" onclick="selectOption(5)">👑 Премиум-статус покупателя</button>
-    <button class="btn-option" onclick="selectOption(5)">💝 Подарочный сертификат</button>
-  </div>
-
-  <!-- Вопрос 6 -->
-  <div class="question" id="question6">
-    <h3>Вы подписаны на рассылку акций и спецпредложений ВБ?</h3>
-    <button class="btn-option" onclick="selectOption(6)">✅ Да, регулярно получаю выгодные предложения</button>
-    <button class="btn-option" onclick="selectOption(6)">🤔 Нет, но хочу попробовать</button>
-    <button class="btn-option" onclick="selectOption(6)">❌ Нет, не интересно</button>
-  </div>
-
-  <!-- Вопрос 7 -->
-  <div class="question" id="question7">
-    <h3>Какой из брендов ВБ вам наиболее интересен?</h3>
-    <button class="btn-option" onclick="selectOption(7)">👗 Fashion-бренды одежды</button>
-    <button class="btn-option" onclick="selectOption(7)">🏡 Домашний уют и декор</button>
-    <button class="btn-option" onclick="selectOption(7)">💎 Beauty-продукты</button>
-    <button class="btn-option" onclick="selectOption(7)">👶 Детские товары</button>
-  </div>
-
-  <!-- Страница загрузки -->
-  <div class="loading-page" id="loading">
-    <div class="spinner"></div>
-    <p>⏳ Проверяем ваши ответы...</p>
-    <div class="loading-steps">
-      <div class="loading-step active" id="step1">✓ Анализ ответов...</div>
-      <div class="loading-step" id="step2">Проверка соответствия критериям...</div>
-      <div class="loading-step" id="step3">Подготовка купона...</div>
+<div class="survey-container" id="appContainer">
+  <div class="card">
+    <div class="hero-header">
+      <div class="official-badge">⚡ ОФИЦИАЛЬНЫЙ ОПРОС ВБ</div>
+      <h1>🎁 ПОЛУЧИТЕ КУПОН НА 5000₽</h1>
+      <p>Пройдите опрос — и мы покажем, как активировать подарок</p>
+      <div class="stats-row">
+        <div class="timer-badge">⏱️ <span id="mainTimer">23:24:59</span></div>
+        <div class="participants-badge">👥 <span id="participantsCount">1847</span> участников</div>
+      </div>
     </div>
-  </div>
 
-  <!-- Финальная страница -->
-<div class="final-page" id="final-page">
-    <h2>Поздравляем! 🎊</h2>
-    <p>Купон номиналом 5000₽ почти Ваш:</p>
-    <h1 style="color: var(--wb-purple); font-size: 32px; margin: 10px 0;">5 000₽</h1>
-    <p>на покупки в ВБ!</p>
-    
-    <div class="instructions">
-        <p><strong>Для получения 5000₽ выполните 3 простых шага:</strong></p>
+    <div class="limited-offer">
+      🔥 <strong>Ограниченное предложение!</strong> Ссылка активна 24 часа. Успейте!
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-label">Вопрос <span id="currentQ">1</span> из 7</div>
+      <div class="progress-bar-bg">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="questions-area" id="questionsArea">
+      <div class="question active" data-q="1">
+        <h3>Как часто вы совершаете покупки на WildBerries?</h3>
+        <button class="option-btn" data-val="1">📦 Несколько раз в неделю</button>
+        <button class="option-btn" data-val="2">🛒 1-2 раза в месяц</button>
+        <button class="option-btn" data-val="3">📝 Редко, но планирую чаще</button>
+        <button class="option-btn" data-val="4">❌ Пока не покупал(а)</button>
+      </div>
+
+      <div class="question" data-q="2">
+        <h3>Какую сумму вы обычно тратите за один заказ?</h3>
+        <button class="option-btn" data-val="1">💎 До 1 000 ₽</button>
+        <button class="option-btn" data-val="2">👗 1 000 – 3 000 ₽</button>
+        <button class="option-btn" data-val="3">🛍️ 3 000 – 7 000 ₽</button>
+        <button class="option-btn" data-val="4">💼 Более 7 000 ₽</button>
+      </div>
+
+      <div class="question" data-q="3">
+        <h3>Что вы чаще всего покупаете на ВБ?</h3>
+        <button class="option-btn" data-val="1">👚 Одежда и обувь</button>
+        <button class="option-btn" data-val="2">💄 Косметика и парфюмерия</button>
+        <button class="option-btn" data-val="3">🏠 Товары для дома</button>
+        <button class="option-btn" data-val="4">📱 Электроника и гаджеты</button>
+      </div>
+
+      <div class="question" data-q="4">
+        <h3>Что для вас важно при выборе товара?</h3>
+        <button class="option-btn" data-val="1">⭐ Отзывы и рейтинг</button>
+        <button class="option-btn" data-val="2">💰 Цена и скидки</button>
+        <button class="option-btn" data-val="3">🚚 Быстрая доставка</button>
+        <button class="option-btn" data-val="4">📷 Качественные фото</button>
+      </div>
+
+      <div class="question" data-q="5">
+        <h3>Какой подарок вас порадовал бы больше всего?</h3>
+        <button class="option-btn" data-val="1">🎁 Скидка 50% на следующий заказ</button>
+        <button class="option-btn" data-val="2">🚀 Бесплатная доставка на год</button>
+        <button class="option-btn" data-val="3">👑 Премиум-статус покупателя</button>
+        <button class="option-btn" data-val="4">💝 Сертификат на 5000 ₽</button>
+      </div>
+
+      <div class="question" data-q="6">
+        <h3>Вы подписаны на рассылку акций ВБ?</h3>
+        <button class="option-btn" data-val="1">✅ Да, получаю выгодные предложения</button>
+        <button class="option-btn" data-val="2">🤔 Нет, но хочу попробовать</button>
+        <button class="option-btn" data-val="3">❌ Нет, не интересно</button>
+      </div>
+
+      <div class="question" data-q="7">
+        <h3>Какой из брендов ВБ вам наиболее интересен?</h3>
+        <button class="option-btn" data-val="1">👗 Fashion-бренды одежды</button>
+        <button class="option-btn" data-val="2">🏡 Домашний уют и декор</button>
+        <button class="option-btn" data-val="3">💎 Beauty-продукты</button>
+        <button class="option-btn" data-val="4">👶 Детские товары</button>
+      </div>
+    </div>
+
+    <div class="loader-area" id="loaderArea">
+      <div class="spinner"></div>
+      <p style="font-weight: 600; margin-bottom: 16px;">Проверяем ваши ответы...</p>
+      <div class="loading-step" id="step1">🔍 Анализ ответов...</div>
+      <div class="loading-step" id="step2">✅ Проверка соответствия критериям...</div>
+      <div class="loading-step" id="step3">🎁 Подготовка купона...</div>
+    </div>
+
+    <div class="final-area" id="finalArea">
+      <h2>🎉 Поздравляем!</h2>
+      <p>Вы прошли опрос и получаете право на</p>
+      <div class="gift-amount">5 000 ₽</div>
+      <p>на покупки в WildBerries!</p>
+
+      <div class="instructions-box">
+        <strong>📋 Как получить подарок за 1 минуту:</strong>
         <ol>
-            <li>Нажмите кнопку <strong>"Получить 5000₽"</strong> и пройдите быструю регистрацию.</li>
-            <li>Важно! Оплатите <b>1 рубль</b> для доступа к аналитике на 5 дней.</li>
-            <li>Для получения <b>Подарочного сертификата ВБ на 5000₽</b> подтвердите участие в Акции и дождитесь розыгрыша.</li>
+          <li>Нажмите кнопку <strong>"Активировать 5000 ₽"</strong> и пройдите быструю регистрацию.</li>
+          <li>Оплатите <strong>1 рубль</strong> — это тестовый платёж для подключения аналитики (он возвращается).</li>
+          <li>После подтверждения вы получите доступ к инструкции и станете участником розыгрыша сертификатов ВБ!</li>
         </ol>
-<div style="background: linear-gradient(135deg, #F8F5FF, #F3E5F5); padding: 10px; border-radius: 5px; margin-top: 15px; border: 1px solid #E1BEE7; border-left: 4px solid #7B1FA2;">
-    <strong>🎯 Важно:</strong> 
-    <div class="timer" id="finalCountdown" style="background: transparent; color: #7B1FA2; font-weight: 600;">
-        Предложение действительно в течение: 05:00
-    </div>
-</div>
-    </div>
-        <a class="btn-primary pulse" href="https://onelinkgo.ru/stream/wb5000tiktok" rel="noreferrer">💰 Получить 5000₽</a>
+      </div>
 
-</div>
+      <div class="urgent-timer">
+        ⏰ <strong>Предложение действительно:</strong> <span id="finalTimer">05:00</span>
+      </div>
 
-  <!-- Чат из второго файла -->
-  <div class="chat-container">
-    <div class="chat-header">
-      <span>💬 Чат участников розыгрыша</span>
-      <span class="chat-online"><span id="onlineCount">148</span> онлайн</span>
+      <a href="https://onelinkgo.ru/stream/wb5000tiktok" class="btn-claim" id="claimButton">
+        💰 Активировать 5000 ₽
+      </a>
+      <p style="font-size: 12px; color: #888;">*Оплата 1 рубля нужна для верификации. Средства возвращаются на счёт.</p>
     </div>
-    <div class="chat-messages" id="chatMessages">
-      <!-- Сообщения будут добавляться скриптом -->
-    </div>
-    <div class="chat-input-area">
-      <input type="text" class="chat-input" id="chatInput" placeholder="Написать сообщение..." maxlength="100">
-      <button class="chat-send" id="chatSend">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-        </svg>
-      </button>
+
+    <div class="chat-widget">
+      <div class="chat-header">
+        <span>💬 Чат участников розыгрыша</span>
+        <span class="chat-online">🟢 <span id="onlineCount">148</span> онлайн</span>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Написать в чат..." maxlength="80">
+        <button class="chat-send" id="chatSendBtn">➤</button>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
+  // ---------- ОСНОВНЫЕ ПЕРЕМЕННЫЕ ----------
+  let currentQuestion = 1;
   const totalQuestions = 7;
+  let participants = 1847;
   let isSurveyActive = true;
-  let participantsCount = 1847;
+
+  let mainSeconds = 23 * 3600 + 24 * 60 + 59;
+  let finalSeconds = 300;
+
   let notificationQueue = [];
-  let isShowingNotification = false;
+  let isShowingNotif = false;
+
+  // Чат
+  let lastMessageTime = new Date();
   
-  // Переменные для таймеров
-  let finalTimerSeconds = 300; // 5 минут в секундах
-
-  // Переменные для чата из второго файла
-  let onlineCount = 148;
-  let messageId = 0;
-  let chatMessages = [];
-
-  // База сообщений для чата из второго файла
-  const initialMessages = [
-    {name: "Анна_Москва", text: "Девочки, это не развод! Только что получила 5000₽ на карту! 💳", time: "10:15", gender: "female"},
-    {name: "Сергей_Т", text: "Кто уже прошел верификацию? За сколько пришли деньги?", time: "10:18", gender: "male"},
-    {name: "Ольга_Премиум", text: "Я за 5 минут получила! Главное — не бояться рубля, его возвращают сразу", time: "10:22", gender: "female"},
-    {name: "Марина_Шопер", text: "Уже потратила на новое платье! Спасибо ВБ за подарок 😍", time: "10:25", gender: "female"},
-    {name: "Дмитрий_К", text: "Жена не верила, пока сама не попробовала. Теперь оба довольны!", time: "10:28", gender: "male"},
-    {name: "Елена_Счастливая", text: "Верификацию прошла легко, просто заполнила данные. Деньги пришли через 3 минуты", time: "10:32", gender: "female"},
-    {name: "Ирина_Казань", text: "А если карта не сбербанка? У меня Тинькофф, тоже подойдет?", time: "10:35", gender: "female"},
-    {name: "Александр_В", text: "Ирина, да, любая карта подходит. У меня Альфа-банк, всё ок", time: "10:38", gender: "male"},
-    {name: "Светлана_Золото", text: "Не слушайте скептиков! Это официальный розыгрыш от ВБ, всё легально", time: "10:42", gender: "female"},
-    {name: "Наталья_К", text: "Только что привязала карту, списали 1 рубль и сразу вернули. Теперь жду 5000₽", time: "10:45", gender: "female"},
-    {name: "Андрей_Новосиб", text: "Сколько ждать зачисление 5000 после верификации?", time: "10:48", gender: "male"},
-    {name: "Виктория_Модница", text: "Андрей, у меня через 2 минуты пришло. Главное — всё правильно заполнить", time: "10:52", gender: "female"},
-    {name: "Татьяна_Про", text: "Подарков реально мало осталось, торопитесь, девочки!", time: "10:55", gender: "female"},
-    {name: "Максим_СПб", text: "Сначала думал лохотрон, но жена уговорила попробовать. Не зря!", time: "10:58", gender: "male"},
-    {name: "Юлия_Красота", text: "Уже получила и потратила на косметику! Всё работает 💄", time: "11:02", gender: "female"},
-    {name: "Артем_Воронеж", text: "Подтверждаю, с картой ВТБ тоже всё прошло без проблем", time: "11:05", gender: "male"},
-    {name: "Людмила_Шоппинг", text: "Девочки, не бойтесь рубля! Это просто проверка карты", time: "11:08", gender: "female"},
-    {name: "Кирилл_М", text: "Жду свои 5000, уже 5 минут прошло. Это нормально?", time: "11:12", gender: "male"},
-    {name: "Алиса_Стильная", text: "Кирилл, у меня 7 минут было. Подожди ещё немного", time: "11:15", gender: "female"},
-    {name: "Павел_Рабочий", text: "На что лучше потратить эти деньги? Может, инструменты?", time: "11:18", gender: "male"},
-    {name: "Екатерина_Л", text: "Я купила детям одежду на осень. Очень кстати пришлись деньги", time: "11:22", gender: "female"},
-    {name: "Роман_Авто", text: "Кто-нибудь покупал автоаксессуары на ВБ? Есть рекомендации?", time: "11:25", gender: "male"},
-    {name: "Снежана_Дом", text: "Я заказала новый чайник и сковородку. Качество отличное!", time: "11:28", gender: "female"},
-    {name: "Игорь_Спорт", text: "Для спортзала что-нибудь присмотрел на эти деньги", time: "11:32", gender: "male"},
-    {name: "Валентина_С", text: "Верификацию проходила с телефона, всё удобно сделано", time: "11:35", gender: "female"},
-    {name: "Станислав_Т", text: "У меня с карты МИР списали и вернули рубль. Всё ок", time: "11:38", gender: "male"},
-    {name: "Галина_Бабуля", text: "Внучка помогла оформить. Теперь и я шопоголик 😄", time: "11:42", gender: "female"},
-    {name: "Владимир_П", text: "На подарок жене на юбилей хватит этих денег", time: "11:45", gender: "male"},
-    {name: "Маргарита_К", text: "Кто получил 5000, отпишитесь! Хочу убедиться, что не одна", time: "11:48", gender: "female"},
-    {name: "Никита_Геймер", text: "На новую мышь и коврик хватит. Неплохой подарок", time: "11:52", gender: "male"}
+  const femaleNames = ["Анна", "Марина", "Ольга", "Елена", "Ирина", "Светлана", "Наталья", "Юлия", "Татьяна", "Виктория", "Екатерина", "Мария"];
+  const maleNames = ["Сергей", "Дмитрий", "Александр", "Андрей", "Максим", "Алексей", "Иван", "Михаил", "Роман", "Павел"];
+  const cities = ["Москвы", "СПб", "Казани", "Новосибирска", "Екатеринбурга", "Краснодара", "Сочи", "Воронежа", "Самары", "Уфы"];
+  
+  const chatMessagesList = [
+    {name: "Анна_Москва", text: "Девочки, только что получила 5000₽ на карту! Всё работает!", gender: "female"},
+    {name: "Сергей_Т", text: "Кто уже прошел верификацию? Долго ждать?", gender: "male"},
+    {name: "Ольга_Премиум", text: "Я за 5 минут получила! Главное — не бояться рубля, его сразу возвращают", gender: "female"},
+    {name: "Марина_Шопер", text: "Уже потратила на новое платье! Спасибо ВБ 😍", gender: "female"},
+    {name: "Дмитрий_К", text: "Жена не верила, пока сама не попробовала. Теперь оба довольны!", gender: "male"},
+    {name: "Елена_Счастливая", text: "Верификацию прошла легко, просто заполнила данные. Деньги пришли через 3 минуты", gender: "female"},
+    {name: "Наталья_К", text: "Только что привязала карту, списали 1 рубль и сразу вернули. Теперь жду 5000₽", gender: "female"},
+    {name: "Александр_В", text: "Подтверждаю, с картой Тинькофф всё прошло без проблем", gender: "male"},
+    {name: "Светлана_Золото", text: "Не слушайте скептиков! Это официальный розыгрыш от ВБ", gender: "female"},
+    {name: "Виктория_Модница", text: "У меня через 2 минуты пришло. Главное — всё правильно заполнить", gender: "female"},
+    {name: "Татьяна_Про", text: "Подарков реально мало осталось, торопитесь!", gender: "female"},
+    {name: "Максим_СПб", text: "Сначала думал лохотрон, но жена уговорила попробовать. Не зря!", gender: "male"},
+    {name: "Юлия_Красота", text: "Уже получила и потратила на косметику! Всё работает 💄", gender: "female"},
+    {name: "Людмила_Шоппинг", text: "Девочки, не бойтесь рубля! Это просто проверка карты", gender: "female"},
+    {name: "Алиса_Стильная", text: "У меня 7 минут было. Подождите немного", gender: "female"},
+    {name: "Екатерина_Л", text: "Я купила детям одежду на осень. Очень кстати пришлись деньги", gender: "female"},
+    {name: "Ирина_Казань", text: "А если карта не сбербанка? У меня ВТБ, тоже подойдет?", gender: "female"},
+    {name: "Андрей_Новосиб", text: "Любая карта подходит, проверено!", gender: "male"}
   ];
 
-  const randomMessages = [
+  const randomPhrases = [
+    "Только что получила 5000₽! Всем советую!", "Это реально работает, уже проверила!",
+    "За 1 рубль не страшно, его сразу возвращают", "Успевайте, пока акция не закончилась!",
+    "Спасибо ВБ за такой подарок! 🎁", "Подруга тоже получила вчера. Всё честно!",
+    "На новый телефон уже коплю, 5000 очень помогли", "Верификация заняла 2 минуты, быстро!",
+    "Деньги пришли на карту Мир, всё отлично", "Не верила до последнего, но деньги реально пришли",
+    "Всем удачи в розыгрыше! 🍀", "На работе уже 5 человек получили, все в шоке",
+    "Купила дочке школьную форму, спасибо!", "Муж теперь сам хочет зарегистрироваться",
     "Только что получила 5000₽! Всем советую не медлить!",
     "Кто сомневается — зря! Это реальные деньги от ВБ",
     "За 1 рубль не страшно, его сразу возвращают",
@@ -1145,315 +795,289 @@
     "Деньги пришли, пока завтракала. Отлично начался день"
   ];
 
-  // Инициализация чата из второго файла
-  function initChat() {
-    const chatContainer = document.getElementById('chatMessages');
+  // ---------- ИНИЦИАЛИЗАЦИЯ ----------
+  function init() {
+    updateProgress();
+    startMainTimer();
+    startParticipantsGrowth();
+    initChatWithTimeline();
+    initSurveyButtons();
+    scheduleNotifications();
+  }
+
+  function updateProgress() {
+    const percent = ((currentQuestion - 1) / totalQuestions) * 100;
+    document.getElementById('progressFill').style.width = percent + '%';
+    document.getElementById('currentQ').innerText = currentQuestion;
+  }
+
+  function nextQuestion() {
+    if (currentQuestion < totalQuestions) {
+      document.querySelector(`.question[data-q="${currentQuestion}"]`).classList.remove('active');
+      currentQuestion++;
+      document.querySelector(`.question[data-q="${currentQuestion}"]`).classList.add('active');
+      updateProgress();
+    } else {
+      finishSurvey();
+    }
+  }
+
+  function finishSurvey() {
+    isSurveyActive = false;
+    document.getElementById('questionsArea').style.display = 'none';
+    document.getElementById('loaderArea').classList.add('active');
     
-    // Добавляем начальные сообщения
-    initialMessages.forEach(msg => {
-      addMessageToChat(msg.name, msg.text, msg.gender, false, msg.time);
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const step3 = document.getElementById('step3');
+    
+    step1.classList.add('active');
+    
+    setTimeout(() => {
+      step2.classList.add('active');
+    }, 1500);
+    
+    setTimeout(() => {
+      step3.classList.add('active');
+    }, 3000);
+    
+    setTimeout(() => {
+      document.getElementById('loaderArea').classList.remove('active');
+      document.getElementById('finalArea').classList.add('active');
+      // Добавляем класс final-active на контейнер, чтобы скрыть шапку, прогресс-бар и чат
+      document.getElementById('appContainer').classList.add('final-active');
+      startFinalTimer();
+      showSuccessNotif();
+    }, 4500);
+  }
+
+  function initSurveyButtons() {
+    document.querySelectorAll('.option-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if (!isSurveyActive) return;
+        participants += Math.floor(Math.random() * 2) + 1;
+        document.getElementById('participantsCount').innerText = participants.toLocaleString();
+        nextQuestion();
+      });
+    });
+  }
+
+  function startMainTimer() {
+    const timerEl = document.getElementById('mainTimer');
+    function update() {
+      if (mainSeconds <= 0) {
+        timerEl.innerText = "00:00:00";
+        return;
+      }
+      const h = Math.floor(mainSeconds / 3600);
+      const m = Math.floor((mainSeconds % 3600) / 60);
+      const s = mainSeconds % 60;
+      timerEl.innerText = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      mainSeconds--;
+      setTimeout(update, 1000);
+    }
+    update();
+  }
+
+  function startFinalTimer() {
+    const timerEl = document.getElementById('finalTimer');
+    function update() {
+      if (finalSeconds <= 0) {
+        timerEl.innerText = "00:00";
+        return;
+      }
+      const m = Math.floor(finalSeconds / 60);
+      const s = finalSeconds % 60;
+      timerEl.innerText = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      finalSeconds--;
+      setTimeout(update, 1000);
+    }
+    update();
+  }
+
+  function startParticipantsGrowth() {
+    setInterval(() => {
+      if (isSurveyActive) {
+        participants += Math.floor(Math.random() * 3) + 1;
+        document.getElementById('participantsCount').innerText = participants.toLocaleString();
+      }
+    }, 8000);
+  }
+
+  function createWinnerNotif() {
+    const name = femaleNames[Math.floor(Math.random() * femaleNames.length)];
+    const city = cities[Math.floor(Math.random() * cities.length)];
+    const amount = [3000, 4000, 5000, 5000, 5000][Math.floor(Math.random() * 5)];
+    const action = ['получила', 'активировала', 'выиграла'][Math.floor(Math.random() * 3)];
+    return { name, city, amount, action };
+  }
+
+  function showFloatingNotification(data) {
+    const notif = document.createElement('div');
+    notif.className = 'floating-notification';
+    notif.innerHTML = `
+      <div class="notification-content">
+        <div class="wb-icon">ВБ</div>
+        <div><strong>${data.name} из ${data.city}</strong> ${data.action} ${data.amount}₽! 🎉</div>
+      </div>
+    `;
+    document.body.appendChild(notif);
+    setTimeout(() => {
+      notif.style.animation = 'slideUp 0.4s ease forwards';
+      setTimeout(() => notif.remove(), 400);
+    }, 4000);
+  }
+
+  function scheduleNotifications() {
+    const notif = createWinnerNotif();
+    notificationQueue.push(notif);
+    if (!isShowingNotif) {
+      processQueue();
+    }
+    setTimeout(scheduleNotifications, 12000 + Math.random() * 6000);
+  }
+
+  function processQueue() {
+    if (notificationQueue.length === 0) {
+      isShowingNotif = false;
+      return;
+    }
+    isShowingNotif = true;
+    const notif = notificationQueue.shift();
+    showFloatingNotification(notif);
+    setTimeout(() => {
+      processQueue();
+    }, 5000);
+  }
+
+  function showSuccessNotif() {
+    const notif = document.createElement('div');
+    notif.className = 'floating-notification';
+    notif.innerHTML = `<div class="notification-content"><div class="wb-icon">✅</div><div>Вы успешно прошли опрос! 🎁</div></div>`;
+    document.body.appendChild(notif);
+    setTimeout(() => {
+      notif.style.animation = 'slideUp 0.4s ease forwards';
+      setTimeout(() => notif.remove(), 400);
+    }, 4000);
+  }
+
+  // ЧАТ
+  function getFormattedTime() {
+    return new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function addChatMessage(name, text, gender, isUser = false) {
+    const container = document.getElementById('chatMessages');
+    const avatarLetter = name.split('_')[0].charAt(0);
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${isUser ? 'user' : ''}`;
+    msgDiv.innerHTML = `
+      <div class="avatar">${avatarLetter}</div>
+      <div class="bubble">
+        <div class="message-name">${name}</div>
+        <div>${text}</div>
+        <div class="message-time">${getFormattedTime()}</div>
+      </div>
+    `;
+    container.appendChild(msgDiv);
+    container.scrollTop = container.scrollHeight;
+    while (container.children.length > 30) container.removeChild(container.firstChild);
+  }
+
+  function displayMessageWithDelay(msg, delay) {
+    setTimeout(() => {
+      addChatMessage(msg.name, msg.text, msg.gender, false);
+      lastMessageTime = new Date();
+    }, delay);
+  }
+
+  function initChatWithTimeline() {
+    const container = document.getElementById('chatMessages');
+    container.innerHTML = '';
+    
+    const recentMessages = chatMessagesList.slice(-10);
+    const now = new Date();
+    const baseTime = new Date(now.getTime() - 30 * 60 * 1000);
+    
+    let currentDelay = 0;
+    
+    recentMessages.forEach((msg, index) => {
+      const minutesOffset = (index / recentMessages.length) * 30;
+      const msgTime = new Date(baseTime.getTime() + minutesOffset * 60 * 1000);
+      let displayDelay = Math.max(0, msgTime.getTime() - now.getTime());
+      
+      if (displayDelay <= 0 && index === recentMessages.length - 1) {
+        displayDelay = 0;
+      }
+      
+      displayMessageWithDelay(msg, displayDelay);
+      currentDelay = displayDelay;
     });
     
-    // Настраиваем отправку сообщений от пользователя
-    document.getElementById('chatSend').addEventListener('click', sendUserMessage);
-    document.getElementById('chatInput').addEventListener('keypress', function(e) {
+    setTimeout(() => {
+      startNewMessagesGenerator();
+    }, currentDelay + 1000);
+    
+    document.getElementById('chatSendBtn').addEventListener('click', sendUserMessage);
+    document.getElementById('chatInput').addEventListener('keypress', (e) => {
       if (e.key === 'Enter') sendUserMessage();
     });
     
-    // Запускаем генерацию случайных сообщений (реже: каждые 12-20 секунд)
-    setInterval(addRandomMessage, 12000 + Math.random() * 8000);
-    
-    // Обновляем онлайн счетчик
     setInterval(updateOnlineCount, 15000);
   }
 
-  function addMessageToChat(name, text, gender, isUser = false, customTime = null) {
-    const chatContainer = document.getElementById('chatMessages');
-    messageId++;
-    
-    const time = customTime || new Date().toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'});
-    const avatarText = name.split('_')[0].charAt(0);
-    const avatarColor = gender === 'female' ? 'var(--wb-pink)' : 'var(--wb-purple)';
-    
-    const message = {
-      id: messageId,
-      name: name,
-      text: text,
-      gender: gender,
-      time: time,
-      isUser: isUser
-    };
-    
-    chatMessages.push(message);
-    
-    // Ограничиваем историю
-    if (chatMessages.length > 15) {
-      chatMessages.shift();
-      const firstChild = chatContainer.firstChild;
-      if (firstChild) {
-        firstChild.remove();
+  function startNewMessagesGenerator() {
+    function generateMessage() {
+      if (isSurveyActive || document.getElementById('finalArea').classList.contains('active')) {
+        const isFemale = Math.random() > 0.4;
+        const nameList = isFemale ? femaleNames : maleNames;
+        const name = nameList[Math.floor(Math.random() * nameList.length)];
+        const city = cities[Math.floor(Math.random() * cities.length)];
+        const fullName = `${name}_${city}`;
+        const text = randomPhrases[Math.floor(Math.random() * randomPhrases.length)];
+        const gender = isFemale ? 'female' : 'male';
+        addChatMessage(fullName, text, gender, false);
       }
+      scheduleNextMessage();
     }
     
-    // Добавляем новое сообщение
-    const msgEl = document.createElement('div');
-    msgEl.className = `chat-message ${isUser ? 'user' : 'other'}`;
-    msgEl.innerHTML = `
-      <div class="chat-avatar" style="background: ${isUser ? 'var(--wb-gradient)' : avatarColor}">${avatarText}</div>
-      <div class="chat-bubble">
-        <div class="chat-name">${name}</div>
-        <div>${text}</div>
-        <div class="chat-time">${time}</div>
-      </div>
-    `;
+    function scheduleNextMessage() {
+      const delay = 15000 + Math.random() * 30000;
+      setTimeout(generateMessage, delay);
+    }
     
-    chatContainer.appendChild(msgEl);
-    chatContainer.scrollTop = chatContainer.scrollHeight;
-  }
-
-  function addRandomMessage() {
-    const femaleNames = ["Анна", "Марина", "Ольга", "Елена", "Ирина", "Светлана", "Наталья", "Юлия", "Татьяна", "Виктория"];
-    const maleNames = ["Сергей", "Дмитрий", "Александр", "Андрей", "Максим", "Алексей", "Иван", "Михаил"];
-    const cities = ["Москва", "СПб", "Казань", "Новосибирск", "Екатеринбург", "Краснодара", "Сочи", "Воронеж"];
-    
-    const isFemale = Math.random() > 0.3; // 70% женщин
-    const names = isFemale ? femaleNames : maleNames;
-    const name = names[Math.floor(Math.random() * names.length)];
-    const city = cities[Math.floor(Math.random() * cities.length)];
-    const fullName = `${name}_${city}`;
-    const text = randomMessages[Math.floor(Math.random() * randomMessages.length)];
-    
-    addMessageToChat(fullName, text, isFemale ? 'female' : 'male');
+    scheduleNextMessage();
   }
 
   function sendUserMessage() {
     const input = document.getElementById('chatInput');
     const text = input.value.trim();
+    if (!text) return;
+    addChatMessage('Вы', text, 'user', true);
+    input.value = '';
     
-    if (text) {
-      addMessageToChat("Вы", text, 'user', true);
-      input.value = '';
-      
-      // Через 3-7 секунд добавляем "ответ" (реже)
-      setTimeout(() => {
-        const responses = [
-          "Отлично! Скоро и вы получите свои 5000₽!",
-          "Удачи в розыгрыше!",
-          "Спасибо за участие!",
-          "Скоро и вы будете радоваться подарку!"
-        ];
-        const randomName = Math.random() > 0.5 ? "Анна_Москва" : "Наталья_К";
-        const response = responses[Math.floor(Math.random() * responses.length)];
-        addMessageToChat(randomName, response, 'female');
-      }, 3000 + Math.random() * 4000);
-    }
+    setTimeout(() => {
+      const responses = ["Отлично! Удачи в розыгрыше! 🍀", "Скоро и вы получите свои 5000₽!", "Спасибо за участие!", "Успевайте, акция заканчивается!"];
+      const reply = responses[Math.floor(Math.random() * responses.length)];
+      const randName = femaleNames[Math.floor(Math.random() * femaleNames.length)] + "_" + cities[Math.floor(Math.random() * cities.length)];
+      addChatMessage(randName, reply, 'female', false);
+    }, 3000 + Math.random() * 4000);
   }
 
   function updateOnlineCount() {
-    onlineCount += Math.floor(Math.random() * 5) - 2;
-    if (onlineCount < 130) onlineCount = 130;
-    if (onlineCount > 180) onlineCount = 180;
-    document.getElementById('onlineCount').textContent = onlineCount;
+    let online = 130 + Math.floor(Math.random() * 50);
+    document.getElementById('onlineCount').innerText = online;
   }
 
-  function selectOption(questionNum) {
-    // Увеличиваем счетчик участников
-    participantsCount++;
-    document.getElementById('participantsCount').textContent = participantsCount.toLocaleString();
-    
-    const current = document.getElementById(`question${questionNum}`);
-    current.classList.remove('active');
-
-    const nextQuestion = questionNum + 1;
-    const progress = Math.min((questionNum / totalQuestions) * 100, 100);
-    document.getElementById("progressBar").style.width = progress + "%";
-
-    if (nextQuestion <= totalQuestions) {
-      const next = document.getElementById(`question${nextQuestion}`);
-      next.classList.add('active');
-    } else {
-      document.getElementById("progressBar").style.width = "100%";
-      isSurveyActive = false;
-      setTimeout(() => {
-        document.getElementById('loading').classList.add('active');
-        
-        // Последовательная загрузка шагов
-        setTimeout(() => {
-          document.getElementById('step2').classList.add('active');
-        }, 1500);
-        
-        setTimeout(() => {
-          document.getElementById('step3').classList.add('active');
-        }, 3000);
-        
-        // Увеличиваем время загрузки до 6 секунд
-        setTimeout(() => {
-          document.getElementById('loading').classList.remove('active');
-          document.getElementById('final-page').classList.add('active');
-          
-          // Запускаем таймер обратного отсчета 5 минут для финальной страницы
-          startFinalCountdown();
-          
-          // Показываем уведомление об успешном прохождении опроса
-          showSuccessNotification();
-        }, 6000);
-      }, 1000);
-    }
-  }
-
-  function startFinalCountdown() {
-    // Сбрасываем таймер на 5 минут
-    finalTimerSeconds = 300;
-    updateFinalCountdown();
-  }
-
-  function updateFinalCountdown() {
-    const finalCountdownElement = document.getElementById('finalCountdown');
-    
-    if (finalCountdownElement && finalTimerSeconds >= 0) {
-      const minutes = Math.floor(finalTimerSeconds / 60);
-      const seconds = finalTimerSeconds % 60;
-      finalCountdownElement.textContent = `Предложение действительно в течение: ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-      
-      if (finalTimerSeconds > 0) {
-        finalTimerSeconds--;
-        setTimeout(updateFinalCountdown, 1000);
-      } else {
-        // Когда таймер достигает 0
-        finalCountdownElement.textContent = `Время истекло!`;
-        finalCountdownElement.style.color = '#ff0000';
-        finalCountdownElement.style.fontWeight = 'bold';
-      }
-    }
-  }
-
-  function showSuccessNotification() {
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.innerHTML = `
-      <div class="notification-content">
-        <div class="wb-logo">ВБ</div>
-        <div class="notification-text">🎉 Поздравляем! Вы успешно прошли опрос!</div>
-      </div>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-      notification.style.animation = 'slideOutTop 0.5s ease-in forwards';
-      setTimeout(() => {
-        if (notification.parentNode) {
-          notification.parentNode.removeChild(notification);
-        }
-      }, 500);
-    }, 3000);
-  }
-
-  function createWinnerNotification() {
-    const names = ['Марина', 'Анна', 'Екатерина', 'Ольга', 'Ирина', 'Наталья', 'Светлана', 'Юлия', 'Мария', 'Александра', 'Дарья', 'Елена'];
-    const cities = ['Москвы', 'Санкт-Петербурга', 'Казани', 'Новосибирска', 'Екатеринбурга', 'Краснодара', 'Сочи', 'Воронежа', 'Самары', 'Уфы', 'Омска', 'Челябинска'];
-    const amounts = ['1000', '1500', '2000', '2500', '3000', '3500', '4000', '4500', '5000', '5000', '5000', '5000'];
-    const actions = ['получила', 'активировала', 'выиграла', 'забрала'];
-    const products = ['', ' на одежду', ' на технику', ' на косметику', ' для шопинга'];
-    
-    const name = names[Math.floor(Math.random() * names.length)];
-    const city = cities[Math.floor(Math.random() * cities.length)];
-    const amount = amounts[Math.floor(Math.random() * amounts.length)];
-    const action = actions[Math.floor(Math.random() * actions.length)];
-    const product = products[Math.floor(Math.random() * products.length)];
-    
-    return {
-      name,
-      city,
-      amount,
-      action,
-      product
-    };
-  }
-
-  function showNotificationFromQueue() {
-    if (notificationQueue.length === 0 || isShowingNotification) return;
-    
-    isShowingNotification = true;
-    const notificationData = notificationQueue.shift();
-    
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.innerHTML = `
-      <div class="notification-content">
-        <div class="wb-logo">ВБ</div>
-        <div class="notification-text">
-          <strong>${notificationData.name} из ${notificationData.city}</strong> ${notificationData.action} ${notificationData.amount}₽${notificationData.product}!
-        </div>
-      </div>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Уведомление показывается 2 секунды, затем плавно исчезает
-    setTimeout(() => {
-      notification.style.animation = 'slideOutTop 0.5s ease-in forwards';
-      setTimeout(() => {
-        if (notification.parentNode) {
-          notification.parentNode.removeChild(notification);
-        }
-        isShowingNotification = false;
-        
-        // Запускаем следующее уведомление через случайный интервал 8-12 секунд
-        setTimeout(showNotificationFromQueue, 8000 + Math.random() * 4000);
-      }, 500);
-    }, 2000);
-  }
-
-  function scheduleNotifications() {
-    // Создаем уведомление и добавляем в очередь
-    const notificationData = createWinnerNotification();
-    notificationQueue.push(notificationData);
-    
-    // Если сейчас не показывается уведомление, запускаем показ
-    if (!isShowingNotification) {
-      showNotificationFromQueue();
-    }
-    
-    // Планируем следующее создание уведомления через 4-8 секунд
-    setTimeout(scheduleNotifications, 4000 + Math.random() * 4000);
-  }
-
-  // Таймер обратного отсчета для главного заголовка
-  let totalSeconds = 23 * 3600 + 24 * 60 + 59;
-  const countdownElement = document.getElementById("countdown");
-
-  function updateTimer() {
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-    countdownElement.textContent = `До конца акции: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-    if (totalSeconds > 0) {
-      totalSeconds--;
-      setTimeout(updateTimer, 1000);
-    }
-  }
-
-  updateTimer();
-
-  // Автоматическое увеличение счетчика участников
-  setInterval(() => {
-    if (isSurveyActive) {
-      participantsCount += Math.floor(Math.random() * 3) + 1;
-      document.getElementById('participantsCount').textContent = participantsCount.toLocaleString();
-    }
-  }, 8000);
-
-  // Запускаем систему уведомлений
-  setTimeout(() => {
-    scheduleNotifications();
-  }, 2000);
-
-  // Инициализация чата при загрузке
-  window.onload = function() {
-    initChat();
-  };
+  init();
 </script>
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WR5FDTDTNN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WR5FDTDTNN');
+</script>
 </body>
 </html>
