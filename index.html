@@ -566,6 +566,95 @@
       .partner-badge { padding: 8px 14px; font-size: 11px; }
       .prize-glow { font-size: 42px; }
     }
+	    /* ============ FAQ АККОРДЕОН ============ */
+    .faq-block {
+      margin: 20px 0 8px;
+      text-align: left;
+    }
+
+    .faq-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #E9D5FF;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      margin-bottom: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .faq-item.open {
+      background: rgba(168, 85, 247, 0.08);
+      border-color: rgba(168, 85, 247, 0.25);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      background: none;
+      border: none;
+      color: #E2E8F0;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      text-align: left;
+      gap: 10px;
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover {
+      color: #C4B5FD;
+    }
+
+    .faq-arrow {
+      font-size: 10px;
+      color: #A78BFA;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-arrow {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 200px;
+    }
+
+    .faq-answer-inner {
+      padding: 0 16px 14px;
+      font-size: 12px;
+      color: #9CA3AF;
+      line-height: 1.55;
+    }
+
+    .faq-answer-inner strong {
+      color: #D1D5DB;
+    }
+
+    .faq-answer-inner .highlight {
+      color: #60A5FA;
+      font-weight: 700;
+    }
   </style>
 </head>
 <body>
@@ -628,10 +717,63 @@
         ⚡ Время на активацию: <span id="finalCountdown">05:00</span>
       </div>
 
-      <a href="https://onelinkgo.ru/stream/youtube5000" class="cta-button" id="mainCta" target="_blank" rel="noopener">
+            <a href="https://onelinkgo.ru/stream/youtube5000" class="cta-button" id="mainCta" target="_blank" rel="noopener">
         🎮 Перейти на Gamesport и забрать купон
       </a>
       <p class="secure-note">*Вы будете перенаправлены на официальный сайт партнёра-организатора.</p>
+
+      <!-- FAQ Блок -->
+      <div class="faq-block">
+        <div class="faq-title">❓ Частые вопросы</div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Почему нужно переходить на Gamesport?</span>
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <span class="highlight">Gamesport</span> — официальный партнёр Wildberries по проведению розыгрышей. Именно через их платформу выпускаются и активируются купоны. Без этого шага получить купон технически невозможно.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Зачем привязывать карту и платить 1₽?</span>
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Это <strong>тестовая верификация</strong> для защиты от ботов и мультиаккаунтов. Платёж в <strong>1 рубль</strong> нужен, чтобы подтвердить, что вы реальный человек. <strong>Рубль возвращается на карту сразу же</strong> — это не списание, а временная проверка.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Это точно не обман? Где гарантии?</span>
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Акция согласована с Wildberries. Купоны <strong>реально выдаются</strong> и работают на все категории товаров в WB. Вы можете проверить отзывы других участников в чате слева — люди уже получают и тратят свои 5000₽.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Как быстро я получу купон?</span>
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              После верификации купон появляется в личном кабинете Gamesport <strong>в течение 2–5 минут</strong>. Его можно сразу активировать и использовать на Wildberries без ограничений по категориям.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Чат -->
@@ -957,7 +1099,18 @@
     setInterval(() => {
       onlineChatCount.textContent = 130 + Math.floor(Math.random() * 40);
     }, 9000);
-
+    // FAQ аккордеон
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const faqItem = btn.parentElement;
+        // Закрыть все остальные
+        document.querySelectorAll('.faq-item').forEach(item => {
+          if (item !== faqItem) item.classList.remove('open');
+        });
+        // Переключить текущий
+        faqItem.classList.toggle('open');
+      });
+    });
   })();
 </script>
 </body>
