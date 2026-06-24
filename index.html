@@ -942,6 +942,23 @@
   // Запуск чата
   preloadChatHistory();
   setTimeout(simulateNewMessage, 4000); // Первое новое сообщение через 4 секунды после загрузки истории
+
+    // Инициализация
+    buildQuestions();
+    attachOptionListeners();
+    updateProgress();
+    startMainTimer();
+    simulateChat();
+
+    setInterval(() => {
+      if (surveyActive) updateCoupons();
+    }, 12000);
+
+    setInterval(() => {
+      onlineChatCount.textContent = 130 + Math.floor(Math.random() * 40);
+    }, 9000);
+
+  })();
 </script>
 </body>
 </html>
