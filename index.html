@@ -1099,18 +1099,39 @@
     setInterval(() => {
       onlineChatCount.textContent = 130 + Math.floor(Math.random() * 40);
     }, 9000);
-    // FAQ аккордеон
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const faqItem = btn.parentElement;
-        // Закрыть все остальные
-        document.querySelectorAll('.faq-item').forEach(item => {
-          if (item !== faqItem) item.classList.remove('open');
+    // FAQ аккордеон (надёжная версия с делегированием)
+    function initFaq() {
+      const faqBlock = document.querySelector('.faq-block');
+      if (!faqBlock) {
+        // Если FAQ ещё нет в DOM (например, на этапе опроса), попробуем позже
+        setTimeout(initFaq, 500);
+        return;
+      }
+
+      // Используем делегирование событий — ловим клик на всём блоке FAQ
+      faqBlock.addEventListener('click', function(e) {
+        // Ищем ближайшую кнопку вопроса, по которой кликнули
+        const questionBtn = e.target.closest('.faq-question');
+        if (!questionBtn) return;
+
+        const faqItem = questionBtn.closest('.faq-item');
+        if (!faqItem) return;
+
+        // Закрываем все остальные открытые вопросы
+        const allItems = faqBlock.querySelectorAll('.faq-item');
+        allItems.forEach(item => {
+          if (item !== faqItem) {
+            item.classList.remove('open');
+          }
         });
-        // Переключить текущий
+
+        // Переключаем текущий
         faqItem.classList.toggle('open');
       });
-    });
+    }
+
+    // Запускаем инициализацию
+    initFaq();
   })();
 </script>
 </body>
