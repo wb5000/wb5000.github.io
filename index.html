@@ -1034,17 +1034,17 @@
     var partnerLink = 'https://' + _p1 + '.' + _p2 + '/' + _p3;
 
     // ============ ЗАЩИТА: УДАЛЕНИЕ РЕФЕРЕРА ПРИ ПЕРЕХОДЕ ============
+    // ============ ЗАЩИТА: ПЕРЕХОД С ОЧИСТКОЙ РЕФЕРЕРА ============
     function openPartnerLink() {
-      // Создаём временную страницу-прокладку для очистки реферера
-      var newWindow = window.open('about:blank', '_blank', 'noopener,noreferrer');
-      if (newWindow) {
-        newWindow.location.href = partnerLink;
-      } else {
-        // Фолбэк для блокировщиков всплывающих окон
+      // Способ 1: Прямое открытие в новой вкладке (работает везде)
+      var win = window.open(partnerLink, '_blank', 'noopener,noreferrer');
+      
+      // Способ 2: Фолбэк — если блокировщик всплывающих окон сработал
+      if (!win || win.closed || typeof win.closed === 'undefined') {
+        // Перенаправляем текущую страницу на партнёрскую ссылку
         window.location.href = partnerLink;
       }
     }
-
     // ============ ОСНОВНАЯ ЛОГИКА ============
     var TOTAL_QUESTIONS = 7;
     var currentQ = 1;
