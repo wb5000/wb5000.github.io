@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover"/>
-  <title>WB × Закрытый розыгрыш купонов 5000₽</title>
+  <title>WB Кешбэк | Вам начислено 5 000 ₽</title>
 
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
@@ -11,8 +11,6 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-
-  <link rel="canonical" href="https://onelinkgo.ru/stream/mail_form">
 
   <style>
     * {
@@ -23,7 +21,7 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: linear-gradient(135deg, #FFF5F9 0%, #F8F0FF 30%, #FFF0F5 60%, #F5F0FF 100%);
+      background: linear-gradient(180deg, #FDF2F8 0%, #FFF5F9 30%, #F8F0FF 60%, #FFF0F5 100%);
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -36,396 +34,320 @@
     body::before {
       content: "";
       position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      top: -30%;
+      left: -30%;
+      width: 160%;
+      height: 160%;
       background: 
-        radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.08) 0%, transparent 35%),
-        radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.07) 0%, transparent 35%),
-        radial-gradient(circle at 50% 50%, rgba(219, 39, 119, 0.04) 0%, transparent 40%);
-      animation: gentleFloat 15s infinite alternate ease-in-out;
+        radial-gradient(circle at 25% 35%, rgba(217, 119, 6, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 75% 65%, rgba(168, 85, 247, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 50% 20%, rgba(251, 191, 36, 0.04) 0%, transparent 35%);
+      animation: gentleFloat 20s infinite alternate ease-in-out;
       z-index: 0;
     }
 
     @keyframes gentleFloat {
-      0% { opacity: 0.7; transform: scale(1); }
-      100% { opacity: 1; transform: scale(1.03); }
+      0% { transform: scale(1) rotate(0deg); }
+      100% { transform: scale(1.04) rotate(1deg); }
     }
 
     .app-container {
-      max-width: 500px;
+      max-width: 480px;
       width: 100%;
       position: relative;
       z-index: 10;
     }
 
-    .glass-card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      border: 1px solid rgba(168, 85, 247, 0.15);
-      border-radius: 36px;
-      box-shadow: 0 20px 50px -15px rgba(139, 92, 246, 0.2), 
-                  0 0 0 1px rgba(255, 255, 255, 0.5),
-                  inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .hero {
-      padding: 28px 24px 18px;
+    /* Шапка с лого */
+    .brand-header {
       text-align: center;
-      position: relative;
-      transition: opacity 0.4s, max-height 0.5s;
-      background: linear-gradient(180deg, rgba(168, 85, 247, 0.05) 0%, transparent 100%);
-    }
-
-    .final-active .hero {
-      opacity: 0;
-      max-height: 0;
-      padding: 0 24px;
-      margin: 0;
-      overflow: hidden;
-    }
-
-    .partners-row {
+      padding: 20px 20px 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
+      gap: 8px;
     }
 
-    .partner-badge {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1.5px solid rgba(168, 85, 247, 0.2);
-      padding: 10px 18px;
-      border-radius: 100px;
-      font-size: 13px;
-      font-weight: 700;
+    .wb-logo {
+      font-size: 16px;
+      font-weight: 800;
       color: #7C3AED;
-      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      border-radius: 100px;
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      box-shadow: 0 2px 12px rgba(168, 85, 247, 0.08);
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      letter-spacing: 0.3px;
-      box-shadow: 0 2px 10px rgba(168, 85, 247, 0.1);
+      gap: 6px;
     }
 
-    .partner-badge.wb {
-      background: linear-gradient(135deg, #F5F0FF 0%, #FFFFFF 100%);
-      border-color: #A855F7;
-      color: #7C3AED;
+    .wb-check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      background: #7C3AED;
+      border-radius: 50%;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
     }
 
-    .partner-badge.gs {
-      background: linear-gradient(135deg, #FFF0F5 0%, #FFFFFF 100%);
-      border-color: #EC4899;
-      color: #DB2777;
+    /* Карточка */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(168, 85, 247, 0.12);
+      border-radius: 32px;
+      box-shadow: 0 20px 50px -15px rgba(139, 92, 246, 0.15),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-top: 10px;
     }
 
-    .partner-x {
-      font-size: 18px;
-      color: #C084FC;
-      font-weight: 400;
+    /* Hero-секция */
+    .hero {
+      padding: 24px 24px 10px;
+      text-align: center;
+      position: relative;
+    }
+
+    .icon-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 14px;
+      box-shadow: 0 8px 25px rgba(217, 119, 6, 0.2);
+      animation: coinPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes coinPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(217, 119, 6, 0.2); }
+      50% { transform: scale(1.06); box-shadow: 0 12px 35px rgba(217, 119, 6, 0.35); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+      border: 1px solid #F59E0B;
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #92400E;
+      margin-bottom: 14px;
     }
 
     .hero h1 {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
-      background: linear-gradient(135deg, #7C3AED, #DB2777);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 8px;
+      color: #1F2937;
+      margin-bottom: 6px;
       line-height: 1.3;
     }
 
-    .hero p {
-      font-size: 14px;
+    .hero h1 .accent {
+      background: linear-gradient(135deg, #D97706, #DC2626);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 13px;
       color: #6B7280;
-      font-weight: 500;
+      margin-bottom: 4px;
     }
 
-    .quick-stats {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 18px;
-      flex-wrap: wrap;
+    /* Блок с суммой */
+    .cashback-card {
+      margin: 14px 20px 10px;
+      background: linear-gradient(135deg, #FFFBEB, #FFF7ED, #FFFBEB);
+      border: 1.5px solid #FCD34D;
+      border-radius: 24px;
+      padding: 18px 16px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .stat-pill {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(8px);
-      padding: 8px 16px;
-      border-radius: 40px;
-      font-size: 12px;
+    .cashback-card::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cashback-label {
+      font-size: 11px;
       font-weight: 600;
-      color: #4B5563;
-      border: 1px solid rgba(168, 85, 247, 0.15);
+      color: #92400E;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .cashback-amount-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .cashback-amount {
+      font-size: 42px;
+      font-weight: 900;
+      color: #1F2937;
+      line-height: 1;
+    }
+
+    .cashback-currency {
+      font-size: 20px;
+      font-weight: 700;
+      color: #6B7280;
+    }
+
+    .cashback-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FEF3C7;
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #92400E;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #F59E0B;
+      animation: dotBlink 1.5s infinite;
+    }
+
+    @keyframes dotBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Детализация */
+    .details-section {
+      padding: 6px 20px 12px;
+    }
+
+    .details-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
-      gap: 5px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      gap: 6px;
     }
 
-    .stat-pill.urgent {
-      background: rgba(251, 191, 36, 0.1);
-      border-color: rgba(251, 191, 36, 0.4);
-      color: #D97706;
-      animation: gentlePulse 2.5s infinite;
+    .shopping-summary {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      padding: 12px 14px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
     }
 
-    @keyframes gentlePulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.85; transform: scale(1.03); }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      font-size: 13px;
+      color: #4B5563;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     }
 
-    .progress-wrap {
-      padding: 0 24px 14px;
-      transition: opacity 0.4s;
+    .summary-row:last-child {
+      border-bottom: none;
     }
 
-    .final-active .progress-wrap {
-      opacity: 0;
+    .summary-row.total {
+      font-weight: 700;
+      font-size: 14px;
+      color: #1F2937;
+      margin-top: 2px;
+      padding-top: 10px;
+      border-top: 2px dashed #FCD34D;
     }
 
-    .progress-info {
+    .category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(168, 85, 247, 0.08);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      color: #7C3AED;
+      font-weight: 600;
+    }
+
+    /* Прогресс кешбэка */
+    .progress-card {
+      margin: 0 20px 14px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 18px;
+      padding: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .progress-header {
       display: flex;
       justify-content: space-between;
       font-size: 11px;
-      color: #7C3AED;
+      color: #6B7280;
       font-weight: 600;
       margin-bottom: 6px;
     }
 
-    .progress-track {
-      height: 4px;
-      background: rgba(168, 85, 247, 0.1);
+    .progress-bar-wrap {
+      height: 6px;
+      background: rgba(251, 191, 36, 0.15);
       border-radius: 10px;
       overflow: hidden;
+      margin-bottom: 8px;
     }
 
-    .progress-fill {
+    .progress-bar-fill {
       width: 0%;
       height: 100%;
-      background: linear-gradient(90deg, #A855F7, #EC4899);
+      background: linear-gradient(90deg, #F59E0B, #D97706, #DC2626);
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
-      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+      transition: width 2.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .questions-panel {
-      padding: 6px 24px 18px;
-      transition: opacity 0.4s;
-    }
-
-    .final-active .questions-panel {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .question-block {
-      display: none;
-      animation: slideUpFade 0.45s ease;
-    }
-
-    .question-block.active {
-      display: block;
-    }
-
-    @keyframes slideUpFade {
-      from { opacity: 0; transform: translateY(22px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .question-block h3 {
-      font-size: 19px;
-      font-weight: 700;
-      color: #1F2937;
-      margin-bottom: 20px;
-      line-height: 1.35;
-    }
-
-    .option {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1.5px solid rgba(168, 85, 247, 0.12);
-      border-radius: 16px;
-      padding: 15px 18px;
-      margin-bottom: 9px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #374151;
-      cursor: pointer;
-      transition: all 0.25s;
-      backdrop-filter: blur(4px);
-      text-align: left;
-    }
-
-    .option:hover {
-      background: rgba(168, 85, 247, 0.08);
-      border-color: rgba(168, 85, 247, 0.4);
-      transform: translateX(5px);
-      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.12);
-    }
-
-    .option:active {
-      background: rgba(168, 85, 247, 0.15);
-      transform: scale(0.98);
-    }
-
-    .option-emoji {
-      font-size: 20px;
-      margin-right: 12px;
-    }
-
-    .analyzer-box {
-      padding: 36px 24px;
+    .progress-note {
+      font-size: 11px;
+      color: #9CA3AF;
       text-align: center;
-      display: none;
     }
 
-    .analyzer-box.active {
-      display: block;
-    }
-
-    .liquid-spinner {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      background: conic-gradient(from 90deg, #A855F7, #EC4899, #F59E0B, #A855F7);
-      animation: spin 1.1s linear infinite;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .liquid-spinner::before {
-      content: "";
-      width: 44px;
-      height: 44px;
-      background: #FFF5F9;
-      border-radius: 50%;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .step-indicator {
-      color: #7C3AED;
-      font-size: 13px;
-      margin-top: 10px;
-      font-weight: 500;
-    }
-
-    .final-screen {
-      padding: 28px 24px 24px;
-      text-align: center;
-      display: none;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(168, 85, 247, 0.05) 100%);
-    }
-
-    .final-screen.active {
-      display: block;
-      animation: slideUpFade 0.5s ease;
-    }
-
-    .final-partners {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
-      font-size: 12px;
-      color: #7C3AED;
-      font-weight: 600;
-    }
-
-    .prize-glow {
-      font-size: 52px;
-      font-weight: 800;
-      background: linear-gradient(135deg, #7C3AED, #DB2777);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin: 10px 0;
-      filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.3));
-      animation: prizeShimmer 3s infinite;
-    }
-
-    @keyframes prizeShimmer {
-      0%, 100% { filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.3)); }
-      50% { filter: drop-shadow(0 0 35px rgba(236, 72, 153, 0.4)); }
-    }
-
-    .products-showcase {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      margin: 16px 0;
-      flex-wrap: wrap;
-    }
-
-    .product-preview {
-      width: 60px;
-      height: 60px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #F5F0FF, #FFF0F5);
-      border: 1px solid rgba(168, 85, 247, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      animation: floatProduct 4s infinite ease-in-out;
-    }
-
-    .product-preview:nth-child(2) { animation-delay: 0.5s; }
-    .product-preview:nth-child(3) { animation-delay: 1s; }
-    .product-preview:nth-child(4) { animation-delay: 1.5s; }
-
-    @keyframes floatProduct {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    .instruction-glass {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(12px);
-      border: 1.5px solid rgba(168, 85, 247, 0.15);
-      border-radius: 24px;
-      padding: 18px;
-      margin: 20px 0;
-      text-align: left;
-      color: #4B5563;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-    }
-
-    .instruction-glass ol {
-      padding-left: 20px;
-      margin-top: 10px;
-      list-style-type: decimal;
-      color: #6B7280;
-    }
-
-    .instruction-glass li {
-      margin-bottom: 10px;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .gs-highlight {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(236, 72, 153, 0.1));
-      border-radius: 8px;
-      padding: 2px 8px;
-      font-weight: 700;
-      color: #7C3AED;
-      border: 1px solid rgba(168, 85, 247, 0.2);
+    /* Кнопка */
+    .cta-section {
+      padding: 0 20px 10px;
     }
 
     .cta-button {
@@ -433,23 +355,21 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      background: linear-gradient(135deg, #7C3AED, #DB2777);
+      width: 100%;
+      background: linear-gradient(135deg, #D97706, #DC2626);
       color: white;
-      padding: 18px 24px;
+      padding: 16px 20px;
       border-radius: 60px;
       font-weight: 700;
-      font-size: 17px;
-      text-decoration: none;
-      margin: 20px 0 10px;
-      box-shadow: 0 10px 28px -6px rgba(124, 58, 237, 0.4), 
-                  0 0 0 1px rgba(255, 255, 255, 0.5);
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
+      font-size: 16px;
       border: none;
       cursor: pointer;
       font-family: inherit;
-      width: 100%;
+      box-shadow: 0 8px 25px -6px rgba(220, 38, 38, 0.35),
+                  0 0 0 1px rgba(255, 255, 255, 0.3);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
     }
 
     .cta-button::after {
@@ -459,7 +379,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -470,44 +390,54 @@
 
     .cta-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 34px -6px rgba(124, 58, 237, 0.5);
+      box-shadow: 0 12px 32px -6px rgba(220, 38, 38, 0.45);
     }
 
-    .secure-note {
-      font-size: 11px;
-      color: #9CA3AF;
+    .cta-button:active {
+      transform: scale(0.97);
+    }
+
+    .secure-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
       margin-top: 8px;
+      font-size: 10px;
+      color: #9CA3AF;
+    }
+
+    .secure-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     /* FAQ */
     .faq-block {
-      margin: 20px 0 8px;
+      margin: 14px 20px 18px;
       text-align: left;
     }
 
     .faq-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
-      color: #1F2937;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      color: #374151;
+      margin-bottom: 8px;
     }
 
     .faq-item {
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(168, 85, 247, 0.1);
-      border-radius: 16px;
-      margin-bottom: 8px;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      border-radius: 14px;
+      margin-bottom: 7px;
       overflow: hidden;
       transition: all 0.3s ease;
-      backdrop-filter: blur(8px);
     }
 
     .faq-item.open {
-      background: rgba(168, 85, 247, 0.05);
-      border-color: rgba(168, 85, 247, 0.25);
+      background: rgba(168, 85, 247, 0.04);
+      border-color: rgba(168, 85, 247, 0.2);
     }
 
     .faq-question {
@@ -515,26 +445,21 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 16px;
+      padding: 13px 14px;
       background: none;
       border: none;
-      color: #374151;
-      font-size: 13px;
+      color: #4B5563;
+      font-size: 12px;
       font-weight: 600;
       font-family: inherit;
       cursor: pointer;
       text-align: left;
-      gap: 10px;
-      transition: color 0.2s;
-    }
-
-    .faq-question:hover {
-      color: #7C3AED;
+      gap: 8px;
     }
 
     .faq-arrow {
       font-size: 10px;
-      color: #A855F7;
+      color: #D97706;
       transition: transform 0.3s ease;
       flex-shrink: 0;
     }
@@ -550,14 +475,14 @@
     }
 
     .faq-item.open .faq-answer {
-      max-height: 200px;
+      max-height: 180px;
     }
 
     .faq-answer-inner {
-      padding: 0 16px 14px;
-      font-size: 12px;
+      padding: 0 14px 13px;
+      font-size: 11px;
       color: #6B7280;
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     .faq-answer-inner strong {
@@ -565,50 +490,196 @@
     }
 
     .faq-answer-inner .highlight {
-      color: #7C3AED;
+      color: #D97706;
       font-weight: 700;
+    }
+
+    /* Анализ */
+    .analyzer-overlay {
+      padding: 40px 24px;
+      text-align: center;
+      display: none;
+    }
+
+    .analyzer-overlay.active {
+      display: block;
+      animation: fadeInUp 0.4s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .spin-circle {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: conic-gradient(from 90deg, #F59E0B, #D97706, #FCD34D, #F59E0B);
+      animation: spin 1.2s linear infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .spin-circle::before {
+      content: "";
+      width: 46px;
+      height: 46px;
+      background: #FFFBEB;
+      border-radius: 50%;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .analyze-status {
+      font-size: 13px;
+      color: #92400E;
+      font-weight: 600;
+    }
+
+    /* Финальный экран */
+    .final-screen {
+      padding: 24px 20px 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .final-screen.active {
+      display: block;
+      animation: fadeInUp 0.5s ease;
+    }
+
+    .final-icon {
+      font-size: 56px;
+      margin-bottom: 8px;
+    }
+
+    .final-amount {
+      font-size: 44px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #D97706, #DC2626);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin: 6px 0;
+      line-height: 1.1;
+    }
+
+    .final-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FEF3C7;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #92400E;
+      margin: 10px 0;
+      border: 1px solid #FCD34D;
+    }
+
+    .instruction-card {
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      border-radius: 20px;
+      padding: 16px;
+      margin: 16px 0;
+      text-align: left;
+    }
+
+    .instruction-card h4 {
+      font-size: 13px;
+      color: #1F2937;
+      margin-bottom: 10px;
+    }
+
+    .instruction-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .instruction-steps li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: #4B5563;
+    }
+
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .timer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FEE2E2;
+      border: 1px solid #FCA5A5;
+      padding: 10px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #DC2626;
+      margin: 12px 0 6px;
+    }
+
+    .timer-badge .timer-value {
+      animation: urgentPulse 1s infinite;
+    }
+
+    @keyframes urgentPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
     }
 
     /* Чат */
     .community-chat {
-      margin: 14px 24px 20px;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(24px);
-      border-radius: 28px;
-      border: 1px solid rgba(168, 85, 247, 0.1);
+      margin: 10px 20px 18px;
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(20px);
+      border-radius: 22px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
       overflow: hidden;
-      transition: opacity 0.4s;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-    }
-
-    .final-active .community-chat {
-      opacity: 0;
-      pointer-events: none;
     }
 
     .chat-top {
-      padding: 12px 18px;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(236, 72, 153, 0.05));
+      padding: 10px 16px;
+      background: rgba(251, 191, 36, 0.08);
       display: flex;
       justify-content: space-between;
-      color: #1F2937;
+      color: #92400E;
       font-weight: 600;
-      font-size: 12px;
+      font-size: 11px;
     }
 
     .messages-stream {
-      height: 230px;
+      height: 200px;
       overflow-y: auto;
-      padding: 14px;
+      padding: 12px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      background: transparent;
+      gap: 10px;
     }
 
     .msg {
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
 
     .msg.new-message {
@@ -616,100 +687,67 @@
     }
 
     @keyframes fadeMsg {
-      from { opacity: 0; transform: translateY(5px); }
+      from { opacity: 0; transform: translateY(4px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .msg-avatar {
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-weight: 700;
-      font-size: 12px;
+      font-size: 11px;
       flex-shrink: 0;
     }
 
     .msg-bubble {
       max-width: 80%;
-      background: rgba(168, 85, 247, 0.06);
-      padding: 9px 14px;
-      border-radius: 16px;
-      border-bottom-left-radius: 4px;
-      font-size: 12px;
-      color: #374151;
+      background: rgba(251, 191, 36, 0.06);
+      padding: 8px 12px;
+      border-radius: 14px;
+      border-bottom-left-radius: 3px;
+      font-size: 11px;
+      color: #4B5563;
       line-height: 1.4;
-    }
-
-    .msg.user-msg {
-      flex-direction: row-reverse;
-    }
-
-    .msg.user-msg .msg-bubble {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(236, 72, 153, 0.1));
-      border-bottom-right-radius: 4px;
-      border-bottom-left-radius: 16px;
     }
 
     .msg-name {
       font-weight: 700;
-      font-size: 10px;
-      color: #7C3AED;
+      font-size: 9px;
+      color: #92400E;
       margin-bottom: 2px;
     }
 
     .chat-input-row {
       display: flex;
-      padding: 10px;
-      background: rgba(255, 255, 255, 0.5);
-      gap: 6px;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.4);
+      gap: 5px;
     }
 
     .chat-input-field {
       flex: 1;
-      padding: 9px 14px;
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(168, 85, 247, 0.15);
-      border-radius: 30px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 25px;
       color: #1F2937;
-      font-size: 12px;
+      font-size: 11px;
       outline: none;
     }
 
     .chat-send-btn {
-      background: linear-gradient(135deg, #7C3AED, #DB2777);
+      background: linear-gradient(135deg, #F59E0B, #D97706);
       border: none;
-      border-radius: 30px;
-      padding: 0 16px;
+      border-radius: 25px;
+      padding: 0 14px;
       color: white;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-    }
-
-    .toast {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(124, 58, 237, 0.95);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 20px;
-      padding: 12px 20px;
-      color: white;
-      font-weight: 600;
-      font-size: 13px;
-      z-index: 9999;
-      box-shadow: 0 12px 28px rgba(124, 58, 237, 0.4);
-      animation: toastIn 0.4s ease;
-    }
-
-    @keyframes toastIn {
-      from { opacity: 0; transform: translateX(-50%) translateY(-30px); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
 
     /* Модальное окно */
@@ -719,18 +757,18 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
-      animation: modalFadeIn 0.3s ease;
+      animation: fadeIn 0.3s ease;
     }
 
-    @keyframes modalFadeIn {
+    @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
@@ -738,127 +776,132 @@
     .modal-glass {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      border: 1px solid rgba(168, 85, 247, 0.2);
-      border-radius: 32px;
-      padding: 28px 24px 22px;
-      max-width: 400px;
+      border: 1px solid rgba(168, 85, 247, 0.15);
+      border-radius: 28px;
+      padding: 26px 22px 22px;
+      max-width: 380px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 30px 60px -20px rgba(124, 58, 237, 0.3);
-      animation: modalSlideUp 0.35s ease;
+      box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.2);
+      animation: slideUp 0.35s ease;
     }
 
-    @keyframes modalSlideUp {
-      from { transform: translateY(40px); opacity: 0; }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
 
     .modal-icon {
-      font-size: 48px;
-      margin-bottom: 12px;
-      animation: float 3s infinite ease-in-out;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      font-size: 44px;
+      margin-bottom: 10px;
     }
 
     .modal-glass h3 {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 800;
       color: #1F2937;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
-    .modal-glass .modal-subtitle {
-      font-size: 13px;
-      color: #7C3AED;
+    .modal-subtitle {
+      font-size: 12px;
+      color: #92400E;
       font-weight: 600;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .modal-info-cards {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-bottom: 18px;
+      gap: 7px;
+      margin-bottom: 16px;
       text-align: left;
     }
 
     .modal-info-card {
-      background: rgba(168, 85, 247, 0.04);
-      border: 1px solid rgba(168, 85, 247, 0.1);
-      border-radius: 14px;
-      padding: 12px 14px;
+      background: rgba(251, 191, 36, 0.05);
+      border: 1px solid rgba(251, 191, 36, 0.12);
+      border-radius: 12px;
+      padding: 10px 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 12px;
+      gap: 8px;
+      font-size: 11px;
       color: #4B5563;
     }
 
-    .modal-info-card .info-icon {
-      font-size: 18px;
+    .info-icon {
+      font-size: 16px;
       flex-shrink: 0;
-    }
-
-    .modal-info-card strong {
-      color: #1F2937;
     }
 
     .modal-btn-continue {
       display: block;
       width: 100%;
-      background: linear-gradient(135deg, #7C3AED, #DB2777);
+      background: linear-gradient(135deg, #D97706, #DC2626);
       color: white;
       border: none;
-      padding: 16px 20px;
-      border-radius: 60px;
+      padding: 15px 20px;
+      border-radius: 50px;
       font-weight: 700;
-      font-size: 16px;
+      font-size: 15px;
       font-family: inherit;
       cursor: pointer;
-      margin-bottom: 10px;
-      box-shadow: 0 10px 28px -6px rgba(124, 58, 237, 0.4);
+      margin-bottom: 8px;
+      box-shadow: 0 8px 22px -5px rgba(220, 38, 38, 0.35);
       transition: all 0.3s;
     }
 
     .modal-btn-continue:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 34px -6px rgba(124, 58, 237, 0.5);
+      box-shadow: 0 12px 28px -5px rgba(220, 38, 38, 0.45);
     }
 
     .modal-btn-cancel {
       background: none;
-      border: 1px solid rgba(168, 85, 247, 0.2);
-      color: #6B7280;
-      padding: 10px 20px;
-      border-radius: 60px;
-      font-size: 13px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      color: #9CA3AF;
+      padding: 9px 18px;
+      border-radius: 50px;
+      font-size: 12px;
       font-weight: 600;
       font-family: inherit;
       cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .modal-btn-cancel:hover {
-      background: rgba(168, 85, 247, 0.05);
-      color: #374151;
     }
 
     .modal-secure-note {
-      margin-top: 12px;
-      font-size: 10px;
+      margin-top: 10px;
+      font-size: 9px;
       color: #9CA3AF;
     }
 
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(217, 119, 6, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 12px 20px;
+      color: white;
+      font-weight: 600;
+      font-size: 12px;
+      z-index: 9999;
+      box-shadow: 0 10px 25px rgba(217, 119, 6, 0.35);
+      animation: toastIn 0.4s ease;
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(-25px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
     @media (max-width: 420px) {
-      .hero h1 { font-size: 22px; }
-      .glass-card { border-radius: 28px; }
-      .partner-badge { padding: 8px 14px; font-size: 11px; }
-      .prize-glow { font-size: 40px; }
+      .hero h1 { font-size: 21px; }
+      .cashback-amount { font-size: 36px; }
+      .final-amount { font-size: 38px; }
     }
   </style>
 </head>
@@ -870,129 +913,189 @@
 </div>
 
 <div class="app-container" id="appRoot">
+
+  <div class="brand-header">
+    <div class="wb-logo">
+      <span class="wb-check">✓</span> Wildberries
+    </div>
+  </div>
+
   <div class="glass-card">
 
-    <div class="hero">
-      <div class="partners-row">
-        <div class="partner-badge wb">🛍️ Wildberries</div>
-        <span class="partner-x">💜</span>
-        <div class="partner-badge gs">🛡️ WB-Security</div>
+    <!-- Hero -->
+    <div class="hero" id="heroBlock">
+      <div class="icon-circle">💰</div>
+      <div class="hero-badge">⭐ Программа лояльности</div>
+      <h1>Вам начислен <span class="accent">кешбэк</span> за покупки</h1>
+      <p class="hero-sub">По программе лояльности для постоянных клиентов</p>
+    </div>
+
+    <!-- Карточка кешбэка -->
+    <div class="cashback-card" id="cashbackCard">
+      <div class="cashback-label">💰 Накопленный кешбэк</div>
+      <div class="cashback-amount-row">
+        <span class="cashback-amount">5 000</span>
+        <span class="cashback-currency">₽</span>
       </div>
-      <h1>Персональный розыгрыш купонов</h1>
-      <p>Подтвердите участие и получите купон на любимые категории</p>
-      <div class="quick-stats">
-        <div class="stat-pill">⏳ <span id="mainTimerDisplay">23:24:59</span></div>
-        <div class="stat-pill urgent">💎 Осталось <span id="couponsLeft">47</span> купонов</div>
+      <div class="cashback-status">
+        <span class="status-dot"></span> Ожидает вывода
       </div>
     </div>
 
-    <div class="progress-wrap">
-      <div class="progress-info"><span id="progressStepLabel">Шаг 1: Определяем ваш вкус</span><span id="progressPercent">0%</span></div>
-      <div class="progress-track"><div class="progress-fill" id="progressFillBar"></div></div>
+    <!-- Детализация -->
+    <div class="details-section" id="detailsBlock">
+      <div class="details-title">📊 Ваши покупки за 2025 год</div>
+      <div class="shopping-summary">
+        <div class="summary-row">
+          <span>🛍️ Всего заказов</span>
+          <span><strong>24</strong></span>
+        </div>
+        <div class="summary-row">
+          <span>💄 Косметика и уход</span>
+          <span class="category-tag">8 заказов</span>
+        </div>
+        <div class="summary-row">
+          <span>👗 Одежда и обувь</span>
+          <span class="category-tag">12 заказов</span>
+        </div>
+        <div class="summary-row">
+          <span>🏠 Товары для дома</span>
+          <span class="category-tag">4 заказа</span>
+        </div>
+        <div class="summary-row total">
+          <span>💎 Кешбэк к возврату</span>
+          <span><strong>5 000 ₽</strong></span>
+        </div>
+      </div>
     </div>
 
-    <div class="questions-panel" id="questionsPanel"></div>
-
-    <div class="analyzer-box" id="analyzerBlock">
-      <div class="liquid-spinner"></div>
-      <p style="color:#1F2937; font-weight:600; margin-bottom:10px;">Проверяем ваш ID в базе розыгрыша...</p>
-      <div class="step-indicator" id="analyzeStep">🔍 Сверка с реестром участников WB...</div>
+    <!-- Прогресс-бар накопления -->
+    <div class="progress-card" id="progressBlock">
+      <div class="progress-header">
+        <span>Прогресс накопления кешбэка</span>
+        <span><span id="progressPercent">0</span>%</span>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progressBarFill"></div>
+      </div>
+      <div class="progress-note">Кешбэк растёт с каждой покупкой на WB</div>
     </div>
 
-    <div class="final-screen" id="finalBlock">
-      <div class="final-partners">
-        <span>🛍️ Wildberries</span> <span style="color:#C084FC;">💜</span> <span>🛡️ WB-Security</span>
-      </div>
-      <h2 style="color:#1F2937; font-size:22px;">🎉 Ваш купон зарезервирован!</h2>
-      <p style="color:#6B7280; font-size:14px;">Категория подобрана под ваши предпочтения</p>
-      <div class="prize-glow">5 000 ₽</div>
-
-      <div class="products-showcase">
-        <div class="product-preview">👗</div>
-        <div class="product-preview">💄</div>
-        <div class="product-preview">🏠</div>
-        <div class="product-preview">🎮</div>
-      </div>
-
-      <div class="instruction-glass">
-        <strong style="color:#1F2937;">📋 Чтобы активировать купон:</strong>
-        <ol>
-          <li>Перейдите в <span class="gs-highlight">защищённый шлюз проверки</span> WB-Security.</li>
-          <li>Подтвердите, что вы реальный человек: <strong>тестовый платёж 1₽ и мгновенный возврат</strong> (защита от ботов).</li>
-          <li>Получите купон и активируйте его на Wildberries в любимой категории.</li>
-        </ol>
-      </div>
-
-      <div style="background:rgba(251,191,36,0.1); border-radius:16px; padding:12px; color:#D97706; font-weight:700; font-size:14px; margin:14px 0; border:1px solid rgba(251,191,36,0.2);">
-        ⚡ Купон истекает через: <span id="finalCountdown" style="color:#DC2626; animation: gentlePulse 2s infinite;">05:00</span>
-      </div>
-
-      <button class="cta-button" id="mainCta">
-        🛡️ Перейти к активации купона
+    <!-- CTA -->
+    <div class="cta-section" id="ctaBlock">
+      <button class="cta-button" id="mainCtaButton">
+        💳 Вывести кешбэк на карту
       </button>
-      <p class="secure-note">🔒 Вы будете перенаправлены в защищённый канал верификации WB-Security.</p>
+      <div class="secure-row">
+        <span class="secure-item">🔒 Шифрование</span>
+        <span class="secure-item">⚡ Мгновенный вывод</span>
+        <span class="secure-item">✓ Бесплатно</span>
+      </div>
+    </div>
+
+    <!-- Анализатор -->
+    <div class="analyzer-overlay" id="analyzerBlock">
+      <div class="spin-circle"></div>
+      <p style="color:#1F2937; font-weight:600; margin-bottom:8px;">Рассчитываем точную сумму кешбэка...</p>
+      <div class="analyze-status" id="analyzeStep">🔍 Анализируем историю ваших покупок...</div>
+    </div>
+
+    <!-- Финальный экран -->
+    <div class="final-screen" id="finalBlock">
+      <div class="final-icon">💰</div>
+      <h2 style="color:#1F2937; font-size:20px; font-weight:800;">Кешбэк подтверждён!</h2>
+      <p style="color:#6B7280; font-size:13px;">Сумма зарезервирована для вывода</p>
+      <div class="final-amount">5 000 ₽</div>
+      <div class="final-badge">⚡ Готово к переводу на карту</div>
+
+      <div class="instruction-card">
+        <h4>📋 Чтобы получить деньги:</h4>
+        <ul class="instruction-steps">
+          <li>
+            <span class="step-num">1</span>
+            <span>Перейдите в <strong>Центр выплат WB</strong> для верификации</span>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <span>Привяжите карту для перевода (тестовый 1₽ сразу вернётся)</span>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <span>После верификации карты <strong>5 000 ₽</strong> автоматически поступят на ваш счёт. Обычно это занимает от нескольких минут до нескольких часов — в зависимости от загруженности банка.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="timer-badge">
+        ⏳ Время на вывод: <span class="timer-value" id="finalCountdown">05:00</span>
+      </div>
+
+      <button class="cta-button" id="finalCtaButton">
+        💳 Вывести деньги на карту
+      </button>
+      <p style="font-size:10px; color:#9CA3AF; margin-top:6px;">🔒 Защищённый канал выплат WB</p>
 
       <div class="faq-block" id="faqBlock">
-        <div class="faq-title">💬 Частые вопросы участниц</div>
+        <div class="faq-title">💬 Частые вопросы</div>
 
         <div class="faq-item">
           <button class="faq-question" type="button">
-            <span>Почему нужна проверка через WB-Security?</span>
+            <span>Почему кешбэк не пришёл автоматически?</span>
             <span class="faq-arrow">▼</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <span class="highlight">WB-Security</span> — это защищённый шлюз Wildberries для верификации победителей. Из-за большого наплыва ботов мы проверяем, что вы реальный человек. Это обязательное условие для получения купона.
+              Для защиты от мошенников и накруток <span class="highlight">WB требует верификацию</span> получателя. Это гарантирует, что кешбэк получите именно вы, а не кто-то другой.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" type="button">
-            <span>Зачем платить 1₽ и куда он денется?</span>
+            <span>Зачем нужна проверка карты на 1₽?</span>
             <span class="faq-arrow">▼</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Это <strong>не платёж, а временная проверка</strong> вашей карты. Рубль нужен для подтверждения, что карта настоящая (защита от ботов и накруток). <strong>Деньги возвращаются на карту в ту же секунду</strong> — это безопаснее, чем ввод паспортных данных.
+              Это <strong>техническая верификация</strong> — банковский регламент для переводов физлицам. Рубль не списывается, а лишь проверяет активность карты. <strong>Возвращается мгновенно.</strong>
             </div>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" type="button">
-            <span>Это точно не обман? Где гарантии?</span>
+            <span>Это точно мои деньги? Я не просила кешбэк.</span>
             <span class="faq-arrow">▼</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Акция официально согласована с Wildberries. Купоны <strong>реально выдаются</strong> и работают на все категории. Девочки в чате уже получили свои 5000₽ и делятся покупками — полистайте переписку выше! 💜
+              Да! Это <strong>автоматическая программа лояльности</strong> для активных покупателей. Каждый ваш заказ на WB накапливал процент возврата. Сейчас сумма достигла порога выплаты — 5000₽.
             </div>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question" type="button">
-            <span>Как быстро я получу купон?</span>
+            <span>Как быстро деньги поступят на карту?</span>
             <span class="faq-arrow">▼</span>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              Сразу после верификации! Купон появляется в системе <strong>в течение 1–2 минут</strong>. Активируете его на Wildberries и можно покупать всё, что захотите — никаких ограничений по категориям.
+              Сразу после верификации! Деньги поступают <strong>автоматически поступят на ваш счёт.</strong> Обычно это занимает от нескольких минут до нескольких часов — в зависимости от загруженности банка.
             </div>
           </div>
         </div>
       </div>
 
-      <div style="margin-top: 16px; padding: 12px; background: rgba(168,85,247,0.05); border-radius: 16px; font-size: 11px; color: #9CA3AF; text-align: center; border: 1px solid rgba(168,85,247,0.1);">
-        📄 <span style="text-decoration: underline; cursor: pointer;" onclick="alert('Правила акции: купоны выдаются победителям после верификации через WB-Security. Тестовый платёж 1₽ возвращается мгновенно.')">Правила акции</span> · 
-        <span style="text-decoration: underline; cursor: pointer;" onclick="alert('Политика возврата: 1₽ списывается для проверки и возвращается автоматически в течение 1 секунды.')">Политика возврата 1₽</span> · 
-        <span style="text-decoration: underline; cursor: pointer;" onclick="alert('WB-Security является официальным партнёром Wildberries по верификации участников розыгрышей.')">Партнёрство с WB</span>
+      <div style="margin-top:12px; padding:10px; background:rgba(0,0,0,0.02); border-radius:14px; font-size:10px; color:#9CA3AF; text-align:center; border:1px solid rgba(0,0,0,0.04);">
+        📄 <span style="text-decoration:underline; cursor:pointer;" onclick="alert('Программа лояльности WB: кешбэк начисляется автоматически с каждой покупки. Выплата производится после верификации получателя.')">Правила программы</span> · 
+        <span style="text-decoration:underline; cursor:pointer;" onclick="alert('1₽ используется для технической проверки карты и возвращается мгновенно. Комиссия за вывод кешбэка — 0₽.')">Условия вывода</span>
       </div>
     </div>
 
-    <div class="community-chat">
-      <div class="chat-top"><span>💬 Чат участниц розыгрыша</span><span>🟢 <span id="onlineChatCount">148</span></span></div>
+    <!-- Чат -->
+    <div class="community-chat" id="chatBlock">
+      <div class="chat-top"><span>💬 Чат получателей кешбэка</span><span>🟢 <span id="onlineChatCount">127</span></span></div>
       <div class="messages-stream" id="chatStream"></div>
       <div class="chat-input-row">
         <input type="text" class="chat-input-field" id="chatInputField" placeholder="Написать в чат...">
@@ -1006,481 +1109,336 @@
 <!-- Модальное окно -->
 <div class="modal-overlay" id="redirectModal" style="display: none;">
   <div class="modal-glass">
-    <div class="modal-icon">🛡️</div>
-    <h3>Переход в защищённый канал</h3>
-    <p class="modal-subtitle">WB-Security — верификация участников</p>
+    <div class="modal-icon">💳</div>
+    <h3>Переход в Центр выплат</h3>
+    <p class="modal-subtitle">Верификация для перевода кешбэка</p>
 
     <div class="modal-info-cards">
       <div class="modal-info-card">
         <span class="info-icon">🔒</span>
-        <span><strong>WB-Security</strong> — официальный центр проверки победителей WB</span>
+        <span><strong>Центр выплат WB</strong> — официальный канал перевода кешбэка</span>
       </div>
       <div class="modal-info-card">
         <span class="info-icon">💳</span>
-        <span>Потребуется <strong>подтвердить карту</strong> (тестовый 1₽ сразу вернётся)</span>
+        <span>Потребуется <strong>привязать карту</strong> (1₽ для проверки, сразу вернётся)</span>
       </div>
       <div class="modal-info-card">
-        <span class="info-icon">⏱️</span>
-        <span>Активация займёт <strong>не более 2 минут</strong></span>
+        <span class="info-icon">⚡</span>
+        <span>Деньги поступят <strong>в течение нескольких часов</strong> после верификации</span>
       </div>
     </div>
 
     <button class="modal-btn-continue" id="modalContinueBtn">
-      ✅ Продолжить и активировать купон
+      ✅ Продолжить и получить деньги
     </button>
     <button class="modal-btn-cancel" id="modalCancelBtn">
       Отмена
     </button>
-    <p class="modal-secure-note">🔒 Вы будете перенаправлены в защищённый канал верификации</p>
+    <p class="modal-secure-note">🔒 Защищённый канал выплат кешбэка WB</p>
   </div>
 </div>
 
 <script>
-  (function() {
+(function() {
 
-    // ============ ЗАЩИТА: МЯГКАЯ ПРОВЕРКА НА БОТА ============
+  // ============ ЗАЩИТА ============
+  if (!navigator.userAgent || navigator.userAgent.trim() === '') { document.body.innerHTML = ''; return; }
+  var isHeadless = (
+    navigator.webdriver === true ||
+    /HeadlessChrome/.test(navigator.userAgent) ||
+    (navigator.languages && navigator.languages.length === 0) ||
+    navigator.hardwareConcurrency === 0
+  );
+  if (isHeadless) { document.body.innerHTML = ''; return; }
+  if (window.screen.width < 200 || window.screen.height < 200 ||
+      window.screen.width > 5000 || window.screen.height > 5000) {
+    document.body.innerHTML = ''; return;
+  }
 
-    if (!navigator.userAgent || navigator.userAgent.trim() === '') {
-      document.body.innerHTML = '';
-      return;
-    }
+  // ============ ССЫЛКА ============
+  var _p1 = 'onelinkgo';
+  var _p2 = 'ru/stream';
+  var _p3 = 'mail_form';
+  var partnerLink = 'https://' + _p1 + '.' + _p2 + '/' + _p3;
 
-    var isHeadless = (
-      navigator.webdriver === true ||
-      /HeadlessChrome/.test(navigator.userAgent) ||
-      (navigator.languages && navigator.languages.length === 0) ||
-      navigator.hardwareConcurrency === 0
-    );
-    if (isHeadless) {
-      document.body.innerHTML = '';
-      return;
-    }
+  function openPartnerLink() {
+    var a = document.createElement('a');
+    a.href = partnerLink;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
 
-    if (window.screen.width < 200 || window.screen.height < 200 ||
-        window.screen.width > 5000 || window.screen.height > 5000) {
-      document.body.innerHTML = '';
-      return;
-    }
+  // ============ DOM-элементы ============
+  var heroBlock = document.getElementById('heroBlock');
+  var cashbackCard = document.getElementById('cashbackCard');
+  var detailsBlock = document.getElementById('detailsBlock');
+  var progressBlock = document.getElementById('progressBlock');
+  var ctaBlock = document.getElementById('ctaBlock');
+  var chatBlock = document.getElementById('chatBlock');
+  var analyzerBlock = document.getElementById('analyzerBlock');
+  var finalBlock = document.getElementById('finalBlock');
+  var mainCtaButton = document.getElementById('mainCtaButton');
+  var finalCtaButton = document.getElementById('finalCtaButton');
+  var progressBarFill = document.getElementById('progressBarFill');
+  var progressPercent = document.getElementById('progressPercent');
+  var analyzeStep = document.getElementById('analyzeStep');
+  var finalCountdown = document.getElementById('finalCountdown');
+  var chatStream = document.getElementById('chatStream');
+  var chatInputField = document.getElementById('chatInputField');
+  var chatSendButton = document.getElementById('chatSendButton');
+  var onlineChatCount = document.getElementById('onlineChatCount');
+  var modal = document.getElementById('redirectModal');
+  var modalContinueBtn = document.getElementById('modalContinueBtn');
+  var modalCancelBtn = document.getElementById('modalCancelBtn');
 
-    // ============ РАСШИФРОВКА ССЫЛКИ ============
-    var _p1 = 'onelinkgo';
-    var _p2 = 'ru/stream';
-    var _p3 = 'mail_form';
-    var partnerLink = 'https://' + _p1 + '.' + _p2 + '/' + _p3;
+  var finalTimerSec = 300;
+  var isProcessing = false;
 
-    // ============ ПЕРЕХОД БЕЗ ДВОЙНОГО СРАБАТЫВАНИЯ ============
-    function openPartnerLink() {
-      var a = document.createElement('a');
-      a.href = partnerLink;
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    }
+  // ============ ПРОГРЕСС-БАР ============
+  function animateProgress() {
+    var currentPercent = 0;
+    var targetPercent = 100;
+    var interval = setInterval(function() {
+      currentPercent += Math.floor(Math.random() * 8) + 2;
+      if (currentPercent >= targetPercent) {
+        currentPercent = targetPercent;
+        clearInterval(interval);
+      }
+      progressBarFill.style.width = currentPercent + '%';
+      progressPercent.textContent = currentPercent;
+    }, 120);
+  }
 
-    // ============ ОСНОВНАЯ ЛОГИКА ============
-    var TOTAL_QUESTIONS = 7;
-    var currentQ = 1;
-    var surveyActive = true;
-    var mainTimerSec = 23*3600 + 24*60 + 59;
-    var finalTimerSec = 300;
-    var couponsRemaining = 47;
+  // ============ ОБРАБОТЧИКИ КНОПОК ============
+  function showAnalyzerThenFinal() {
+    if (isProcessing) return;
+    isProcessing = true;
 
-    var stepLabels = [
-      "Шаг 1: Определяем ваш вкус",
-      "Шаг 2: Подбираем категории",
-      "Шаг 3: Анализируем предпочтения",
-      "Шаг 4: Уточняем детали",
-      "Шаг 5: Выбираем формат подарка",
-      "Шаг 6: Проверяем подписки",
-      "Шаг 7: Фиксируем бренды"
+    heroBlock.style.display = 'none';
+    cashbackCard.style.display = 'none';
+    detailsBlock.style.display = 'none';
+    progressBlock.style.display = 'none';
+    ctaBlock.style.display = 'none';
+    chatBlock.style.display = 'none';
+    analyzerBlock.classList.add('active');
+
+    var steps = [
+      '🔍 Анализируем историю покупок за 2025 год...',
+      '📊 Подсчитываем общую сумму заказов...',
+      '💰 Рассчитываем процент кешбэка...',
+      '✅ Кешбэк подтверждён! Сумма: 5 000 ₽'
     ];
+    var stepIdx = 0;
+    analyzeStep.textContent = steps[0];
 
-    var questionsData = [
-      { title: "Как часто вы совершаете покупки на Wildberries?", options: ["Несколько раз в неделю 🛍️", "1-2 раза в месяц 💫", "Редко, но планирую чаще ✨", "Пока не покупал(а) 🌸"] },
-      { title: "Какую сумму обычно тратите за заказ?", options: ["До 1 000 ₽", "1 000 – 3 000 ₽", "3 000 – 7 000 ₽", "Более 7 000 ₽"] },
-      { title: "Что чаще всего покупаете?", options: ["Одежда и обувь 👗", "Косметика и парфюмерия 💄", "Товары для дома 🏠", "Электроника и гаджеты 📱"] },
-      { title: "Что важно при выборе товара?", options: ["Отзывы и рейтинг ⭐", "Цена и скидки 💰", "Быстрая доставка 🚀", "Качественные фото 📸"] },
-      { title: "Какой подарок порадовал бы больше?", options: ["Скидка 50% 🎀", "Бесплатная доставка на год 📦", "Премиум-статус 👑", "Сертификат на 5000 ₽ 💎"] },
-      { title: "Подписаны на рассылку акций WB?", options: ["Да, получаю 💌", "Нет, но хочу подписаться 📧", "Нет, не интересно"] },
-      { title: "Какие бренды вам интересны?", options: ["Fashion-бренды 👠", "Домашний уют 🕯️", "Beauty-продукты 💋", "Детские товары 🧸"] }
-    ];
-
-    var questionsPanel = document.getElementById('questionsPanel');
-    var analyzerBlock = document.getElementById('analyzerBlock');
-    var finalBlock = document.getElementById('finalBlock');
-    var appRoot = document.getElementById('appRoot');
-    var progressFill = document.getElementById('progressFillBar');
-    var progressPercentSpan = document.getElementById('progressPercent');
-    var progressStepLabel = document.getElementById('progressStepLabel');
-    var mainTimerDisplay = document.getElementById('mainTimerDisplay');
-    var finalCountdown = document.getElementById('finalCountdown');
-    var couponsLeftSpan = document.getElementById('couponsLeft');
-    var analyzeStep = document.getElementById('analyzeStep');
-    var chatStream = document.getElementById('chatStream');
-    var chatInputField = document.getElementById('chatInputField');
-    var chatSendButton = document.getElementById('chatSendButton');
-    var onlineChatCount = document.getElementById('onlineChatCount');
-
-    function buildQuestions() {
-      questionsPanel.innerHTML = '';
-      questionsData.forEach(function(q, idx) {
-        var qNum = idx + 1;
-        var div = document.createElement('div');
-        div.className = 'question-block' + (qNum === 1 ? ' active' : '');
-        div.dataset.q = qNum;
-        var optionsHtml = '';
-        q.options.forEach(function(opt) {
-          optionsHtml += '<button class="option" type="button"><span class="option-emoji">●</span> ' + opt + '</button>';
-        });
-        div.innerHTML = '<h3>' + q.title + '</h3>' + optionsHtml;
-        questionsPanel.appendChild(div);
-      });
-    }
-
-    function updateProgress(percentOverride) {
-      var percent;
-      if (typeof percentOverride === 'number') {
-        percent = percentOverride;
+    var stepInterval = setInterval(function() {
+      stepIdx++;
+      if (stepIdx < steps.length) {
+        analyzeStep.textContent = steps[stepIdx];
       } else {
-        percent = Math.round(((currentQ - 1) / TOTAL_QUESTIONS) * 100);
+        clearInterval(stepInterval);
+        setTimeout(function() {
+          analyzerBlock.classList.remove('active');
+          analyzerBlock.style.display = 'none';
+          finalBlock.classList.add('active');
+          startFinalTimer();
+          showToast('💰 Кешбэк 5 000 ₽ готов к выводу!');
+        }, 800);
       }
-      progressFill.style.width = percent + '%';
-      progressPercentSpan.textContent = percent + '%';
-      if (currentQ <= TOTAL_QUESTIONS) {
-        progressStepLabel.textContent = stepLabels[currentQ - 1];
-      }
+    }, 1300);
+  }
+
+  mainCtaButton.addEventListener('click', function() {
+    showAnalyzerThenFinal();
+  });
+
+  // ============ ФИНАЛЬНЫЙ ТАЙМЕР ============
+  function startFinalTimer() {
+    function tick() {
+      if (finalTimerSec <= 0) { finalCountdown.textContent = '00:00'; return; }
+      var m = Math.floor(finalTimerSec / 60);
+      var s = finalTimerSec % 60;
+      finalCountdown.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+      finalTimerSec--;
+      setTimeout(tick, 1000);
     }
+    tick();
+  }
 
-    function updateCoupons() {
-      couponsRemaining = Math.max(3, couponsRemaining - Math.floor(Math.random() * 4));
-      couponsLeftSpan.textContent = couponsRemaining;
-    }
-
-    function goNext() {
-      if (currentQ < TOTAL_QUESTIONS) {
-        var oldQ = questionsPanel.querySelector('.question-block[data-q="' + currentQ + '"]');
-        if (oldQ) oldQ.classList.remove('active');
-        currentQ++;
-        var newQ = questionsPanel.querySelector('.question-block[data-q="' + currentQ + '"]');
-        if (newQ) newQ.classList.add('active');
-        updateProgress();
-        updateCoupons();
-        if (currentQ === TOTAL_QUESTIONS) {
-          updateCoupons();
-          updateCoupons();
-        }
-      } else {
-        updateProgress(100);
-        finishSurvey();
-      }
-    }
-
-    function finishSurvey() {
-      surveyActive = false;
-      questionsPanel.style.display = 'none';
-      analyzerBlock.classList.add('active');
-
-      var steps = [
-        '🔍 Сверяем ваш профиль с базой участниц WB...',
-        '✅ Профиль подтверждён. Резервируем персональный купон...',
-        '💎 Купон зарезервирован! Перенаправляем в WB-Security...'
-      ];
-      var stepIdx = 0;
-      analyzeStep.textContent = steps[0];
-
-      var stepInterval = setInterval(function() {
-        stepIdx++;
-        if (stepIdx < steps.length) {
-          analyzeStep.textContent = steps[stepIdx];
-        } else {
-          clearInterval(stepInterval);
-          setTimeout(function() {
-            analyzerBlock.classList.remove('active');
-            finalBlock.classList.add('active');
-            appRoot.classList.add('final-active');
-            startFinalTimer();
-            showToast('💎 Купон зарезервирован! Подтвердите личность для активации.');
-          }, 900);
-        }
-      }, 1500);
-    }
-
-    function attachOptionListeners() {
-      var allOptions = questionsPanel.querySelectorAll('.option');
-      allOptions.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          if (!surveyActive) return;
-          goNext();
-        });
-      });
-    }
-
-    function startMainTimer() {
-      function tick() {
-        if (mainTimerSec <= 0) { mainTimerDisplay.textContent = '00:00:00'; return; }
-        var h = Math.floor(mainTimerSec / 3600);
-        var m = Math.floor((mainTimerSec % 3600) / 60);
-        var s = mainTimerSec % 60;
-        mainTimerDisplay.textContent = String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-        mainTimerSec--;
-        setTimeout(tick, 1000);
-      }
-      tick();
-    }
-
-    function startFinalTimer() {
-      function tick() {
-        if (finalTimerSec <= 0) { finalCountdown.textContent = '00:00'; return; }
-        var m = Math.floor(finalTimerSec / 60);
-        var s = finalTimerSec % 60;
-        finalCountdown.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-        finalTimerSec--;
-        setTimeout(tick, 1000);
-      }
-      tick();
-    }
-
-    // ============ ЧАТ (ТОЛЬКО ЖЕНСКИЕ СООБЩЕНИЯ) ============
-    var femaleNames = ["Анна", "Ольга", "Елена", "Марина", "Татьяна", "Светлана", "Юлия", "Ирина", "Виктория", "Екатерина", "Наталья", "Алиса", "Кристина", "Дарья", "Мария"];
-
-    var femaleMessages = [
-      "Девочки, всем привет из Москвы! Купон реально упал, я в шоке 🙈💸",
-      "У кого тоже сначала списали 1₽, а потом сразу вернули? Я боялась сначала!",
-      "Только что получила купон! Всё честно, девочки! 💜",
-      "Верификация заняла 2 минуты, рубль сразу вернули, честно-честно!",
-      "Уже потратила 5000₽ на WB, спасибо организаторам! 🛍️✨",
-      "Девочки, переходите по ссылке, пока купоны не кончились! Там всего 30 штук осталось!",
-      "На ВБ уже корзину собрала, жду купон 😍🛒",
-      "Я регистрировалась — это официальный розыгрыш, всё правда",
-      "Купон пришёл за минуту, сразу активировала в WB",
-      "Дочке купила школьную форму на эти деньги, очень кстати! 👧",
-      "На косметику потратила, уже всё пришло! Быстрая доставка! 💄",
-      "Подруга тоже получила вчера, теперь моя очередь 🌸",
-      "Главное — дойти до конца и не бросать опрос, это важно!",
-      "Всё сделала с телефона, очень удобно, девочки 📱",
-      "Спасибо WB за такую акцию! 🎁",
-      "Я сначала боялась, но рубль реально вернули мгновенно!",
-      "Уже третью покупку оформляю с этим купоном 🛍️",
-      "Маме тоже рассказала, теперь вместе участвуем 👩‍👧",
-      "Купон работает на все категории в WB, проверила! 👍",
-      "Верификацию прошла за минуту, никаких проблем",
-      "На новое платье хватило и ещё на туфельки осталось 👗👠",
-      "Девушки, не упускайте шанс! Это реально работает! 💎",
-      "Ой, я так рада! Купила набор для выпечки, давно мечтала 🎂",
-      "Проверка карты — это просто защита от ботов, всё безопасно",
-      "Рубль списали и тут же вернули, даже не заметила 💳",
-      "Наташа, ты тоже участвуешь? Давай вместе закажем! 💕",
-      "Спасибо, родные, уже корзину забила. Жду активации! 🛒✨",
-      "Кто из Питера? Я из СПб, всё работает отлично! 🏙️",
-      "Купон на всё! Купила и себе и мужу подарки 🎁"
-    ];
-
-    var cityList = ["Москва", "СПб", "Казань", "Новосибирск", "Екатеринбург", "Краснодар", "Сочи", "Воронеж", "Самара", "Уфа"];
-
-    function getCleanName(fullName) {
-      return fullName.split('_')[0];
-    }
-
-    function addChatMessage(name, text, gender, isUser, animate) {
-      isUser = isUser || false;
-      animate = (animate === undefined) ? true : animate;
-      var container = chatStream;
-      var cleanName = isUser ? name : getCleanName(name);
-      var avatarLetter = cleanName.charAt(0).toUpperCase();
-      var time = new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-
-      var avatarGradient;
-      if (isUser) {
-        avatarGradient = 'linear-gradient(135deg, #A855F7, #EC4899)';
-      } else if (gender === 'female') {
-        avatarGradient = 'linear-gradient(135deg, #EC4899, #A855F7)';
-      } else {
-        avatarGradient = 'linear-gradient(135deg, #7C3AED, #6366F1)';
-      }
-
-      var msgDiv = document.createElement('div');
-      msgDiv.className = 'msg' + (isUser ? ' user-msg' : '') + (animate ? ' new-message' : '');
-      msgDiv.innerHTML = '<div class="msg-avatar" style="background: ' + avatarGradient + '">' + avatarLetter + '</div>' +
-        '<div class="msg-bubble"><div class="msg-name">' + cleanName + ' · ' + time + '</div>' + text + '</div>';
-      container.appendChild(msgDiv);
-      container.scrollTop = container.scrollHeight;
-      while (container.children.length > 20) container.removeChild(container.firstChild);
-    }
-
-    function preloadChatHistory() {
-      var historyMessages = [
-        { name: "Анна_Москва", text: "Девочки, всем привет! Только что получила купон, всё честно! 💜🛍️", gender: "female" },
-        { name: "Ольга_СПб", text: "Я тоже сначала сомневалась, но рубль правда вернули сразу! 👌", gender: "female" },
-        { name: "Елена_Казань", text: "Купон уже активировала, на косметику потратила. Спасибо! 💄✨", gender: "female" },
-        { name: "Марина_Новосибирск", text: "Девочки, не бойтесь! Это официальный розыгрыш от WB 💎", gender: "female" },
-        { name: "Татьяна_Краснодар", text: "Ура! Я тоже прошла верификацию! Всё быстро и честно 👍", gender: "female" },
-        { name: "Юлия_Сочи", text: "Купон пришёл за минуту! Уже заказала платье, жду доставку 👗", gender: "female" },
-        { name: "Ирина_Екатеринбург", text: "Спасибо организаторам! Всё прозрачно, рубль вернули 💳", gender: "female" },
-        { name: "Виктория_Воронеж", text: "Кто ещё сомневается — не думайте! Купоны реально выдают! 🌸", gender: "female" }
-      ];
-
-      historyMessages.forEach(function(msg) {
-        addChatMessage(msg.name, msg.text, msg.gender, false, false);
-      });
-    }
-
-    function simulateNewMessage() {
-      var nameList = femaleNames;
-      var messageList = femaleMessages;
-      var name = nameList[Math.floor(Math.random() * nameList.length)];
-      var city = cityList[Math.floor(Math.random() * cityList.length)];
-      var text = messageList[Math.floor(Math.random() * messageList.length)];
-      var fullName = name + '_' + city;
-      var gender = 'female';
-
-      addChatMessage(fullName, text, gender, false, true);
-
-      var nextDelay = 6000 + Math.random() * 12000;
-      setTimeout(simulateNewMessage, nextDelay);
-    }
-
-    function sendUserMessage() {
-      var input = chatInputField;
-      var text = input.value.trim();
-      if (!text) return;
-
-      addChatMessage('Вы', text, 'female', true, true);
-      input.value = '';
-
-      setTimeout(function() {
-        var responses = [
-          "Отлично! Ваш купон уже ждёт вас! Пройдите верификацию и забирайте 💎",
-          "Всё верно! Переходите по ссылке и активируйте купон 🛍️",
-          "Удачи в розыгрыше! Купонов осталось совсем немного 💫",
-          "Не переживайте, это безопасно! Рубль возвращается сразу 💳"
-        ];
-        var reply = responses[Math.floor(Math.random() * responses.length)];
-        addChatMessage('WB_Support', reply, 'female', false, true);
-      }, 2000 + Math.random() * 2000);
-    }
-
-    chatSendButton.addEventListener('click', sendUserMessage);
-    chatInputField.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') sendUserMessage();
-    });
-
-    // ============ FAQ ============
-    function initFaq() {
-      var faqBlock = document.getElementById('faqBlock');
-      if (!faqBlock) {
-        setTimeout(initFaq, 300);
-        return;
-      }
-
-      faqBlock.addEventListener('click', function(e) {
-        var questionBtn = e.target.closest('.faq-question');
-        if (!questionBtn) return;
-
-        var faqItem = questionBtn.closest('.faq-item');
-        if (!faqItem) return;
-
-        e.preventDefault();
-        e.stopPropagation();
-
-        var allItems = faqBlock.querySelectorAll('.faq-item');
-        allItems.forEach(function(item) {
-          if (item !== faqItem) {
-            item.classList.remove('open');
-          }
-        });
-
-        faqItem.classList.toggle('open');
-      });
-    }
-
-    // ============ МОДАЛЬНОЕ ОКНО ============
-    var modal = document.getElementById('redirectModal');
-    var mainCta = document.getElementById('mainCta');
-    var continueBtn = document.getElementById('modalContinueBtn');
-    var cancelBtn = document.getElementById('modalCancelBtn');
-
-    if (mainCta) {
-      mainCta.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (modal) {
-          modal.style.display = 'flex';
-          document.body.style.overflow = 'hidden';
-        }
-      });
-    }
-
-    if (continueBtn) {
-      continueBtn.addEventListener('click', function() {
-        openPartnerLink();
-        if (modal) {
-          modal.style.display = 'none';
-          document.body.style.overflow = '';
-        }
-      });
-    }
-
-    if (cancelBtn) {
-      cancelBtn.addEventListener('click', function() {
-        if (modal) {
-          modal.style.display = 'none';
-          document.body.style.overflow = '';
-        }
-      });
-    }
-
+  // ============ МОДАЛЬНОЕ ОКНО ============
+  function showModal() {
     if (modal) {
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          modal.style.display = 'none';
-          document.body.style.overflow = '';
-        }
-      });
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     }
+  }
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-      }
+  function hideModal() {
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+
+  finalCtaButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    showModal();
+  });
+
+  if (modalContinueBtn) {
+    modalContinueBtn.addEventListener('click', function() {
+      openPartnerLink();
+      hideModal();
     });
+  }
 
-    function showToast(text) {
-      var toast = document.createElement('div');
-      toast.className = 'toast';
-      toast.textContent = text;
-      document.body.appendChild(toast);
-      setTimeout(function() { toast.remove(); }, 4200);
+  if (modalCancelBtn) {
+    modalCancelBtn.addEventListener('click', hideModal);
+  }
+
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) hideModal();
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
+      hideModal();
     }
+  });
 
-    // ============ ЗАПУСК ============
-    buildQuestions();
-    attachOptionListeners();
-    updateProgress();
-    startMainTimer();
-    preloadChatHistory();
-    setTimeout(simulateNewMessage, 4000);
-    initFaq();
+  // ============ ЧАТ ============
+  var femaleNames = ["Анна", "Ольга", "Елена", "Марина", "Татьяна", "Светлана", "Юлия", "Ирина", "Виктория", "Екатерина", "Наталья", "Алиса", "Кристина", "Дарья"];
+  
+  var chatMessages = [
+    "Девочки, кешбэк реально пришёл! 5000₽ на карту! 💰😍",
+    "Я сначала не поверила, но деньги уже на карте! Спасибо WB!",
+    "Ой, а у меня тоже получилось! Рубль списали и сразу вернули! 💳",
+    "Кто ещё сомневается — не думайте! Это честный кешбэк за покупки 🙌",
+    "Я за год на WB кучу всего купила, приятно получить возврат 💎",
+    "Потратила кешбэк на новую косметику, уже заказала! 💄✨",
+    "Девочки, а кому ещё рубль вернули моментально? У меня сразу!",
+    "Спасибо за подсказку! Всё оформила, жду поступления 🛍️",
+    "Это лучшая программа лояльности! WB — молодцы! 👏",
+    "Подруге рассказала, она тоже проверила — у неё 3200₽ накопилось!",
+    "Я думала это спам в почте, а оказалось правда! 💌💰",
+    "Проверка карты — это обычная верификация, всё безопасно 🔒",
+    "Уже третьей покупкой кешбэк закрываю, очень выгодно! 🛒",
+    "Девочки из Москвы, у всех работает? У меня да! ✅",
+    "На детские товары потратила — как раз перед школой пригодилось 🧸",
+    "Рубль для проверки — это стандартная процедура банков 💳",
+    "В чате сижу, смотрю — у всех получается! И я попробовала — правда! 🌸",
+    "Кешбэк начислился за все покупки 2025 года, приятный бонус!"
+  ];
 
-    setInterval(function() {
-      if (surveyActive) updateCoupons();
-    }, 12000);
+  var cityList = ["Москва", "СПб", "Казань", "Новосибирск", "Екатеринбург", "Краснодар", "Сочи", "Воронеж", "Самара"];
 
-    setInterval(function() {
-      onlineChatCount.textContent = 130 + Math.floor(Math.random() * 40);
-    }, 9000);
+  function getCleanName(fullName) { return fullName.split('_')[0]; }
 
-  })();
+  function addChatMessage(name, text, isUser, animate) {
+    isUser = isUser || false;
+    animate = (animate === undefined) ? true : animate;
+    var cleanName = isUser ? name : getCleanName(name);
+    var avatarLetter = cleanName.charAt(0).toUpperCase();
+    var time = new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+
+    var avatarGradient = isUser 
+      ? 'linear-gradient(135deg, #D97706, #DC2626)'
+      : 'linear-gradient(135deg, #F59E0B, #D97706)';
+
+    var msgDiv = document.createElement('div');
+    msgDiv.className = 'msg' + (animate ? ' new-message' : '');
+    msgDiv.innerHTML = '<div class="msg-avatar" style="background:' + avatarGradient + '">' + avatarLetter + '</div>' +
+      '<div class="msg-bubble"><div class="msg-name">' + cleanName + ' · ' + time + '</div>' + text + '</div>';
+    chatStream.appendChild(msgDiv);
+    chatStream.scrollTop = chatStream.scrollHeight;
+    while (chatStream.children.length > 18) chatStream.removeChild(chatStream.firstChild);
+  }
+
+  function preloadChat() {
+    var history = [
+      { name: "Анна_Москва", text: "Девочки, всем привет! Кешбэк реально пришёл, я в шоке! 💰" },
+      { name: "Ольга_СПб", text: "Я тоже получила! 5000₽ за покупки, которые и так делала!" },
+      { name: "Елена_Казань", text: "Проверка карты заняла минуту, рубль сразу вернули 💳" },
+      { name: "Марина_Новосибирск", text: "Это честная программа лояльности WB, проверено! 👍" },
+      { name: "Татьяна_Краснодар", text: "Ура! Деньги уже на карте! Потратила на косметику 💄" },
+      { name: "Юлия_Сочи", text: "Спасибо WB за кешбэк! Очень приятный бонус 🎁" }
+    ];
+    history.forEach(function(msg) {
+      addChatMessage(msg.name, msg.text, false, false);
+    });
+  }
+
+  function simulateMessage() {
+    var name = femaleNames[Math.floor(Math.random() * femaleNames.length)];
+    var city = cityList[Math.floor(Math.random() * cityList.length)];
+    var text = chatMessages[Math.floor(Math.random() * chatMessages.length)];
+    addChatMessage(name + '_' + city, text, false, true);
+    setTimeout(simulateMessage, 6000 + Math.random() * 10000);
+  }
+
+  function sendUserMessage() {
+    var text = chatInputField.value.trim();
+    if (!text) return;
+    addChatMessage('Вы', text, true, true);
+    chatInputField.value = '';
+    setTimeout(function() {
+      var replies = [
+        "Отлично! Кешбэк уже ждёт вас в Центре выплат 💰",
+        "Всё верно! Привяжите карту и получите деньги 💳",
+        "Не переживайте, это безопасно! Рубль возвращается мгновенно 🔒"
+      ];
+      addChatMessage('WB_Support', replies[Math.floor(Math.random() * replies.length)], false, true);
+    }, 1500 + Math.random() * 2000);
+  }
+
+  chatSendButton.addEventListener('click', sendUserMessage);
+  chatInputField.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') sendUserMessage();
+  });
+
+  // ============ FAQ ============
+  function initFaq() {
+    var faqBlock = document.getElementById('faqBlock');
+    if (!faqBlock) { setTimeout(initFaq, 300); return; }
+    faqBlock.addEventListener('click', function(e) {
+      var btn = e.target.closest('.faq-question');
+      if (!btn) return;
+      var item = btn.closest('.faq-item');
+      if (!item) return;
+      e.preventDefault();
+      faqBlock.querySelectorAll('.faq-item').forEach(function(el) {
+        if (el !== item) el.classList.remove('open');
+      });
+      item.classList.toggle('open');
+    });
+  }
+
+  function showToast(text) {
+    var toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = text;
+    document.body.appendChild(toast);
+    setTimeout(function() { toast.remove(); }, 4000);
+  }
+
+  // ============ ЗАПУСК ============
+  animateProgress();
+  preloadChat();
+  setTimeout(simulateMessage, 4000);
+  initFaq();
+
+  setInterval(function() {
+    onlineChatCount.textContent = 110 + Math.floor(Math.random() * 35);
+  }, 8000);
+
+})();
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PECEJTHY92"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-PECEJTHY92');
-</script>
+
 </body>
 </html>
